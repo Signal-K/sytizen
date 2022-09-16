@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Result</title></head>
+    <body>
+        <h1>Result</h1>
+        <h2>Sectors:</h2>
+        <ul>
+            {% for sector in sectors %}
+                <li>{{ sector }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Authors: </h2>
+        <p>{{ authors }}</p>
+        <h2>Lightkurve plot:</h2>
+        <img src="plot.png" alt="plot">
+    </body>
+</html>
