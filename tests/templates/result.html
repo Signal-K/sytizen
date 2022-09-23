@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Light Curve Result</title>
+    <title>Star Sailors - Result</title>
 </head>
 <body>
-    <h1>Light Curve Result</h1>
-    <img src="data:image/png;base64,{{ image_data }}" alt="Light Curve">
+    <h1>Star Sailors - Result</h1>
+    <h3>TIC ID: {{ tic_id }}</h3>
+    <p>Amplitude: {{ amplitude }}</p>
+    <p>Number of Trees: {{ num_trees }}</p>
+    <p>Habitability: {{ habitability }}</p>
+    <a href="/">Back to Calculation</a>
 </body>
 </html>
