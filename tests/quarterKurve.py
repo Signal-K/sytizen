@@ -16,6 +16,9 @@ import numpy as np
 
 app = Flask(__name__)
 
+def convert_array_to_list(array):
+    return array.tolist() # convert numpy array into python list
+
 # def calculate_number_of_trees(habitability, flux, amplitude):
 #     # Set the thresholds and corresponding factors for habitability, flux, and amplitude
 #     habitability_thresholds = [40, 70]  # Adjust these values as needed
@@ -73,7 +76,7 @@ def calculate_number_of_trees(habitability):
     # Find the corresponding number of trees based on the habitability score
     for i, threshold in enumerate(thresholds):
         if habitability < threshold:
-            return num_trees[i]
+            return num_trees[i], num_trees
 
     # If the habitability score is above the highest threshold, return the highest number of trees
     return num_trees[-1]
@@ -152,6 +155,33 @@ def determine_planet_type(star_radius, star_mass, period, median_flux):
 def result():
     return render_template('result.html')
 
+@app.route('/api/query', methods=["POST"])
+def query():
+    tic_id = request.json.get('tic_id') # Retrieve tic from the api request
+    try:
+        # Query & Process the TIC ID
+        lc = lk.search_lightcurve(tic_id).download()
+        flux = lc.flux
+        median_flux = np.nanmedian(flux).value
+        num_trees = calculate_number_of_trees(median_flux)
+
+        # Convert the flux ndarray to a regular ndarray
+        # flux = flux.data if hasattr(flux, 'data') else flux
+        flux_values = flux.value.tolist()
+
+        # Convert the data into a format acceptable for the output response
+        response_data = {
+            'tic_id': tic_id,
+            'median_flux': median_flux,
+            'num_trees': num_trees,
+            'flux': flux_values
+        }
+
+        return jsonify(response_data), 200
+    
+    except Exception as e:
+        error_message = str(e)
+        return jsonify({'error': error_message}), 400
 
 def get_transit_parameters(tic_id):
     url = f"https://exo.mast.stsci.edu/api/v0.1/exoplanets/identifiers/"
