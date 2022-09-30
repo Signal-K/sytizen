@@ -16,9 +16,6 @@ import numpy as np
 
 app = Flask(__name__)
 
-def convert_array_to_list(array):
-    return array.tolist() # convert numpy array into python list
-
 # def calculate_number_of_trees(habitability, flux, amplitude):
 #     # Set the thresholds and corresponding factors for habitability, flux, and amplitude
 #     habitability_thresholds = [40, 70]  # Adjust these values as needed
@@ -154,6 +151,37 @@ def determine_planet_type(star_radius, star_mass, period, median_flux):
 @app.route('/result')
 def result():
     return render_template('result.html')
+
+def calculate_number_of_trees_amplitude(amplitude):
+    thresholds = [0.1, 0.5, 1.0] # Thresholds and corresponding number of trees
+    num_trees = [10, 5, 1]
+
+    # Find the number of trees based on amplitude
+    for i, threshold in enumerate(thresholds):
+        if amplitude < threshold:
+            return num_trees[i]
+
+    return num_trees[-1]
+
+@app.route('/api/trees', methods=["POST"])
+def tree_query():
+    tic_id = request.json.get('tic_id') # Retrieve tic from the api request
+    try:
+        # Query & Process the TIC ID
+        lc = lk.search_lightcurve(tic_id).download()
+        flux = lc.flux
+        median_flux = np.nanmedian(flux).value
+        num_trees = calculate_number_of_trees(median_flux)
+
+        response_data = {
+            'num_trees': num_trees,
+        }
+
+        return jsonify(response_data), 200
+    
+    except Exception as e:
+        error_message = str(e)
+        return jsonify({'error': error_message}), 400
 
 @app.route('/api/query', methods=["POST"])
 def query():
