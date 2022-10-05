@@ -4,10 +4,18 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+lightkurve = "*"
+mongoengine = "*"
+tensorflow = "*"
+pandas = "*"
+numpy = "*"
+scipy = "*"
+astropy = "*"
+pydi = "*"
+bazel = "*"
+abseil = "*"
 
 [dev-packages]
-jupyter = "*"
-notebook = "*"
 
 [requires]
 python_version = "3.10"
