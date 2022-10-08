@@ -1,0 +1,3 @@
+This backend allows for the connection of the data on our Moralis instance to our database system (currently MongoDB) that houses all off-chain data and aids in the terrain generation process in Star Sailors by providing the large datasets that create the noise maps in-game.
+
+If you're looking for the general database interactivity, check in the `/server/api` directory of this repository, or look in the `Generator` & `Ansible` directories for information on how our data is retrieved and manipulated.
