@@ -1,1 +1,18 @@
 <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Iris Dataset</title>
+    </head>
+    <body bgcolor="#8a2be2">
+        <center>
+            <h1>Flower Detection</h1>
+            <form action = "{{ url_for('predict') }}" method="POST">
+                <input type = "text" name = "sepal_length" placeholder = "Enter sepal length"><br />
+                <input type = "text" name = "sepal_width" placeholder = "Enter sepal width"><br />
+                <input type = "text" name = "petal_length" placeholder = "Enter petal length"><br />
+                <input type = "text" name = "petal_width" placeholder = "Enter petal width"><br />
+            </form>
+        </center>
+    </body>
+</html>
