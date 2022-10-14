@@ -1,0 +1,9 @@
+{
+    "environments": {
+        "sailor-api": {
+            "platform": "linux",
+            "transformer": "flask"
+        }
+    },
+    "notebook": "PlanetStats.ipynb"
+}
