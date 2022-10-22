@@ -1,1 +1,0 @@
-https://stackoverflow.com/questions/19410042/how-to-make-ipython-notebook-matplotlib-plot-inline THANKS!
