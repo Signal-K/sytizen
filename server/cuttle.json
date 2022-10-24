@@ -1,9 +1,0 @@
-{
-    "environments": {
-        "lk-api": {
-            "platform": "mac",
-            "transformer": "flask"
-        }
-    },
-    "notebook": "Ansible/PlanetStats.ipynb"
-}

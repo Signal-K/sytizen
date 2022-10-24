@@ -9,9 +9,12 @@ Move `/server` into a separate submodule (or `styizen` into a submodule in anoth
 Add react config (for frontend framework) to react, then move it into `signal-k/polygon`
 -->
 
-## Supa branch
+## Trader branch
 This branch contains a connection between Supabase (our current hosting platform for this backend) and the rest our our Notebooks & API. Everything else has been stripped out of this branch.
 
 Run `python3 -m venv .venv` to get started.
 
 Note: Start integrating in API from signal-k/polygon
+
+### Planti branch
+Stripping everything out (e.g. `Ansible`/`Generator`) and just leaving the initial dashboard/game frontend. We'll merge it back with `Trader` later
