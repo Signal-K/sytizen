@@ -1,2 +1,6 @@
 .gitsigners
 .env
+.venv
+__pycache__
+.flaskenv.example
+node_modules

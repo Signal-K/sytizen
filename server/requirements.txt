@@ -1,0 +1,7 @@
+flask
+python-dotenv
+flask-sqlalchemy
+flask-restful
+lightkurve
+supabase_py
+cuttle
