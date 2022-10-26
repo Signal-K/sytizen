@@ -1,1 +1,43 @@
-/*# sourceMappingURL=listing.css.map */
+/* Colours & Styles - Default config */
+:root {
+  --PrimaryColor: hsl(94, 59%, 35%);
+  --HoverColor: #bdf094;
+  --paleGreen: hsl(96, 75%, 89%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --textColor: hsl(240, 1%, 48%);
+  --bgColor: hsl(220, 10%, 94%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+  /* Font & typography */
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: .938rem;
+  --smallFontSize: .813rem;
+  --smallestFontSize: .75rem;
+}
+
+.listingSection {
+  flex-basis: 70%;
+}
+.listingSection .heading {
+  width: 100%;
+  justify-content: space-between;
+}
+.listingSection .heading h1 {
+  font-size: var(--h2FontSize);
+  color: var(--blackColor);
+  font-weight: 700;
+}
+.listingSection .heading .btn {
+  border: 1px solid transparent;
+}
+.listingSection .heading .btn:hover {
+  border: 1px solid var(--PrimaryColor);
+}
+.listingSection .secContainer {
+  width: 100%;
+  margin: 1rem 0;
+}/*# sourceMappingURL=listing.css.map */

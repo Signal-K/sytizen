@@ -11,6 +11,7 @@ import { BsArrowRightShort } from 'react-icons/bs';
 // Image imports ======>
 import propic from '../../../Assets/logo.png'; // Will later retrieve user profile pic from port 5000 (This import is for the user's profile pic in the top/nav section)
 import video1 from '../../../Assets/video1.mov'; // update directory later /#/ Generate this from user view (i.e. what would be seen if user was in Unity) later
+import tesspic from '../../../Assets/StatElements/TessStat.png';
 
 const Top = () => {
   const userName = "Username"; // This will later be retrieved from the API (port 5000), which retrieves data from the database configured in the .env
@@ -66,8 +67,18 @@ const Top = () => {
               </span>
             </div>
             <div className='imgDiv'>
-              <img src="" alt="Image Name" /> {/*img2*/}
+              <img src={tesspic} alt="Image Name" />
             </div>
+            {/*<div className='sideBarCard'>
+              <BsQuestionCircle className='icon' />
+              <div className='cardContent'>
+                <div className='circle1'></div>
+                <div className='circle2'></div>
+                <h3>Help Center</h3>
+                <p>Demo demo demo demo demo demo</p>
+                <button className='btn'>Go to help center</button>
+              </div>
+            </div>*/}
           </div>
         </div>
       </div>
