@@ -12,6 +12,7 @@ const Body = () => {
 
       <div className='bottom flex'>
         <Listing />
+        <Activity />
       </div>
     </div>
   )

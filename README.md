@@ -1,4 +1,5 @@
 # sytizen-unity
+[![.github/workflows/moralis.yml](https://github.com/Signal-K/sytizen/actions/workflows/moralis.yml/badge.svg?branch=ansible)](https://github.com/Signal-K/sytizen/actions/workflows/moralis.yml)
 Citizen Science (Sci-tizen) visualisation in the Unity.com engine 
 
 

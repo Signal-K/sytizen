@@ -190,4 +190,14 @@
 }
 .topSection .cardSection .leftCard .main .imgDiv img {
   width: 200px;
+}
+
+@media screen and (max-width: 990px) {
+  .cardSection {
+    flex-direction: column;
+  }
+  .cardSection .rightCard, .cardSection .leftCard {
+    width: 100%;
+    flex-basis: 100%;
+  }
 }/*# sourceMappingURL=top.css.map */

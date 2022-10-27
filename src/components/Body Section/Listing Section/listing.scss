@@ -9,6 +9,8 @@
     --bgColor: hsl(220, 10%, 94%);
     --greyText: rgb(190, 190, 190);
     --inputColor: hsl(330, 12%, 97%);
+    --itemCardColor: hsl(120, 5%, 88%);
+    --itemCardHover: hsl(120, 27%, 87%);
 
     /* Font & typography */
     --biggestFontSize: 2.5rem;
@@ -34,7 +36,7 @@
         }
 
         .btn{
-            border: 1px solid transparent;
+            border: 1px solid var(--transparent);
         }
         .btn:hover{
             border: 1px solid var(--PrimaryColor);
@@ -44,5 +46,99 @@
     .secContainer{
         width: 100%;
         margin: 1rem 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .singleItem{
+            position: relative;
+            width: 130px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 1rem;
+            border-radius: 15px;
+            background: var(--itemCardColor);
+
+            &:hover{
+                background: var(--itemCardHover);
+                box-shadow: 0 2px 2px var(--inputColor);
+            }
+
+            img{
+                max-width: 100px;
+            }
+
+            .icon{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                color: var(--PrimaryColor);
+            }
+
+            h3{
+                font-size: var(--h3FontSize);
+                color: var(--blackColor);
+                padding: 1rem 0;
+            }
+        }
+    }
+
+    .sellers{
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+
+        .topSellers, .featuredSellers{
+            .heading{
+                padding: 1rem 0;
+
+                .btn{
+                    padding: .5rem 1rem;
+                }
+            }
+
+            .card{
+                padding: 1rem 2rem;
+                border-radius: 1rem;
+                background: var(--whiteColor);
+                gap: 1rem;
+                box-shadow: 0 2px 4px var(--inputColor);
+
+                .users{
+                    padding-right: 1rem;
+                    border-right: 2px solid var(--greyText);
+
+                    img{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50px;
+                        object-fit: cover;
+                        border: 2px solid var(--inputColor);
+                        transition: .5s ease;
+
+                        &:hover{
+                            transform: translateY(-10px);
+                        }
+                    }
+                }
+
+                .cardText{
+                    span{
+                        color: var(--blackColor);
+                        font-weight: 500;
+                    }
+
+                    small{
+                        font-weight: 400;
+                        .date{
+                            margin-left: 1 rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
