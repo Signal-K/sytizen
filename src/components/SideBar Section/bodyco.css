@@ -8,4 +8,10 @@
   margin-top: 2rem;
   gap: 2rem;
   align-items: flex-start;
+}
+
+@media screen and (max-width: 918px) {
+  .bottom {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=bodyco.css.map */

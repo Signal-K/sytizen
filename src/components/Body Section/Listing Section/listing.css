@@ -119,4 +119,23 @@
 }
 .listingSection .sellers .topSellers .card .cardText small .date, .listingSection .sellers .featuredSellers .card .cardText small .date {
   margin-left: 1 rem;
+}
+
+@media screen and (max-width: 990px) {
+  .listingSection .sellers .card {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 918px) {
+  .listingSection .singleItem {
+    width: 200px !important;
+  }
+}
+@media screen and (max-width: 490px) {
+  .listingSection .sellers {
+    flex-direction: column;
+  }
+  .listingSection .sellers .card {
+    flex-direction: row;
+  }
 }/*# sourceMappingURL=listing.css.map */

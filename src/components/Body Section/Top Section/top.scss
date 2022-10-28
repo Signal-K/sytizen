@@ -159,6 +159,7 @@
 
         .leftCard{
             flex-basis: 50%;
+
             .main{
                 position: relative;
                 padding: 1rem;
@@ -222,6 +223,76 @@
                     }
                 }
             }
+
+            .sideBarCard{
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+                position: relative;
+        
+                .icon{
+                    position: absolute;
+                    background: var(--HoverColor);
+                    border: 10px solid var(--whiteColor);
+                    font-size: 3rem;
+                    border-radius: 50%;
+                    top: -8px;
+                    right: 50%;
+                    transform: translate(50%);
+                    z-index: 100;
+                }
+        
+                .cardContent{
+                    position: relative;
+                    padding: 1rem;
+                    background: var(--HoverColor);
+                    border-radius: 10px;
+                    overflow: hidden;
+        
+                    h3{
+                        font-size: var(--h3FontSize);
+                        margin-top: 1rem;
+                        padding: 1rem 0;
+                        font-weight: 800;
+                        color: var(--blackColor);
+                    }
+        
+                    p{
+                        font-size: var(--normalFontSize);
+                        color: var(--textColor);
+                        padding-bottom: 1rem;
+                        font-weight: 500;
+                    }
+        
+                    .btn{
+                        position: relative;
+                        color: var(--textColor);
+                        z-index: 1000;
+                    }
+                    
+                    .circle1, circle2{
+                        position: absolute;
+                        background: var(--paleGreen);
+                        border-radius: 50%;
+                        opacity: .7;
+                    }
+        
+                    .circle1{
+                        height: 100px;
+                        width: 100px;
+                        top: -50px;
+                        left: -50px;
+                    }
+        
+                    .circle2{
+                        height: 50px;
+                        width: 150px;
+                        bottom: -80px;
+                        right: -70px;
+                        z-index: 1;
+                    }
+                }
+            }
         }
     }
 }
@@ -234,6 +305,101 @@
         .rightCard, .leftCard{
             width: 100%;
             flex-basis: 100%;
+        }
+
+        .leftCard{
+            margin-top: 2rem;
+            align-self: flex-start;
+            height: 10px !important;
+
+            .sideBarCard{
+                display: block !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 918px) {
+    .headerSection{
+        .searchBar{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .cardSection{
+        .leftCard{
+            .main{
+                width: 100%;
+            }
+
+            .sideBarCard{
+                display: none !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .headerSection{
+        /*.adminDiv{
+            display: none;
+        }*/
+    }
+
+    .title{
+        text-align: center;
+        margin: auto;
+    }
+
+    .cardSection{
+        .rightCard{
+            text-align: center;
+
+            .buttons{
+                margin: auto;
+                flex-direction: column;
+
+                .btn{
+                    width: 100%;
+                }
+            }
+        }
+
+        .leftCard{
+            .main{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .textDiv{
+                    margin: auto;
+                }
+
+                &::before{
+                    width: 100% !important;
+                }
+
+                .imgDiv{
+                    display:none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .topSection{
+        .cardSection{
+            .rightCard{
+                text-align: center;
+                padding: 2rem 1rem;
+
+                h1{
+                    font-size: var(--h2FontSize);
+                }
+            }
         }
     }
 }

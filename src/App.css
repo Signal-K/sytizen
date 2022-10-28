@@ -106,3 +106,28 @@ body{
 ::-webkit-scrollbar{
   display: none;
 }
+
+/* Media Queries ========> */
+@media screen and (max-width: 990px) {
+  .heading{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 918px) {
+  .heading{
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .heading{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
