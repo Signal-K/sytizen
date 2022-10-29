@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router";
-import { UserContext } from "../lib/UserContext";
+import { UserContext } from "../../lib/UserContext";
 import Loading from "./loading";
 
 export default function Payment({ Elements, PaymentForm, promise }) {

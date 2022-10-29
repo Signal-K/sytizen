@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { magic } from "../lib/magic";
-import { UserContext } from "../lib/UserContext";
+import { magic } from "../../lib/magic";
+import { UserContext } from "../../lib/UserContext";
 import LoginForm from "./login-form";
 
 const Login = () => {
