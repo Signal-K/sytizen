@@ -8,13 +8,13 @@ app.use(bodyParser.json());
 
 // Import, then initiate Magic instance for server-side methods
 const { Magic } = require("@magic-sdk/admin");
-const magic = new Magic(process.env.MAGIC_SECRET_KEY);
+const magic = new Magic("sk_live_68A35C1830811F76");
 
 // Import & initiate Stripe instance
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")("sk_test_51L1UB5EXgarheYLkeVAlHU3WoblkGbhBogaxlHcpddIeZIjc5gComRLXUnzeF9eK1VJ9dzgdITlN8rjjKdoqjFd200zrAlYAsZ");
 
 // Allow requests from client-side
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({ origin: "http://localhost:3000" }));
 
 // Route to validate the user's DID token
 app.post("/login", async (req, res) => {

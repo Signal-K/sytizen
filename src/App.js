@@ -3,38 +3,52 @@ import './App.css';
 
 // Sass components
 import Body from './components/Body Section/Body';
+import Spinner from 'react-bootstrap/Spinner';
 
 // Menu components
 import Sidebar from './components/SideBar Section/Sidebar';
 
+// Auth components
+import Authenticate from './components/auth/Authenticate';
+import { UserContext } from './context/userContext';
+import { checkUser } from './service/magic';
+import Dashboard from './components/auth/Dashboard';
+import PrivateRoute from './components/auth/PrivateRoute';
+import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+
 function App() {
-    /*const [currentTime, setCurrentTime] = useState(0);
-    const [planetTitle, setPlanetTitle] = useState('')
+    const [user, setUser] = useState({ isLoggedIn: null, email: ''});
+    const [loading, setLoading] = useState();
 
-    // Pull content from Flask API
     useEffect(() => {
-        fetch('/time').then(res => res.json()).then(data => {
-            setCurrentTime(data.time);
-        });
-    }, [])
+        const validateUser = async () => {
+            setLoading(true);
+            try {
+                await checkUser(setUser);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        validateUser();
+    }, [user.isLoggedIn]);
 
-    // Fetch planets from Flask API
-    useEffect(() => {
-        fetch('/planets').then(res => res.json()).then(data => {
-            setPlanetTitle(data.title);
-        });
-    }, [])*/
+    if (loading) {
+        return (
+            <div className='d-flex justify-content-center align-items-center' style={{ height: '100vh' }}><Spinner animation="border" /></div>
+        );
+    }
+
     return (
-        /*<div className='App'>
-            <header className='App-header'>
-                <p>The current time is { currentTime }.</p>
-                <p>Planets: { planetTitle }.</p>
-            </header>
-        </div> */
-        <div className='container'>
-            <Sidebar />
-            <Body />
-        </div>
+        <UserContext.Provider value={user}>
+            <Router>
+                {user.isLoggedIn && <Redirect to={{ pathname: '/dashboard' }} />}
+                <Switch>
+                    <Route exact path="/" component={Authenticate} />
+                    <PrivateRoute path="/dashboard" component={Dashboard} />
+                </Switch>
+            </Router>
+        </UserContext.Provider>
     );
 }
 
