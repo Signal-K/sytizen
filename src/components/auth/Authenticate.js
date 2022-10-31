@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
 import { loginUser } from "../../service/magic";
+import Login from "../../pages/Login";
 
 const Authenticate = () => {
     const [email, setEmail] = useState('');
@@ -45,6 +46,7 @@ const Authenticate = () => {
                     />
                 </FormGroup>
             </Form>
+            <Login />
         </div>
     );
 };
