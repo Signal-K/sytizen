@@ -1,3 +1,4 @@
+
 import React from "react";
 import styled from "styled-components";
 import { Container } from "react-dom";
@@ -6,8 +7,8 @@ import { Container } from "react-dom";
 import bgImg from '../Assets/Pages/bg.png';
 
 // Component imports
-import Sidebar from "../components/auth/home/Sidebar";
-import main from "../components/auth/home/main";
+import Sidebar from "../auth/home/Sidebar";
+import main from "../auth/home/Main";
 
 const Login = () => {
     const Container = styled.div`

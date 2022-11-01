@@ -32,3 +32,8 @@ build
 ./build
 .build
 /build
+
+cache
+/cache
+./cache
+.cache
