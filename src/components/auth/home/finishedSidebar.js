@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
 
 import Input from './input';
 
@@ -45,7 +44,7 @@ const LogoWrapper = styled.div`
     font-size: 18px;
   }
 `
-/*
+
 const Form = styled.div`
   width: 100%;
   display: flex;
@@ -77,7 +76,7 @@ const Form = styled.div`
     }
   }
 `
-*/
+
 const Sidebar = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState('');
@@ -110,19 +109,19 @@ const Sidebar = () => {
         <img src={logo} alt="Signal Kinetics Logo" />
       </LogoWrapper>
       <h3>Star <span> Sailors </span> </h3>
-      <Form onSubmit={handleSubmit} className='p-2 my-5 mx-auto'>
-                <FormGroup className="mt-3">
-                    <FormLabel fontSize="sm">Enter Email Address</FormLabel>
-                    <FormControl
-                        type="email"
-                        name="email"
-                        id="email"
-                        value={email}
-                        onChange={handleChange}
-                        placeholder="Email Address"
-                    />
-                </FormGroup>
-            </Form>
+      <Form onSubmit={handleSubmit}>
+        <h3>Sign Up</h3>
+        <Input placeholder="Full Name" />
+        <Input type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleChange}
+              placeholder="Email Address" /> {/* Name, password fields only exist during design stage - since we're using Magic for our auth, we only require email input */}
+        <Input type="password" placeholder="Password" />
+        <Input type="password" placeholder="Confirm password" />
+        <button>Sign Up</button>
+      </Form>
     </Container>
   )
 }

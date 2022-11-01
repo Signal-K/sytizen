@@ -10,6 +10,7 @@ import Sidebar from './components/SideBar Section/Sidebar';
 
 // Auth components
 import Authenticate from './components/auth/Authenticate';
+import Login from './pages/Login';
 import { UserContext } from './context/userContext';
 import { checkUser } from './service/magic';
 import Dashboard from './components/auth/Dashboard';
