@@ -5,10 +5,10 @@ import { Button, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap
 
 import Input from './input';
 
-import logo from '../../../Assets/logo-transparent.jpg';
+import logo from '../../Assets/logo-transparent.jpg';
 
 // Magic imports
-import { loginUser } from "../../../service/magic";
+import { loginUser } from "../../service/magic";
 
 const Container = styled.div`
   min-width: 400px;

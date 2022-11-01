@@ -17,9 +17,21 @@ import Dashboard from './components/auth/Dashboard';
 import PrivateRoute from './components/auth/PrivateRoute';
 import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
+// SupaAuth components
+import Auth from './auth/SupAuth';
+import Account from './auth/Account';
+import { supabase } from './auth/config/supabaseClient';
+
 function App() {
     const [user, setUser] = useState({ isLoggedIn: null, email: ''});
     const [loading, setLoading] = useState();
+
+    const [session, setSession] = useState(None);
+
+    useEffect(() => {
+        setSession(supabase.auth.sessions());
+        supabase
+    })
 
     useEffect(() => {
         const validateUser = async () => {
