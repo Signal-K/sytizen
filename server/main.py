@@ -4,6 +4,8 @@ from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin
 import time
 
+import click
+
 #from models.planets import planets
 from data.store import planets, add_planet_to_DB
 
@@ -12,6 +14,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # location of th
 db = SQLAlchemy(app) # Wrap the database around the flask app
 CORS(app)
 
+# CLI Main
+@click.group()
+def main():
+    pass
+
+@click.command()
+def web():
+    from .wsgi import app
+    app.run()
+
+# Begin flask routes
 @app.route('/')
 def hello_world():
     return jsonify({

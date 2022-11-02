@@ -5,3 +5,4 @@ flask-restful
 lightkurve
 supabase_py
 cuttle
+click
