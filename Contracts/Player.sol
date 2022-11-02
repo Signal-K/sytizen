@@ -1,14 +1,14 @@
-// SDPX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.11;
 // Merge with `Spaceship.sol` -> this is just a slightly more advanced version for a test component on the frontend
 
 // Import thirdweb contracts
-import "@thirdweb-dev/contracts/drop/DropErc1155.sol"; // For the NFTs (include 721 later)
-import "@thirdweb-dev/contracts/token/TokenERC20.sol"; // ERC-20 contrac
+import "@thirdweb-dev/contracts/drop/DropERC1155.sol"; // For my collection of Pickaxes
+import "@thirdweb-dev/contracts/token/TokenERC20.sol"; // For my ERC-20 Token contract
+import "@thirdweb-dev/contracts/openzeppelin-presets/utils/ERC1155/ERC1155Holder.sol"; 
 
 // OpenZeppelin Guards
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
 contract Mining is ReentrancyGuard, ERC1155Holder {
     // Store edition drop & token contract [addresses] here
@@ -32,14 +32,14 @@ contract Mining is ReentrancyGuard, ERC1155Holder {
 
     // Stake functionality
     function stake(uint256 _tokenId) external nonReentrant {
-        require(spaceshipNftCollection.balanceOf(msg.sender, _toeknId) >= 1, "You need at least 1 spaceship of correct type to stake");
+        require(spaceshipNftCollection.balanceOf(msg.sender, _tokenId) >= 1, "You need at least 1 spaceship of correct type to stake");
 
         if (playerSpaceship[msg.sender].isData) { // If user already has a spaceship [staked], send it back to them
             spaceshipNftCollection.safeTransferFrom(address(this), msg.sender, playerSpaceship[msg.sender].value, 1, "Returning your old Spaceship"); // Use safeTransfer to send spaceship back
         }
 
         uint256 reward = calculateRewards(msg.sender); // Calculate rewards owed to the player
-        rewardsToken.transfe(msg.sender, reward); // Transfer reward tokens based on what's owed
+        rewardsToken.transfer(msg.sender, reward); // Transfer reward tokens based on what's owed
 
         // Stake component
         spaceshipNftCollection.safeTransferFrom(msg.sender, address(this), _tokenId, 1, "Staking your spaceship"); // Transfer the spaceship (Still attached to `msg.sender`) to the [staking] contract
@@ -55,11 +55,22 @@ contract Mining is ReentrancyGuard, ERC1155Holder {
     function withdraw() external nonReentrant {
         require(playerSpaceship[msg.sender].isData, "You do not have a spaceship you can currently withdraw"); // Ensure user has something to withdraw before proceeding
         uint256 reward = calculateRewards(msg.sender);
-        rewardsToken.transfer(msg.sender);
+        rewardsToken.transfer(msg.sender, reward);
         spaceshipNftCollection.safeTransferFrom(address(this), msg.sender, playerSpaceship[msg.sender].value, 1, "Returned spaceship to msg.sender");
 
         // Update spaceship mapping
         playerSpaceship[msg.sender].isData = false;
+        playerLastUpdate[msg.sender].isData = true;
+        playerLastUpdate[msg.sender].value = block.timestamp;
+    }
+
+    // Claim functionality
+    function claim() external nonReentrant {
+        // Calculate rewards owed and pay them out to the user
+        uint256 reward = calculateRewards(msg.sender);
+        rewardsToken.transfer(msg.sender, reward);
+
+        // Update last update mapping
         playerLastUpdate[msg.sender].isData = true;
         playerLastUpdate[msg.sender].value = block.timestamp;
     }

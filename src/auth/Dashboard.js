@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { UserContext } from '../../context/userContext';
-import { logoutUser } from '../../service/magic';
+import { UserContext } from '../context/userContext';
+import { logoutUser } from '../service/magic';
 
-import Sidebar from '../SideBar Section/Sidebar';
-import Body from '../Body Section/Body';
+import Sidebar from '../components/SideBar Section/Sidebar';
+import Body from '../components/Body Section/Body';
 
 const Dashboard = () => {
     /*const [currentTime, setCurrentTime] = useState(0);

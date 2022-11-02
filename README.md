@@ -1,5 +1,7 @@
 # sytizen-unity
 [![.github/workflows/moralis.yml](https://github.com/Signal-K/sytizen/actions/workflows/moralis.yml/badge.svg?branch=ansible)](https://github.com/Signal-K/sytizen/actions/workflows/moralis.yml) <br />
+<a href="https://thirdweb.com/goerli/0x325b9B364B7ca35B2400bC6b68d63FBc5c9eAF55?utm_source=contract_badge" target="_blank">
+      <img width="200" height="45" src="https://badges.thirdweb.com/contract?address=0x325b9B364B7ca35B2400bC6b68d63FBc5c9eAF55&theme=dark&chainId=5" alt="View contract" /></a> <br />
 Citizen Science (Sci-tizen) visualisation in the Unity.com engine 
 
 

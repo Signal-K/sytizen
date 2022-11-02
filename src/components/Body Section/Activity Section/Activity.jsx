@@ -6,7 +6,7 @@ import { BsArrowRightShort } from 'react-icons/bs';
 
 // Imported assets
 import tesspic from '../../../Assets/StatElements/TessStat.png';
-import Authenticate from "../../auth/Authenticate";
+import Authenticate from "../../../auth/Authenticate";
 import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
 import { loginUser } from "../../../service/magic";
