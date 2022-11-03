@@ -9,29 +9,22 @@ import Spinner from 'react-bootstrap/Spinner';
 import Sidebar from './components/SideBar Section/Sidebar';
 
 // Auth components
-import Authenticate from './components/auth/Authenticate';
+import Authenticate from './auth/Authenticate';
 import Login from './pages/Login';
 import { UserContext } from './context/userContext';
 import { checkUser } from './service/magic';
-import Dashboard from './components/auth/Dashboard';
-import PrivateRoute from './components/auth/PrivateRoute';
+import Dashboard from './auth/Dashboard';
+import PrivateRoute from './auth/PrivateRoute';
 import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-// SupaAuth components
-import Auth from './auth/SupAuth';
-import Account from './auth/Account';
-import { supabase } from './auth/config/supabaseClient';
+/* SupaAuth components
+import Auth from './components/auth/SupAuth';
+import Account from './components/auth/Account';
+import { supabase } from './components/auth/config/supabaseClient'; */
 
 function App() {
     const [user, setUser] = useState({ isLoggedIn: null, email: ''});
     const [loading, setLoading] = useState();
-
-    const [session, setSession] = useState(None);
-
-    useEffect(() => {
-        setSession(supabase.auth.sessions());
-        supabase
-    })
 
     useEffect(() => {
         const validateUser = async () => {

@@ -1,6 +1,6 @@
 import React, { Component, useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { UserContext } from '../../context/userContext';
+import { UserContext } from '../context/userContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const { isLoggedIn } = useContext(UserContext); // Call context to check state/us of user through magic sdk
