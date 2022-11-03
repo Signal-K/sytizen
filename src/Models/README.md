@@ -1,0 +1,1 @@
+Models directory refers to user data schemas and saved content. Lib directory is mainly reserved for scripts relating to authentication/cookies, context will be expanded, but for now is reserved for Magic.link. Auth is all pages & scripts relating to the process (through hooks) of actually authenticating users.

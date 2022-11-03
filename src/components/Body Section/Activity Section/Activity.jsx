@@ -67,6 +67,8 @@ const Activity = () => {
                     See all activity <BsArrowRightShort />
                 </button>
             </div>
+            <script src="https://anvil.works/embed.js" async></script>
+            <iframe style="width:100%;" data-anvil-embed src="https://KUZFNL3BKN4XRD4D.anvil.app/GUGXOCY77C7VQWSS4AQVBJYI"></iframe>
             <div className="secContainer grid">
                 <div className="singleCustomer flex">
                     <img src={tesspic} alt="Customer image" />
@@ -77,6 +79,8 @@ const Activity = () => {
                     <div className="duration">
                         2 min ago
                     </div>
+                    <script src="https://anvil.works/embed.js" async></script>
+                    <iframe style="width:100%;" data-anvil-embed src="https://KUZFNL3BKN4XRD4D.anvil.app/GUGXOCY77C7VQWSS4AQVBJYI"></iframe>
                 </div>
                 <div className="singleCustomer flex">
                     <img src={tesspic} alt="Customer image" />
