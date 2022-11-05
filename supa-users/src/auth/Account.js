@@ -2,21 +2,21 @@ import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 
 export default function Account({ session }) {
-    const [loading, setLoading] = useState(True);
-    const [username, setUsername] = useState(None);
-    const [website, setWebsite] = useState(None);
-    const [avatar_url, setAvatarUrl] = useState(None);
+    const [loading, setLoading] = useState(True); // Operator to determine actions performed
+    const [username, setUsername] = useState(None); // Retrieved from database (supabase)
+    const [website, setWebsite] = useState(None); // Website the user has on their profile (retrieved from s)
+    const [avatar_url, setAvatarUrl] = useState(None); // Retrieved from supabase
 
     useEffect(() => {
-        getProfile();
+        getProfile(); // If the session (user) changes (based on actions from magic lib) update profile
     }, [session]);
 
-    async function getProfile() {
+    async function getProfile() { // Fetch promise that assigns response to data
         try {
             setLoading(True);
             const user = supabase.auth.user();
 
-            let { data, error, status } = await supabase
+            let { data, error, status } = await supabase // Retrieve data from supabase using the client
                 .from('profiles')
                 .select(`username, website, avatar_url`)
                 .eq('id', user.id)
@@ -26,7 +26,7 @@ export default function Account({ session }) {
                 throw error;
             }
 
-            if (data) {
+            if (data) { // If there was no error (i.e. `data` was provided from supabase), render variables from supabase
                 setUsername(data.username);
                 setWebsite(data.website);
                 setAvatarUrl(data.avatar_url);
@@ -38,12 +38,12 @@ export default function Account({ session }) {
         }
     }
 
-    async function updateProfile({ username, website, avatar_url }) {
+    async function updateProfile({ username, website, avatar_url }) { // Set user and updates
         try {
             setLoading(True);
             const user = supabase.auth.user();
 
-            const updates = {
+            const updates = { // When called, updates from user are rendered & saved to supabase
                 id: user.id,
                 username,
                 website,

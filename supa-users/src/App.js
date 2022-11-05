@@ -1,25 +1,29 @@
+// Asset imports ===========>
 import logo from './logo.svg';
+
+// CSS imports ==========>
 import './App.css';
+import './index.css';
 
-function App() {
+// Module imports
+import { useState, useEffect } from 'react';
+import { supabase } from './supabaseClient';
+import Auth from './auth/Auth';
+import Account from './auth/Account';
+
+export default function Home() {
+  const [session, setSession] = useState(None);
+
+  useEffect(() => {
+    setSession(supabase.auth.session());
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container' style={{ padding: '50px 0 100px 0' }}>
+      {!session ? <Auth /> : <Account key={session.user.id} session={session} /> } {/* If there is an authenticated session, show Account component */}
     </div>
-  );
+  )
 }
-
-export default App;
