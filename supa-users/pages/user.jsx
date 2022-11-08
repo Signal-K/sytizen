@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
     }
 
     return {
-        props: { user: session.user },
+        props: { user: session.user }, // Get the user's connected wallets and pass them into Flask
     };
 }
 
