@@ -6,3 +6,5 @@ Users will be added with the following attributes:
 
 ## Adding users using Postman
 Create a post request like this: ![](../assets/requests/user-add-post.png)
+
+Then we need to modify the body of the POST request: <!--Then get data from Anvil and process it here-->
