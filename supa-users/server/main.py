@@ -1,3 +1,5 @@
+import os
+#from dotenv import load_dotenv
 from flask import Flask, jsonify, request, Response
 from flask_restful import Api, Resource, reqparse
 
@@ -24,7 +26,7 @@ def create_app():
 
     return app
 
-@app.route('/')
+"""@app.route('/')
 def index():
     return jsonify({
         'message': 'Hello World!'
@@ -36,4 +38,4 @@ def add_user():
     address = request.json['address']
     profileId = request.json['profileId']
 
-    user = User
+    user = User"""
