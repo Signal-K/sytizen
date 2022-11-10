@@ -1,0 +1,9 @@
+{% block content %}
+    <div class="content">
+        {% for user in users %}
+            <div class="student">
+                <p><b>{{ user.id }} : {{ user.email }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
