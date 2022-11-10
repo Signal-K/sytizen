@@ -1,4 +1,5 @@
 import { getSession, signOut } from 'next-auth/react';
+import Dashboard from './Dashboard';
 
 function User({ user }) { // Get this prop from getServerSideProps
     return (
@@ -6,6 +7,7 @@ function User({ user }) { // Get this prop from getServerSideProps
             <h4>User session:</h4>
             <pre>{JSON.stringify(user, null, 2)}</pre>
             <button onClick={() => signOut({ redirect: '/signin' })}>Sign out</button>
+            <Dashboard />
         </div>
     );
 }
@@ -17,7 +19,7 @@ export async function getServerSideProps(context) {
         return {
             redirect: {
                 destination: '/signin',
-                permanent: false,
+                permanent: false, 
             },
         };
     }

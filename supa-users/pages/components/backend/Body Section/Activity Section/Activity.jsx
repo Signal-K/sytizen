@@ -5,14 +5,13 @@ import './activity.css';
 import { BsArrowRightShort } from 'react-icons/bs';
 
 // Imported assets
-import tesspic from '../../../Assets/StatElements/TessStat.png';
-import Authenticate from "../../../auth/Authenticate";
+import tesspic from '../../../../assets/StatElements/TessStat.png';
+//import Authenticate from "../../../auth/Authenticate";
 import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
-import { loginUser } from "../../../service/magic";
+//import { loginUser } from "../../../service/magic";
 
 import Anvil from "./anvil";
-import PostForm from "../../PostForm";
 
 const Activity = () => {
     // Magic/login form states
@@ -120,7 +119,6 @@ const Activity = () => {
                         2 min ago
                     </div>
                 </div>
-                <PostForm />
                 <Anvil />
             </div>
         </div>
