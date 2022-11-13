@@ -16,6 +16,8 @@ import TopupButton from '@/components/ui/topup-button';
 import AuthorImage from '@/assets/images/author.jpg';
 
 import SignIn from "./auth/Signin";
+import { useEffect, useState } from 'react';
+import { supabase } from './api/auth/supabaseClient';
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -32,6 +34,16 @@ const HomePage: NextPageWithLayout<
 };
 
 HomePage.getLayout = function getLayout(page) {
+  /*const [session, setSession] = useState(null);
+  
+  useEffect(() => {
+      setSession(supabase.auth.session());
+
+      supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      });
+  }, []);*/
+  
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 

@@ -19,7 +19,11 @@ import '@/assets/css/range-slider.css';
 
 import { createClient, configureChains, defaultChains, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
-import { SessionProvider, sessionProvider } from 'next-auth/react';
+import { SessionProvider } from 'next-auth/react';
+
+// Supabase imports
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { SessionContextProvider, Session } from '@supabase/auth-helpers-react';
 
 const { provider, webSocketProvider } = configureChains(defaultChains, [publicProvider()]);
 const client = createClient({
@@ -35,6 +39,7 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(() => new QueryClient());
   const getLayout = Component.getLayout ?? ((page) => page);
+
   //could remove this if you don't need to page level layout
   return (
     <WagmiConfig client = { client }>
