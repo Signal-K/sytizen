@@ -13,6 +13,10 @@ node_modules
 ./.vscode
 .vercel
 
+.next
+/.next
+./.next
+
 # misc
 .DS_Store
 .env.local
