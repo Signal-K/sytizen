@@ -8,17 +8,10 @@ import Spinner from 'react-bootstrap/Spinner';
 // Menu components
 import Sidebar from './components/SideBar Section/Sidebar';
 
-// Auth components
-import Authenticate from './auth/Authenticate';
-import Login from './pages/Login';
-import { UserContext } from './context/userContext';
-import { checkUser } from './service/magic';
-import Dashboard from './auth/Dashboard';
-import PrivateRoute from './auth/PrivateRoute';
-import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-
-/* SupaAuth components
-import Auth from './components/auth/SupAuth';
+/* SupaAuth components */
+import SupabaseAuth from './pages/Authenticate';
+/*import Auth from './components/auth/SupAuth';
+import SignIn from './pages/Signin';
 import Account from './components/auth/Account';
 import { supabase } from './components/auth/config/supabaseClient'; */
 
@@ -50,7 +43,7 @@ function App() {
             <Router>
                 {user.isLoggedIn && <Redirect to={{ pathname: '/dashboard' }} />}
                 <Switch>
-                    <Route exact path="/" component={Authenticate} />
+                    <Route exact path="/" component={SupabaseAuth} />
                     <PrivateRoute path="/dashboard" component={Dashboard} />
                 </Switch>
             </Router>
