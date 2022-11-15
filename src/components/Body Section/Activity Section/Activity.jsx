@@ -6,10 +6,10 @@ import { BsArrowRightShort } from 'react-icons/bs';
 
 // Imported assets
 import tesspic from '../../../Assets/StatElements/TessStat.png';
-import Authenticate from "../../../auth/Authenticate";
+//import Authenticate from "../../../auth/Authenticate";
 import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
-import { loginUser } from "../../../service/magic";
+import { loginUser } from '../../../lib/service/magic';
 
 import Anvil from "./anvil";
 
@@ -38,7 +38,7 @@ const Activity = () => {
 
     const handleChange = event => {
         setEmail(event.target.value);
-      };
+    };
 
     return (
         <div className="activitySection">
