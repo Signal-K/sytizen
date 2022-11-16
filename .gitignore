@@ -33,6 +33,11 @@ build
 .build
 /build
 
+venv
+.venv
+/.venv
+/venv
+
 cache
 /cache
 ./cache

@@ -2,7 +2,15 @@ import { useState, useEffect } from "react"
 import { supabase } from "../supabaseClient"
 import Avatar from './Avatar';
 
+// Styling imports =====>
+import { Container } from "semantic-ui-react";
+
+// API/data imports =====>
+import { Planets } from "./api/Planets";
+import { PlanetForm } from "./api/PlanetForm";
+
 const Account = ( { session } ) => {
+    // Authentication settings
     const [loading, setLoading] = useState(true)
     const [username, setUsername] = useState(null)
     const [website, setWebsite] = useState(null)
@@ -10,8 +18,18 @@ const Account = ( { session } ) => {
 
     useEffect(() => {
         getProfile()
-    }, [session])
+    }, [session]) // Update whenever session (from Supabase) changes
 
+    // Call second flask app
+    const [planets, setPlanets] = useState([]);
+
+    useEffect(() => {
+        fetch('/planets').then(response => response.json().then(data => {
+            setPlanets(data.planets);
+        }));
+    }, []); // Also pass in the authentication settings to Flask via POST
+
+    // Get profile information from Supabase postgres
     const getProfile = async () => {
         try {
             setLoading(true)
@@ -107,6 +125,10 @@ const Account = ( { session } ) => {
           </div>
         </form>
       )}
+      <Container>
+        <Planets planets={planets} />
+        <PlanetForm />
+      </Container>
     </div>
     )
 }
