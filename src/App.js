@@ -6,7 +6,11 @@ import { supabase } from './supabaseClient'
 import Auth from './components/Auth';
 import Account from './components/Account';
 
-function App() {
+// Thirdweb/EVM connector
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
+const activeChainId = ChainId.Mumbai;
+
+function App({ Component, pageProps }) {
 
   const [session, setSession] = useState(null)
 
@@ -18,9 +22,11 @@ function App() {
   }, [])
 
   return (
-    <div className="container mx-auto">
-      {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
-    </div>
+    <ThirdwebProvider desiredChainId={activeChainId}>
+      <div className="container mx-auto">
+        {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
+      </div>
+    </ThirdwebProvider>
   );
 }
 

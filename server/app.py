@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import time
 import requests
 import psycopg2
+#from .contactContract import contract
 
 # App & Data configuration =====>
 app = Flask(__name__)
@@ -73,3 +74,13 @@ def add_planet():
         with connection.cursor() as cursor:
             cursor.execute(CREATE_PLANETSDEMO_TABLE)
             cursor.execute(INSERT_PLANETSDEMO, (name, moons))
+
+# Get the user's Moralis profile ID (through Magic)
+@app.post('/add-user-id')
+def add_user_id():
+    data = request.get_json()
+    profileId = data['profileId']
+
+    with connection:
+        with connection.cursor() as cursor:
+            pass # Send this to the user's profile on Supabase

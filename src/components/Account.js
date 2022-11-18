@@ -9,6 +9,12 @@ import { Container } from "semantic-ui-react";
 import { Planets } from "./api/Planets";
 import { PlanetForm } from "./api/PlanetForm";
 
+// Unity Views =====>
+import { Unitydb } from "../controller/unity";
+
+// Thirdweb && EVM components ======>
+import { ConnectWallet, ThirdwebNftMedia, useContract, useNFTs, useOwnedNFTs, useAddress, Web3Button } from "@thirdweb-dev/react";
+
 const Account = ( { session } ) => {
     // Authentication settings
     const [loading, setLoading] = useState(true)
@@ -20,14 +26,39 @@ const Account = ( { session } ) => {
         getProfile()
     }, [session]) // Update whenever session (from Supabase) changes
 
-    // Call second flask app
-    const [planets, setPlanets] = useState([]);
 
+    // Planet/Other data states
+    const [planetName, setPlanetName] = useState(null);
+    const [planetId, setPlanetId] = useState(null);
+    const [planetMoons, setPlanetMoons] = useState(0);
+    const [planets, setPlanets] = useState([]);
+    const [userId, setUserId] = useState(null);
     useEffect(() => {
         fetch('/planets').then(response => response.json().then(data => {
             setPlanets(data.planets);
         }));
     }, []); // Also pass in the authentication settings to Flask via POST
+
+    /* Get planet information from Supabase
+    const getPlanets = async () => {
+        try {
+            setLoading(true);
+            let { data, error, status } = await supabase
+            .from('planetsdemo') // From the planetsdemo table on Supabase
+            .select(`planetid, name, moons`) // Select these values from the table
+            .single()
+
+            if (data) {
+                setPlanetId(data.planetid);
+                setPlanetName(data.name);
+                setPlanetMoons(data.moons);
+            }
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            setLoading(false);
+        }
+    }*/
 
     // Get profile information from Supabase postgres
     const getProfile = async () => {
@@ -39,12 +70,14 @@ const Account = ( { session } ) => {
             .select(`username, website, avatar_url`)
             .eq('id', user.id)
             .single()
+            setUserId(user.id)
 
-            if(data){
-                setUsername(data.username)
-                setWebsite(data.website)
-                setAvatarUrl(data.avatar_url)
+            if(data) {
+                setUsername(data.username);
+                setWebsite(data.website);
+                setAvatarUrl(data.avatar_url);
             }
+            console.log(user.id);
         } catch (error) {
             alert(error.message)
         }finally{
@@ -78,6 +111,16 @@ const Account = ( { session } ) => {
             setLoading(false)
         }
     }
+
+    // Ethereum / Contract hooks ====>
+    const { contract } = useContract("0xed6e837Fda815FBf78E8E7266482c5Be80bC4bF9"); // Add contract of collection as hook
+    const address = useAddress(); // get the address of connected user
+    const { data: nfts } = useOwnedNFTs(contract, address); // Array of nfts
+  
+    /* Game event hooks
+    const { data: events } = useAllContractEvents(contract, {
+      subscribe: true,
+    });*/
 
     return (
         <div aria-live="polite" className='container mx-auto'>
@@ -126,8 +169,27 @@ const Account = ( { session } ) => {
         </form>
       )}
       <Container>
+        <ConnectWallet />
+        <hr />
+        <Web3Button
+            contractAddress={"0xed6e837Fda815FBf78E8E7266482c5Be80bC4bF9"}
+            action={(contract) => contract.call("claim", address, 0, 1)} // Call claim function | 1 of token id 0
+        >
+            Claim a spaceship!
+        </Web3Button>
+        {nfts?.map((nft) => (<div>
+            <ThirdwebNftMedia
+                key={nft.metadata.id.toString()}
+                metadata={nft.metadata}
+            />
+            <h2>{nft.metadata.name}</h2>
+        </div>
+        ))}
+
         <Planets planets={planets} />
         <PlanetForm />
+        <p>The planet is {planetName} </p>
+        <Unitydb />
       </Container>
     </div>
     )

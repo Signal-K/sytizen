@@ -41,4 +41,4 @@ venv
 cache
 /cache
 ./cache
-.cache
+.cache.gitsigners
