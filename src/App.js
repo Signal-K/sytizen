@@ -1,3 +1,7 @@
+// Styling imports
+import '@shoelace-style/shoelace/dist/themes/light.css';
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path';
+
 import { useEffect, useState } from 'react';
 import './App.css';
 
@@ -9,6 +13,8 @@ import Account from './components/Account';
 // Thirdweb/EVM connector
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 const activeChainId = ChainId.Mumbai;
+
+setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.83/dist/');
 
 function App({ Component, pageProps }) {
 

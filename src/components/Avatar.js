@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
-import Icon from '../assets/Face.png'
-import camera from '../assets/camera on.png'
+import Icon from '../Assets/Face.png'
+import camera from '../Assets/camera on.png'
 
 export default function Avatar({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)

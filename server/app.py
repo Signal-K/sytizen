@@ -75,6 +75,10 @@ def add_planet():
             cursor.execute(CREATE_PLANETSDEMO_TABLE)
             cursor.execute(INSERT_PLANETSDEMO, (name, moons))
 
+    # Get planet data back from Deepnote
+    planet_response = requests.get("https://ab6b31e5-13c3-4949-af38-1197d00bd4d1.deepnoteproject.com")
+    return planet_response
+
 # Get the user's Moralis profile ID (through Magic)
 @app.post('/add-user-id')
 def add_user_id():
