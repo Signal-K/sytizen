@@ -7,3 +7,5 @@ type EditionDropMetadata = {
     };
     supply: BigNumber;
 }
+
+export default EditionDropMetadata;
