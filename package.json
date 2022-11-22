@@ -1,79 +1,27 @@
 {
-  "name": "star-sailors-fe",
+  "name": "p2e",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@ant-design/icons": "^4.8.0",
-    "@everipedia/wagmi-magic-connector": "^0.7.1",
-    "@magic-ext/oauth": "^4.0.0",
-    "@magiclabs/ui": "^0.24.2",
-    "@openzeppelin/contracts": "^4.8.0",
-    "@openzeppelin/contracts-upgradeable": "^4.8.0",
-    "@shoelace-style/shoelace": "^2.0.0-beta.83",
-    "@stripe/react-stripe-js": "^1.14.1",
-    "@stripe/stripe-js": "^1.42.0",
-    "@supabase/supabase-js": "^1.35.2",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
-    "@testing-library/user-event": "^13.5.0",
-    "@thirdweb-dev/contracts": "^3.1.11",
-    "@thirdweb-dev/react": "^3.6.0",
-    "@thirdweb-dev/sdk": "^3.6.0",
-    "antd": "^4.24.3",
-    "axios": "^1.1.3",
-    "bootstrap": "^5.2.2",
-    "dotenv": "^16.0.3",
-    "ethers": "^5.7.2",
-    "framer-motion": "4.1.17",
-    "magic-sdk": "^10.0.0",
-    "moralis": "^2.7.4",
-    "next": "^13.0.0",
-    "next-auth": "^4.15.0",
-    "next-router": "^1.3.6",
-    "node-forge": "^1.3.1",
-    "node-sass": "^7.0.3",
-    "react": "^18.0.0",
-    "react-bootstrap": "^2.5.0",
-    "react-dom": "^18.0.0",
-    "react-icons": "^4.6.0",
-    "react-router-dom": "5.2.1",
-    "react-scripts": "5.0.1",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.3",
-    "stripe": "^10.15.0",
-    "styled-components": "^5.3.6",
-    "wagmi": "^0.8.5",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start-api": "cd server && .venv/bin/flask run"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@thirdweb-dev/react": "^3",
+    "@thirdweb-dev/sdk": "^3",
+    "ethers": "^5.6.9",
+    "next": "12.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.4",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.24"
-  },
-  "proxy": "http://localhost:5000"
+    "@types/node": "18.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "eslint": "8.18.0",
+    "eslint-config-next": "12.1.6",
+    "typescript": "4.7.4"
+  }
 }
