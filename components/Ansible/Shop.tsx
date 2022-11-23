@@ -1,7 +1,7 @@
 import { useNFTs } from "@thirdweb-dev/react";
 import { EditionDrop } from "@thirdweb-dev/sdk";
 import React from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import ShopItem from "./ShopItem";
 
 type Props = {

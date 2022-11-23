@@ -2,7 +2,7 @@ import { useAddress } from "@thirdweb-dev/react";
 import { SmartContract } from "@thirdweb-dev/sdk";
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
-import ContractMappingResponse from "../types/ContractMappingResponse";
+import ContractMappingResponse from "../../types/ContractMappingResponse";
 
 type Props = {
   miningContract: SmartContract<any>;

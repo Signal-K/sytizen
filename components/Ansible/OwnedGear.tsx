@@ -7,8 +7,8 @@ import {
 import { EditionDrop, SmartContract } from "@thirdweb-dev/sdk";
 import React from "react";
 import LoadingSection from "./LoadingSection";
-import styles from "../styles/Home.module.css";
-import { MINING_CONTRACT_ADDRESS } from "../const/contractAddresses";
+import styles from "../../styles/Home.module.css";
+import { MINING_CONTRACT_ADDRESS } from "../../lib/contractAddresses";
 
 type Props = {
   pickaxeContract: EditionDrop;

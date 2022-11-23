@@ -1,6 +1,6 @@
 import { NFT } from "@thirdweb-dev/sdk";
 import React from "react";
-import styles from "../styles/Gameplay.module.css";
+import styles from "../../styles/Gameplay.module.css";
 
 const GoldGem = (
   <div className={styles.slide}>

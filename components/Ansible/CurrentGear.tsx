@@ -1,9 +1,9 @@
 import { ThirdwebNftMedia, useAddress, useNFT } from "@thirdweb-dev/react";
 import { EditionDrop, NFT, SmartContract } from "@thirdweb-dev/sdk";
 import React, { useEffect, useState } from "react";
-import ContractMappingResponse from "../types/ContractMappingResponse";
+import ContractMappingResponse from "../../lib/ContractMappingResponse";
 import GameplayAnimation from "./GameplayAnimation";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 type Props = {
   miningContract: SmartContract<any>;

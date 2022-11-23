@@ -5,17 +5,17 @@ import {
   useMetamask,
 } from "@thirdweb-dev/react";
 import React from "react";
-import CurrentGear from "../components/CurrentGear";
-import LoadingSection from "../components/LoadingSection";
-import OwnedGear from "../components/OwnedGear";
-import Rewards from "../components/Rewards";
-import Shop from "../components/Shop";
+import CurrentGear from "../components/Ansible/CurrentGear";
+import LoadingSection from "../components/Ansible/LoadingSection";
+import OwnedGear from "../components/Ansible/OwnedGear";
+import Rewards from "../components/Ansible/Rewards";
+import Shop from "../components/Ansible/Shop";
 import {
   CHARACTER_EDITION_ADDRESS,
   GOLD_GEMS_ADDRESS,
   MINING_CONTRACT_ADDRESS,
   PICKAXE_EDITION_ADDRESS,
-} from "../const/contractAddresses";
+} from "../lib/contractAddresses";
 import styles from "../styles/Home.module.css";
 
 export default function Play() {

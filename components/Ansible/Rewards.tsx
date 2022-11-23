@@ -10,9 +10,9 @@ import {
 import { SmartContract, Token } from "@thirdweb-dev/sdk";
 import { ethers } from "ethers";
 
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import ApproxRewards from "./ApproxRewards";
-import { MINING_CONTRACT_ADDRESS } from "../const/contractAddresses";
+import { MINING_CONTRACT_ADDRESS } from "../../lib/contractAddresses";
 
 type Props = {
   miningContract: SmartContract<any>;
