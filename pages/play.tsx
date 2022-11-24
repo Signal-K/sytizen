@@ -18,6 +18,8 @@ import {
 } from "../lib/contractAddresses";
 import styles from "../styles/Home.module.css";
 
+import Dao from "../components/dao";
+
 export default function Play() {
   const address = useAddress();
 
@@ -42,6 +44,7 @@ export default function Play() {
 
   return (
     <div className={styles.container}>
+      <Dao />
       {miningContract &&
       characterContract &&
       tokenContract &&
