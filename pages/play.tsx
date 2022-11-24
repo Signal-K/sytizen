@@ -4,7 +4,7 @@ import {
   useContract,
   useMetamask,
 } from "@thirdweb-dev/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CurrentGear from "../components/Ansible/CurrentGear";
 import LoadingSection from "../components/Ansible/LoadingSection";
 import OwnedGear from "../components/Ansible/OwnedGear";
@@ -19,6 +19,8 @@ import {
 import styles from "../styles/Home.module.css";
 
 import Dao from "../components/dao";
+import Auth from "../components/Auth/Auth";
+import { supabase } from "./supabaseClient";
 
 export default function Play() {
   const address = useAddress();
@@ -42,78 +44,93 @@ export default function Play() {
     );
   }
 
+  // Supabase authentication components
+  const [session, setSession] = useState(null);
+  useEffect(() => {
+    setSession(supabase.auth.session())
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
   return (
-    <div className={styles.container}>
-      <Dao />
-      {miningContract &&
-      characterContract &&
-      tokenContract &&
-      pickaxeContract ? (
-        <div className={styles.mainSection}>
-          <CurrentGear
-            miningContract={miningContract}
-            characterContract={characterContract}
-            pickaxeContract={pickaxeContract}
-          />
-          <Rewards
-            miningContract={miningContract}
-            tokenContract={tokenContract}
-          />
-        </div>
-      ) : (
-        <LoadingSection />
-      )}
-
-      <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
-
-      {pickaxeContract && miningContract ? (
-        <>
-          <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>
-            Your Owned Pickaxes
-          </h2>
-          <div
-            style={{
-              width: "100%",
-              minHeight: "10rem",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 8,
-            }}
-          >
-            <OwnedGear
-              pickaxeContract={pickaxeContract}
+    <div className="container mx-auto">
+      {/* {!session ? <Auth /> : <Account key={session.user.id} session={session} />} 
+      Maybe move everything below into a new component, and then set that component in the place of <Account key.... />
+      */}
+      <div className={styles.container}>
+        <Auth />
+        <Dao />
+        {miningContract &&
+        characterContract &&
+        tokenContract &&
+        pickaxeContract ? (
+          <div className={styles.mainSection}>
+            <CurrentGear
               miningContract={miningContract}
+              characterContract={characterContract}
+              pickaxeContract={pickaxeContract}
+            />
+            <Rewards
+              miningContract={miningContract}
+              tokenContract={tokenContract}
             />
           </div>
-        </>
-      ) : (
-        <LoadingSection />
-      )}
+        ) : (
+          <LoadingSection />
+        )}
 
-      <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
+        <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
 
-      {pickaxeContract && tokenContract ? (
-        <>
-          <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>Shop</h2>
-          <div
-            style={{
-              width: "100%",
-              minHeight: "10rem",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 8,
-            }}
-          >
-            <Shop pickaxeContract={pickaxeContract} />
-          </div>
-        </>
-      ) : (
-        <LoadingSection />
-      )}
+        {pickaxeContract && miningContract ? (
+          <>
+            <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>
+              Your Owned Pickaxes
+            </h2>
+            <div
+              style={{
+                width: "100%",
+                minHeight: "10rem",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 8,
+              }}
+            >
+              <OwnedGear
+                pickaxeContract={pickaxeContract}
+                miningContract={miningContract}
+              />
+            </div>
+          </>
+        ) : (
+          <LoadingSection />
+        )}
+
+        <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
+
+        {pickaxeContract && tokenContract ? (
+          <>
+            <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>Shop</h2>
+            <div
+              style={{
+                width: "100%",
+                minHeight: "10rem",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: 8,
+              }}
+            >
+              <Shop pickaxeContract={pickaxeContract} />
+            </div>
+          </>
+        ) : (
+          <LoadingSection />
+        )}
+      </div>
     </div>
   );
 }
