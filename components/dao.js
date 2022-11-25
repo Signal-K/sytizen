@@ -2,6 +2,7 @@ import { useAddress, ConnectWallet, Web3Button, useContract, useNFTBalance } fro
 import { useState, useEffect, useMemo } from 'react';
 import styles from '../styles/Dao.module.css';
 import { AddressZero } from "@ethersproject/constants";
+//import CreateProposal from '../components/Meta/CreateProposal';
 
 const Dao = () => {
     const address = useAddress();
@@ -276,6 +277,8 @@ const Dao = () => {
                     </small>
                   )}
                 </form>
+                <img src='/Sytizen-Tests/p1.png' height="64" width="64"/> {/* If you vote, you then get an nft, which allows you to stake. Maybe a button that executes two functions? NFT gate a page, claim that nft by classifying, then allow staking on that planet. Create a new nft id, attach that to the player table, and pass it into Flask. */}
+                {/*<CreateProposal />*/}
               </div>
             </div>
           </div>

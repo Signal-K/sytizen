@@ -21,6 +21,7 @@ import styles from "../styles/Home.module.css";
 import Dao from "../components/dao";
 import Auth from "../components/Auth/Auth";
 import { supabase } from "./supabaseClient";
+import PlanetBreadboard from '../components/Controller/Planet';
 
 export default function Play() {
   const address = useAddress();
@@ -43,24 +44,22 @@ export default function Play() {
       </div>
     );
   }
+  
 
-  // Supabase authentication components
+  /* Supabase authentication components
   const [session, setSession] = useState(null);
   useEffect(() => {
     setSession(supabase.auth.session())
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
-  }, [])
+  }, [])*/
 
   return (
-    <div className="container mx-auto">
-      {/* {!session ? <Auth /> : <Account key={session.user.id} session={session} />} 
-      Maybe move everything below into a new component, and then set that component in the place of <Account key.... />
-      */}
-      <div className={styles.container}>
-        <Auth />
+    <div className={styles.container}>
+        {/*<Auth /> */}
         <Dao />
+        <PlanetBreadboard />
         {miningContract &&
         characterContract &&
         tokenContract &&
@@ -126,11 +125,15 @@ export default function Play() {
             >
               <Shop pickaxeContract={pickaxeContract} />
             </div>
+            
           </>
         ) : (
           <LoadingSection />
         )}
       </div>
-    </div>
+    /*<div className="container mx-auto">
+       {!session ? <Auth /> : <Account key={session.user.id} session={session} />} 
+      Maybe move everything below into a new component, and then set that component in the place of <Account key.... />
+      */
   );
 }
