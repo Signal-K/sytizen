@@ -14,7 +14,7 @@ import {
   CHARACTER_EDITION_ADDRESS,
   GOLD_GEMS_ADDRESS,
   MINING_CONTRACT_ADDRESS,
-  PICKAXE_EDITION_ADDRESS,
+  multitool_EDITION_ADDRESS,
 } from "../lib/contractAddresses";
 import styles from "../styles/Home.module.css";
 
@@ -22,6 +22,9 @@ import Dao from "../components/dao";
 import Auth from "../components/Auth/Auth";
 import { supabase } from "./supabaseClient";
 import PlanetBreadboard from '../components/Controller/Planet';
+
+// Communicate with the DAO
+//import InitProposals from '../lib/Proposals/init';
 
 export default function Play() {
   const address = useAddress();
@@ -31,8 +34,8 @@ export default function Play() {
     CHARACTER_EDITION_ADDRESS,
     "edition-drop"
   );
-  const { contract: pickaxeContract } = useContract(
-    PICKAXE_EDITION_ADDRESS,
+  const { contract: multitoolContract } = useContract(
+    multitool_EDITION_ADDRESS,
     "edition-drop"
   );
   const { contract: tokenContract } = useContract(GOLD_GEMS_ADDRESS, "token");
@@ -58,17 +61,18 @@ export default function Play() {
   return (
     <div className={styles.container}>
         {/*<Auth /> */}
+        <ConnectWallet />
         <Dao />
         <PlanetBreadboard />
         {miningContract &&
         characterContract &&
         tokenContract &&
-        pickaxeContract ? (
+        multitoolContract ? (
           <div className={styles.mainSection}>
             <CurrentGear
               miningContract={miningContract}
               characterContract={characterContract}
-              pickaxeContract={pickaxeContract}
+              multitoolContract={multitoolContract}
             />
             <Rewards
               miningContract={miningContract}
@@ -81,10 +85,10 @@ export default function Play() {
 
         <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
 
-        {pickaxeContract && miningContract ? (
+        {multitoolContract && miningContract ? (
           <>
             <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>
-              Your Owned Pickaxes
+              Your Owned multitools
             </h2>
             <div
               style={{
@@ -98,7 +102,7 @@ export default function Play() {
               }}
             >
               <OwnedGear
-                pickaxeContract={pickaxeContract}
+                multitoolContract={multitoolContract}
                 miningContract={miningContract}
               />
             </div>
@@ -109,7 +113,7 @@ export default function Play() {
 
         <hr className={`${styles.divider} ${styles.bigSpacerTop}`} />
 
-        {pickaxeContract && tokenContract ? (
+        {multitoolContract && tokenContract ? (
           <>
             <h2 className={`${styles.noGapTop} ${styles.noGapBottom}`}>Shop</h2>
             <div
@@ -123,7 +127,7 @@ export default function Play() {
                 marginTop: 8,
               }}
             >
-              <Shop pickaxeContract={pickaxeContract} />
+              <Shop multitoolContract={multitoolContract} />
             </div>
             
           </>

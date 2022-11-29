@@ -6,17 +6,17 @@ import {
 import { EditionDrop, NFT } from "@thirdweb-dev/sdk";
 import { ethers } from "ethers";
 import React from "react";
-import { PICKAXE_EDITION_ADDRESS } from "../../lib/contractAddresses";
+import { multitool_EDITION_ADDRESS } from "../../lib/contractAddresses";
 import styles from "../../styles/Home.module.css";
 
 type Props = {
-  pickaxeContract: EditionDrop;
+  multitoolContract: EditionDrop;
   item: NFT;
 };
 
-export default function ShopItem({ item, pickaxeContract }: Props) {
+export default function ShopItem({ item, multitoolContract }: Props) {
   const { data: claimCondition } = useActiveClaimCondition(
-    pickaxeContract,
+    multitoolContract,
     item.metadata.id
   );
 
@@ -39,7 +39,7 @@ export default function ShopItem({ item, pickaxeContract }: Props) {
       <div className={styles.smallMargin}>
         <Web3Button
           colorMode="dark"
-          contractAddress={PICKAXE_EDITION_ADDRESS}
+          contractAddress={multitool_EDITION_ADDRESS}
           action={(contract) => contract.erc1155.claim(item.metadata.id, 1)}
           onSuccess={() => alert("Purchased!")}
           onError={(error) => alert(error)}

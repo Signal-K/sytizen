@@ -12,7 +12,6 @@ const PlanetBreadboard = () => { //  { session }
 
     return (
         <Container>
-            <ConnectWallet />
             <hr />
             <Web3Button
                 contractAddress={contractAddressKey}

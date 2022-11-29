@@ -84,5 +84,123 @@ contract SailorsDAO is ReentrancyGuard, AccessControl {
 
     function performVote(uint256 proposalId, bool choosen) external stakeholderOnly("Unauthorised: stakeholders only") {
         ProposalStruct storage proposal = raisedProposals[proposalId];
+        handleVoting(proposal);
+
+        if (chosen) proposal.upvotes++;
+        else proposal.downvotes++;
+
+        stakeholderVotes[msg.sender].push(proposal.id);
+        votedOn[proposal.id].push(
+            VotedStruct(
+                msg.sender,
+                block.timestamp,
+                chosen
+            )
+        );
+
+        emit Action(
+            msg.sender,
+            STAKEHOLDER_ROLE,
+            "PROPOSAL VOTE",
+            proposal.beneficiary,
+            proposal.amount
+        );
+    }
+
+    function handleVoting(ProposalStruct storage proposal) private {
+        if (
+            proposal.passed ||
+            proposal.duration <= block.timestamp
+        ) {
+            proposal.passed = true;
+            revent("Proposal duration expired");
+        }
+
+        uint256[] memory tempVotes = stakeholderVotes[msg.sender];
+        for (uint256 votes = 0; votes < tempVotes.length; votes++) {
+            revert("Double voting not allowed");
+        }
+    }
+
+    function payBeneficiary(uint256 proposalId) external stakeholderOnly("Unauthorized: Stakeholders only") returns (bool) {
+        ProposalStruct storage proposal = raisedProposals[proposalId];
+        require(daoBalance >= proposal.amount, "Insufficient fund");
+        require(block.timestamp > proposal.duration, "Proposal still ongoing");
+
+        if (proposal.paid) revert("Payment sent before");
+        if (proposal.upvotes <= proposal.downvotes) revert ("Insufficient votes");
+
+        payTo(proposal.beneficiary, proposal.amount);
+
+        proposal.paid = true;
+        proposal.executor = msg.sender;
+        daoBalance -= proposal.amount;
+
+        emit Action(
+            msg.sender,
+            STAKEHOLDER_ROLE,
+            "PAYMENT TRANSFERRED",
+            proposal.beneficiary,
+            proposal.amount
+        );
+
+        return true;
+    }
+
+    function contribute() payable external {
+        if (!hasRole(STAKEHOLDER_ROLE, msg.sender)) {
+            uint256 totalContribution = contributors[msg.sender] + msg.value;
+
+            if (totalContribution >= 5 ether) {
+                stakeholders[msg.sender] = totalContribution;
+                contributors[msg.sender] = msg.value;
+                _setupRole(STAKEHOLDER_ROLE, msg.sender);
+                _setupRole(CONTRIBUTOR_ROLE, msg.sender);
+            } else {
+                contributors[msg.sender] += msg.value;
+                _setupRole(CONTRIBUTOR_ROLE, msg.sender);
+            }
+        } else {
+            contributors[msg.sender] += msg.value;
+            stakeholders[msg.sender] += msg.value;
+        }
+
+        daoBalance += msg.value;
+
+        emit Action(
+            msg.sender,
+            STAKEHOLDER_ROLE,
+            "CONTRIBUTION RECEIVED",
+            address(this),
+            msg.value
+        );
+    }
+
+    function getProposals() external view returns (ProposalStruct[] memory props) {
+        props = new ProposalStruct[](totalProposals);
+
+        for (uint256 i = 0; i < totalProposals; i++) {
+            props[i] = raisedProposals[i];
+        }
+    }
+
+    function getProposal(uint256 proposalId) external view returns (ProposalStruct memory) {
+        return raisedProposals[proposalId];
+    }
+
+    function getVotesOf(uint256 proposalId) external view returns (VotedStruct[] memory) {
+        return votedOn[proposalId];
+    }
+
+    function getStakeholderVotes() external view stakeholderOnly("Unauthorized: not a stakeholder!") returns (uint256[] memory) {
+        return stakeholderVotes[msg.sender];
+    }
+
+    function getStakeholderBalance() external view stakeholderOnly("Unauthorized: not a stakeholder!") returns (uint256) {
+        return stakeholders[msg.sender];
+    }
+
+    function isStakeholder() external view returns (bool) {
+        return stakeholders[msg.sender] > 0;
     }
 }

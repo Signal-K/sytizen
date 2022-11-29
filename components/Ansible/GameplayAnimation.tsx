@@ -9,12 +9,12 @@ const GoldGem = (
 );
 
 type Props = {
-  pickaxe: NFT | undefined;
+  multitool: NFT | undefined;
 };
 
-export default function GameplayAnimation({ pickaxe }: Props) {
-  if (!pickaxe) {
-    return <div style={{ marginLeft: 8 }}>I need a pickaxe!</div>;
+export default function GameplayAnimation({ multitool }: Props) {
+  if (!multitool) {
+    return <div style={{ marginLeft: 8 }}>I need a multitool!</div>;
   }
 
   return (

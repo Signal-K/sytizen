@@ -8,40 +8,35 @@ import styles from "../../styles/Home.module.css";
 type Props = {
   miningContract: SmartContract<any>;
   characterContract: EditionDrop;
-  pickaxeContract: EditionDrop;
+  multitoolContract: EditionDrop;
 };
 
-/**
- * This component shows the:
- * - Currently equipped miner character (right now there is just one (token ID 0))
- * - Currently equipped character's pickaxe
- */
 export default function CurrentGear({
   miningContract,
   characterContract,
-  pickaxeContract,
+  multitoolContract,
 }: Props) {
   const address = useAddress();
 
   const { data: playerNft } = useNFT(characterContract, 0);
-  const [pickaxe, setPickaxe] = useState<NFT>();
+  const [multitool, setmultitool] = useState<NFT>();
 
   useEffect(() => {
     (async () => {
       if (!address) return;
 
       const p = (await miningContract.call(
-        "playerPickaxe",
+        "playermultitool",
         address
       )) as ContractMappingResponse;
 
-      // Now we have the tokenId of the equipped pickaxe, if there is one, fetch the metadata for it
+      // Now we have the tokenId of the equipped multitool, if there is one, fetch the metadata for it
       if (p.isData) {
-        const pickaxeMetadata = await pickaxeContract.get(p.value);
-        setPickaxe(pickaxeMetadata);
+        const multitoolMetadata = await multitoolContract.get(p.value);
+        setmultitool(multitoolMetadata);
       }
     })();
-  }, [address, miningContract, pickaxeContract]);
+  }, [address, miningContract, multitoolContract]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -60,13 +55,13 @@ export default function CurrentGear({
             <ThirdwebNftMedia metadata={playerNft?.metadata} height={"64"} />
           )}
         </div>
-        {/* Currently equipped pickaxe */}
+        {/* Currently equipped multitool */}
         <div
           style={{ outline: "1px solid grey", borderRadius: 16, marginLeft: 8 }}
         >
-          {pickaxe && (
+          {multitool && (
             // @ts-ignore
-            <ThirdwebNftMedia metadata={pickaxe.metadata} height={"64"} />
+            <ThirdwebNftMedia metadata={multitool.metadata} height={"64"} />
           )}
         </div>
       </div>
@@ -83,7 +78,7 @@ export default function CurrentGear({
         }}
       >
         <img src="./mine.gif" height={64} width={64} alt="character-mining" />
-        <GameplayAnimation pickaxe={pickaxe} />
+        <GameplayAnimation multitool={multitool} />
       </div>
     </div>
   );

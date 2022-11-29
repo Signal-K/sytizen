@@ -10,7 +10,7 @@ import { CHARACTER_EDITION_ADDRESS } from "../lib/contractAddresses";
 import MintContainer from "../components/Ansible/MintContainer";
 import { useRouter } from "next/router";
 
-const Home: NextPage = () => {
+const Mint: NextPage = () => {
   const { contract: editionDrop } = useContract(
     CHARACTER_EDITION_ADDRESS,
     "edition-drop"
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
         <ConnectWallet colorMode="dark" />
       </div>
     );
-  }
+  } 
 
   // 1. Loading
   if (isLoading) {
@@ -66,4 +66,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Mint;

@@ -5,8 +5,8 @@ import {
   useContract,
   Web3Button,
 } from "@thirdweb-dev/react";
-import { CHARACTER_EDITION_ADDRESS } from "../const/contractAddresses";
-import styles from "../styles/Home.module.css";
+import { CHARACTER_EDITION_ADDRESS } from "../../lib/contractAddresses";
+import styles from "../../styles/Home.module.css";
 
 export default function MintContainer() {
   const address = useAddress();
