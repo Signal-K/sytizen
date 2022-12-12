@@ -334,7 +334,7 @@
   resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.8.tgz#954f8008be8d9c65c4e58efa0937f32388ce3a38"
   integrity sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==
 
-"@supabase/auth-ui-react@0.2.6":
+"@supabase/auth-ui-react@^0.2.6":
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@supabase/auth-ui-react/-/auth-ui-react-0.2.6.tgz#5ca41b9ef9cf5f52fbad0d67af56cd56f4f79961"
   integrity sha512-N2qxgsjxPQZPdDotVumzruj4RHaKNFb9ZRecttMeGOvrYFbMWRQVpWT/rYkTPsRW2phKiGXQlMwha6YxUE+t6Q==
@@ -352,7 +352,7 @@
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/gotrue-js@^2.2.2":
+"@supabase/gotrue-js@^2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-2.4.3.tgz#ad448247e994e2e4dd0b0b7677c9492e71e6ac28"
   integrity sha512-WX6Odq9CzDv0KUAwIptp6ibtH1W0Udn4ZpUhkwULQGsn7SzZc+b6Alf2RA2rChBJbIXSzXWk+HjxAkUI/Da58g==
@@ -381,13 +381,13 @@
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/supabase-js@2.0.5":
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.0.5.tgz#0a49b80a5225929e9b8572bccabd931c6ab3b866"
-  integrity sha512-zewk3U8wSe2UlKqzUk7iNxeMZzgDa5kjosSG4SKuAizIv+xzS+c2EZsYnNtc2byGjah4QT1dw3t91k2E+j+Akg==
+"@supabase/supabase-js@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.1.3.tgz#5075d7b5950c4713bcb369685526af37f17ae5b6"
+  integrity sha512-40Bn1gAyVM/VAfyvvq/7iBf6xkNMMisgGeHQWFpP7/h+srNqXgqlPuINo/KKyeUz6sJMFTIE+28j00VnSkSkjA==
   dependencies:
     "@supabase/functions-js" "^2.0.0"
-    "@supabase/gotrue-js" "^2.2.2"
+    "@supabase/gotrue-js" "^2.4.3"
     "@supabase/postgrest-js" "^1.1.0"
     "@supabase/realtime-js" "^2.1.0"
     "@supabase/storage-js" "^2.0.0"
@@ -1055,6 +1055,13 @@ minipass@^3.0.0:
   dependencies:
     yallist "^4.0.0"
 
+minipass@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-4.0.0.tgz#7cebb0f9fa7d56f0c5b17853cbe28838a8dbbd3b"
+  integrity sha512-g2Uuh2jEKoht+zvO6vJqXmYpflPqzRBT+Th2h01DKh5z7wbY/AZ2gCQ78cP70YoHPyFdY30YBV5WxgLOEwOykw==
+  dependencies:
+    yallist "^4.0.0"
+
 minizlib@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-2.1.2.tgz#e90d3466ba209b932451508a11ce3d3632145931"
@@ -1352,13 +1359,13 @@ sourcemap-codec@^1.4.8:
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
-supabase@1.14.1:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/supabase/-/supabase-1.14.1.tgz#bd5a55962ed054743377bba01296182b4016eaaf"
-  integrity sha512-kOujuzdpFKzB0bxnBS6+U/V881NBxvHeE381AEFcZujmciJE71NTSAw5XD0jU+ddJn2wmKac7M1+4LBo1uKPdA==
+supabase@^1.23.0:
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/supabase/-/supabase-1.23.0.tgz#62ce4a001c6ab4e3d9b75f17122340eecde17718"
+  integrity sha512-C9riZ99rQs/u5xiIu5bn6Z4f50VpoYK2s7AC2+8Wfm49wG2XcGsXts6o72Pws2EhS6APSR3zmc1i0MY3DFGlyA==
   dependencies:
     node-fetch "^3.2.10"
-    tar "6.1.12"
+    tar "6.1.13"
 
 supports-color@^5.3.0:
   version "5.5.0"
@@ -1401,14 +1408,14 @@ tailwindcss@3.2.2:
     quick-lru "^5.1.1"
     resolve "^1.22.1"
 
-tar@6.1.12:
-  version "6.1.12"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.12.tgz#3b742fb05669b55671fb769ab67a7791ea1a62e6"
-  integrity sha512-jU4TdemS31uABHd+Lt5WEYJuzn+TJTCBLljvIAHZOz6M9Os5pJ4dD+vRFLxPa/n3T0iEFzpi+0x1UfuDZYbRMw==
+tar@6.1.13:
+  version "6.1.13"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.13.tgz#46e22529000f612180601a6fe0680e7da508847b"
+  integrity sha512-jdIBIN6LTIe2jqzay/2vtYLlBHa3JF42ot3h1dW8Q0PaAG4v8rm0cvpVePtau5C6OKXGGcgO9q2AMNSWxiLqKw==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
-    minipass "^3.0.0"
+    minipass "^4.0.0"
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
