@@ -1,0 +1,1 @@
+This directory houses an application API layer that provides authentication & communication between the Lens Protocol & our dashboard. Shortly we'll merge this in with the main Next app in the above directory.

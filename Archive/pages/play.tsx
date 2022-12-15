@@ -20,7 +20,7 @@ import styles from "../styles/Home.module.css";
 
 import Dao from "../components/dao";
 import Auth from "../components/Auth/Auth";
-import { supabase } from "./supabaseClient";
+import { supabase } from "../../api/supabaseClient";
 import PlanetBreadboard from '../components/Controller/Planet';
 
 export default function Play() {
