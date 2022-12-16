@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function DashibaseCommunicate() {
   const [setupData, setSetupData] = useState(); // This is passed in from Dashibase
 
   async function importClient() {
