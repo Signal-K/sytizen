@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormField, CustomButton } from '../components';
+import { useStateContext } from '../context';
 import { ethers } from 'ethers';
 import { money } from '../assets';
 import { checkIfImage } from '../utils';
@@ -10,6 +11,8 @@ const CreateProposal = () => {
   const [isLoading, setIsLoading] = useState(false);
   
   // Form field state functions
+  const { createProposal } = useStateContext();
+
   const [form, setForm] = useState({
     name: '',
     title: '',
@@ -23,8 +26,9 @@ const CreateProposal = () => {
     setForm({ ...form, [fieldName]: e.target.value }) // Update every single field
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await createProposal({ ...form, target: ethers.utils.parseUnits(form.target, 18) })
     console.log(form);
   }
 
