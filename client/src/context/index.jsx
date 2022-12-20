@@ -24,15 +24,36 @@ export const StateContextProvider = ({ children }) => {
 
             console.log("Contract call success: ", data);
         } catch (error) {
-            console.error('Contract call resulted in a failure, ', error)
+            console.error('Contract call resulted in a failure, ', error);
         }
+    }
+
+    // Retrieve proposals from on-chain
+    const getProposals = async () => {
+        const proposals = await contract.call('getProposals'); // Essentially a get request to the contract
+        const parsedProposals = proposals.map((proposal) => ({ // Take an individual proposal, immediate return
+            owner: proposal.owner,
+            title: proposal.title,
+            description: proposal.description,
+            target: ethers.utils.formatEther(proposal.target.toString()),
+            deadline: proposal.deadline.toNumber(), // Will transform to date format later
+            amountCollected: ethers.utils.formatEther(proposal.amountCollected.toString()),
+            image: proposal.image,
+            pId: proposal.i, // Index of proposal
+        }));
+
+        console.log(parsedProposals);
+        console.log(proposals);
+        return parsedProposals; // This is sent to the `useEffect` in `Home.jsx` page
     }
 
     return(
         <StateContext.Provider
             value={{ address,
                 contract,
+                connect,
                 createProposal: publishProposal,
+                getProposals,
             }}
         >
             {children}

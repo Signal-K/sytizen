@@ -8,7 +8,7 @@ from thirdweb import ThirdwebSDK
 # Flask Initialisation
 app = Flask(__name__)
 
-# Lightcurve initialisation
+# Lightcurve initialisation 
 planetTic = ""
 
 # Contract Initialisation
