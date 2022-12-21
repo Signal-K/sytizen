@@ -47,6 +47,14 @@ export const StateContextProvider = ({ children }) => {
         return parsedProposals; // This is sent to the `useEffect` in `Home.jsx` page
     }
 
+    const getUserProposals = async () => { // Get proposals that a specific user (authed) has created
+        const allProposals = await getProposals();
+        const filteredProposals = allProposals.filter((proposal) =>
+            proposal.owner === address
+        );
+        return filteredProposals;
+    }
+
     return(
         <StateContext.Provider
             value={{ address,
@@ -54,6 +62,7 @@ export const StateContextProvider = ({ children }) => {
                 connect,
                 createProposal: publishProposal,
                 getProposals,
+                getUserProposals,
             }}
         >
             {children}
