@@ -1,10 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import FundCard from './FundCard';
+//import { useNavigate } from 'react-router-dom';
+//import FundCard from './FundCard';
 import { loader } from '../assets';
 
 const DisplayProposals = ({ title, isLoading, proposals }) => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleNavigate = (proposal) => {
     navigate(`/proposal-details/${proposal.title}`, { state: proposal })
