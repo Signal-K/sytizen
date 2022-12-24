@@ -7,6 +7,8 @@ name = "pypi"
 moralis = "*"
 flask = "*"
 flask_cors = "*"
+thirdweb-sdk = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
