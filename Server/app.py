@@ -70,3 +70,7 @@ def logout():
         expires=datetime.utcnow() + timedelta(second = 5)
     )
     return res, 200
+
+@app.route('/helloworld')
+def helloworld():
+    return address
