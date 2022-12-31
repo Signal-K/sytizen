@@ -1,11 +1,26 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from '../../styles/Home.module.css';
-import { getFollowing, lensClient } from '../../constants/lensConstants';
+import { getFollowing, getPublications, getPublicationsQueryVariables, lensClient } from '../../constants/lensConstants';
+import { useEffect, useState } from "react";
+import { useMoralis } from "react-moralis";
+import PostFeed from "../../components/PostFeed";
 
 let profileIdList = ['0x896c'];
 
 export default function LensIndex() {
+    const [pubs, setPubs] = useState();
+    const { account } = useMoralis();
+
+    useEffect(() => {
+        if (account) {
+            getPublicationsList().then((publications) => {
+                console.log(publications);
+                setPubs(publications);
+            });
+        }
+    }, [account]);
+
     const getPublicationsList = async function () {
         let followings; // Who the user follows
         let followingsIds = []; // Array of profile IDs
@@ -17,11 +32,21 @@ export default function LensIndex() {
         });
         
         followingsIds = followings.data.following.items.map((f) => f.profile.id);
+
+        profileIdList = profileIdList.concat(followingsIds);
+        const publications = await lensClient.query({
+            query: getPublications,
+            variables: getPublicationsQueryVariables(profileIdList),
+        });
+        return publications;
     };
 
     return (
-        <div className={styles.container}>
-            Hello!
+        <div>
+            <div className={styles.container}>Decentralised Proposals</div>
+            {!pubs ? (
+                <div>Loading...</div>
+            ) : <div><PostFeed posts={pubs.data.publications} /> </div>}
         </div>
     )
 }
