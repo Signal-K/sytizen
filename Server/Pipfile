@@ -7,8 +7,10 @@ name = "pypi"
 moralis = "*"
 flask = "*"
 flask_cors = "*"
+thirdweb-sdk = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.9.9"

@@ -1,57 +1,76 @@
-from flask import Flask
-from flask import request
-from moralis import auth
-from flask_cors import CORS
+from flask import Flask, request, make_response, jsonify
+from thirdweb.types import LoginPayload
+from thirdweb import ThirdwebSDK
+from datetime import datetime, timedelta
+import os
 
-# Flask application setup
 app = Flask(__name__)
-CORS(app)
-apiKey = "kJfYYpmMmfKhvaWMdD3f3xMMb24B4MHBDDVrfjslkKgTilvMgdwr1bwKUr8vWdHH" # Move to env
 
-# Authentication routes -> move to auth.py later
-# Request a challenge when a user attempts to connect their wallet
-@app.route('/requestChallenge', methods=['GET'])
-def reqChallenge():
-    args = request.args # Fetch the arguments from the request
+@app.route('/', methods=["GET"])
+def index():
+    return "Hello World"
 
-    # Get request body -> compare with data from Moralis
-    body = {
-        "domain": "sailors.skinetics.tech",
-        "chainId": args.get("chainId"),
-        "address": args.get("address"),
-        "statement": "Please confirm authentication by signing this transaction",
-        "uri": "https://ipfs.skinetics.tech/auth/1...",
-        "expirationTime": "2023-01-01T00:00:00.000Z",
-        "notBefore": "2020-01-01T00:00:00.000Z",
-        "resources": ['https://docs.skinetics.tech/crypto/auth/signing'],
-        "timeout": 30,
-    }
+@app.route('/login', methods=['POST'])
+def login():
+    private_key = os.environ.get("PRIVATE_KEY")
+    
+    if not private_key:
+        print("Missing PRIVATE_KEY environment variable")
+        return "Wallet private key not set", 400
 
-    # Deliver the result to Moralis client
-    result = auth.challenge.request_challenge_evm(
-        api_key=apiKey,
-        body=body,
+    sdk = ThirdwebSDK.from_private_key(private_key, 'mumbai') # Initialise the sdk using the wallet and on mumbai testnet chain
+    payload = LoginPayload.from_json(request.json['payload'])
+
+    # Generate access token using signed payload
+    domain = 'sailors.skinetics.tech'
+    token = sdk.auth.generate_auth_token(domain, payload)
+
+    res = make_response()
+    res.set_cookie(
+        'access_token',
+        token,
+        path='/',
+        httponly=True,
+        secure=True,
+        samesite='strict',
     )
+    return res, 200
 
-    return result
+@app.route('/authenticate', methods=['POST'])
+def authenticate():
+    private_key = os.environ.get("PRIVATE_KEY")
+    
+    if not private_key:
+        print("Missing PRIVATE_KEY environment variable")
+        return "Wallet private key not set", 400
 
-# Verify signature from user
-@app.route('/verifyChallenge', methods=['GET'])
-def verifyChallenge():
-    args = request.args
+    sdk = ThirdwebSDK.from_private_key(private_key, 'mumbai')
 
-    body = { # Request body
-        "message": args.get("message"),
-        "signature": args.get("signature"),
-    },
+    # Get access token from cookies
+    token = request.cookies.get('access_token')
+    if not token:
+        return 'Unauthorised', 401
+    
+    domain = 'sailors.skinetics.tech'
 
-    result = auth.challenge.verify_challenge_evm(
-        api_key=apiKey,
-        body=body,
-    ),
+    try:
+        address = sdk.auth.authenticate(domain, token)
+    except:
+        return "Unauthorized", 401
+    
+    print(jsonify(address))
+    return jsonify(address), 200
 
-    return result
+@app.route('/logout', methods=['POST'])
+def logout():
+    res = make_response()
+    res.set_cookie(
+        'access_token',
+        'none',
+        expires=datetime.utcnow() + timedelta(second = 5)
+    )
+    return res, 200
 
-# Initialising Flask application
-if __name__ == '__main__':
-    app.run(host='127.0.0.1', port='5000', debug=True)
+@app.route('/helloworld')
+def helloworld():
+    return address

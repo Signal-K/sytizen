@@ -1,0 +1,1 @@
+Make sure to initialise the Flask app with `pipenv` and run the command `export FLASK_APP=app.py`
