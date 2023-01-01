@@ -1,11 +1,13 @@
-export default function PostFeed({ posts }) { // Take posts as an input parameter & return mapping of all posts items from Constants/context
+import Link from "next/link";
+
+export default function PostFeed({ posts }) {
     return (
-        <div className="p-2">
-            {posts
-                ? posts.map((post) => <PostItem post={post} key={post.id} />)
-                : null}
-        </div>
-    )
+      <div className="p-2">
+        {posts
+          ? posts.map((post) => <PostItem post={post} key={post.id} />)
+          : null}
+      </div>
+    );
 }
 
 function PostItem({ post }) {
@@ -16,8 +18,10 @@ function PostItem({ post }) {
 
     return (
         <div>
-            <img src={imageURL} />
-            <h2>{post.metadata.name}</h2>
+            <Link href={`/posts/${post.id}`}>
+                <img src={imageURL} />
+                <h2>{post.metadata.name}</h2>
+            </Link>
         </div>
     )
 }

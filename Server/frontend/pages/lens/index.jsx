@@ -6,20 +6,11 @@ import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import PostFeed from "../../components/PostFeed";
 
-let profileIdList = ['0x896c'];
+let profileIdList = ['0xa952'];
 
 export default function LensIndex() {
     const [pubs, setPubs] = useState();
     const { account } = useMoralis();
-
-    useEffect(() => {
-        if (account) {
-            getPublicationsList().then((publications) => {
-                console.log(publications);
-                setPubs(publications);
-            });
-        }
-    }, [account]);
 
     const getPublicationsList = async function () {
         let followings; // Who the user follows
@@ -41,12 +32,21 @@ export default function LensIndex() {
         return publications;
     };
 
+    useEffect(() => {
+        if (account) {
+            getPublicationsList().then((publications) => {
+                console.log(publications);
+                setPubs(publications);
+            });
+        }
+    }, [account]);
+
     return (
         <div>
             <div className={styles.container}>Decentralised Proposals</div>
             {!pubs ? (
                 <div>Loading...</div>
-            ) : <div><PostFeed posts={pubs.data.publications} /> </div>}
+            ) : <div><PostFeed posts={pubs.data.publications.items} /> </div>}
         </div>
     )
 }

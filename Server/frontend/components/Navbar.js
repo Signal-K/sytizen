@@ -1,11 +1,11 @@
 import { ConnectButton } from "web3uikit";
-
+import Link from "next/link";
 
 export default function Navbar() {
     return (
         <ul>
-            <li>Home</li>
-            <li>Create Proposal</li>
+            <Link href='/lens/'><li>Home</li></Link>
+            <Link href='/lens/write-post'><li>Create Proposal</li></Link>
             <li>
                 <div>
                     <ConnectButton moralisAuth={false} />
