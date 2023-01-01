@@ -1,4 +1,4 @@
-import WritePost from "../../components/WritePost";
+import WritePost from "./components/WritePost";
 
 export default function WritePostPage() {
     return <WritePost />;
