@@ -16,6 +16,7 @@
     "@thirdweb-dev/auth": "^2.0.38",
     "@thirdweb-dev/react": "^3.6.8",
     "@thirdweb-dev/sdk": "^3.6.8",
+    "@thirdweb-dev/storage": "^1.0.6",
     "ethers": "^5.7.2",
     "graphql": "^16.6.0",
     "moralis": "^2.10.3",
