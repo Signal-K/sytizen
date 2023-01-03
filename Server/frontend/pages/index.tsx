@@ -1,11 +1,34 @@
-import type { NextPage } from "next";
-import useAuthenticate from '../hooks/useAuthenticate';
-import { useAddress, useDisconnect, useUser, useLogout, useMetamask, ConnectWallet } from "@thirdweb-dev/react";
-import { useEffect, useState } from "react";
-import { PublicationSortCriteria, useExplorePublicationsQuery } from "../graphql/generated";
-import useLogin from "../lib/auth/useLogin";
+import FeedPost from "../components/FeedPost";
 import SignInButton from "../components/SignInButton";
+import { PublicationSortCriteria, useExplorePublicationsQuery } from "../graphql/generated";
+import styles from '../styles/Home.module.css';
 
 export default function Home () {
-  return <SignInButton />;
+  const { isLoading, error, data } = useExplorePublicationsQuery({
+    request: {
+      sortCriteria: PublicationSortCriteria.TopCollected,
+    },
+  },
+  {
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+
+  if (isLoading) {
+    return (<div className={styles.container}>Loading</div>)
+  };
+
+  if (error) {
+    return (<div className={styles.container}>Error</div>)
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.postContainer}>
+        {data?.explorePublications.items.map((publication) => (
+            <FeedPost publication={publication} key={publication.id} />
+        ))};
+      </div>
+    </div>
+  );
 };

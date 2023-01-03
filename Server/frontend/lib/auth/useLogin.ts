@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useAddress, useSDK } from "@thirdweb-dev/react";
 import { useAuthenticateMutation } from "../../graphql/generated";
 import generateChallenge from "./generateChallenge";
@@ -9,32 +9,24 @@ import { setAccessToken } from "./helpers";
 export default function useLogin() {
     const address = useAddress(); // Ensure user has connected wallet
     const sdk = useSDK();
-    const {
-        mutateAsync: sendSignedMessage
-    } = useAuthenticateMutation();
+    const { mutateAsync: sendSignedMessage } = useAuthenticateMutation();
+    const client = useQueryClient();
 
-    async function login () {
-        if (!address) {
-            console.error('No address found. Please try connecting your wallet to continue signing into Lens');
-            return null;
-        }
-
-        const { challenge } = await generateChallenge(address); // Generate challenge from the Lens API
-        const signature = await sdk?.wallet.sign(challenge.text); // Sign the returned challenge with the user's wallet
-        const { // Send the signed challenge to the Lens API
-            authenticate
-        } = await sendSignedMessage({
+    async function login() {
+        if (!address) return;
+        const { challenge } = await generateChallenge(address); // Generate a challenge (for auth) from Lens API
+        const signature = await sdk?.wallet.sign(challenge.text); // Sign the challenge
+        const { authenticate } = await sendSignedMessage({
             request: {
                 address,
                 signature,
             },
         });
 
-        const { accessToken, refreshToken} = authenticate;
-
+        const { accessToken, refreshToken } = authenticate;
         setAccessToken(accessToken, refreshToken);
+        client.invalidateQueries(['lens-user', address]);
     }
 
-    // Receive an access token from Lens API
     return useMutation(login);
 }
