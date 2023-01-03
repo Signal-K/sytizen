@@ -3858,6 +3858,13 @@ export type ChallengeQueryVariables = Exact<{
 
 export type ChallengeQuery = { __typename?: 'Query', challenge: { __typename?: 'AuthChallengeResult', text: string } };
 
+export type CreateCommentTypedDataMutationVariables = Exact<{
+  request: CreatePublicCommentRequest;
+}>;
+
+
+export type CreateCommentTypedDataMutation = { __typename?: 'Mutation', createCommentTypedData: { __typename?: 'CreateCommentBroadcastItemResult', id: any, expiresAt: any, typedData: { __typename?: 'CreateCommentEIP712TypedData', types: { __typename?: 'CreateCommentEIP712TypedDataTypes', CommentWithSig: Array<{ __typename?: 'EIP712TypedDataField', name: string, type: string }> }, domain: { __typename?: 'EIP712TypedDataDomain', name: string, chainId: any, version: string, verifyingContract: any }, value: { __typename?: 'CreateCommentEIP712TypedDataValue', nonce: any, deadline: any, profileId: any, profileIdPointed: any, pubIdPointed: any, contentURI: any, collectModule: any, collectModuleInitData: any, referenceModule: any, referenceModuleInitData: any, referenceModuleData: any } } } };
+
 export type MediaFieldsFragment = { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null };
 
 export type ProfileFieldsFragment = { __typename?: 'Profile', id: any, name?: string | null, bio?: string | null, isFollowedByMe: boolean, isFollowing: boolean, followNftAddress?: any | null, metadata?: any | null, isDefault: boolean, handle: any, ownedBy: any, attributes?: Array<{ __typename?: 'Attribute', displayType?: string | null, traitType?: string | null, key: string, value: string }> | null, picture?: { __typename?: 'MediaSet', original: { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null }, small?: { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null } | null, medium?: { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null } | null } | { __typename?: 'NftImage', contractAddress: any, tokenId: string, uri: any, verified: boolean } | null, coverPicture?: { __typename?: 'MediaSet', original: { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null }, small?: { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null } | null, medium?: { __typename?: 'Media', url: any, width?: number | null, height?: number | null, mimeType?: any | null } | null } | { __typename?: 'NftImage', contractAddress: any, tokenId: string, uri: any, verified: boolean } | null, dispatcher?: { __typename?: 'Dispatcher', address: any, canUseRelay: boolean } | null, stats: { __typename?: 'ProfileStats', totalFollowers: number, totalFollowing: number, totalPosts: number, totalComments: number, totalMirrors: number, totalPublications: number, totalCollects: number }, followModule?: { __typename?: 'FeeFollowModuleSettings', type: FollowModules, recipient: any, amount: { __typename?: 'ModuleFeeAmount', value: string, asset: { __typename?: 'Erc20', name: string, symbol: string, decimals: number, address: any } } } | { __typename?: 'ProfileFollowModuleSettings', type: FollowModules, contractAddress: any } | { __typename?: 'RevertFollowModuleSettings', type: FollowModules, contractAddress: any } | { __typename?: 'UnknownFollowModuleSettings', type: FollowModules, contractAddress: any, followModuleReturnData: any } | null, onChainIdentity: { __typename?: 'OnChainIdentity', proofOfHumanity: boolean, ens?: { __typename?: 'EnsOnChainIdentity', name?: any | null } | null, sybilDotOrg: { __typename?: 'SybilDotOrgIdentity', verified: boolean, source: { __typename?: 'SybilDotOrgIdentitySource', twitter: { __typename?: 'SybilDotOrgTwitterIdentity', handle?: string | null } } }, worldcoin: { __typename?: 'WorldcoinIdentity', isHuman: boolean } } };
@@ -4611,6 +4618,50 @@ export const useChallengeQuery = <
     useQuery<ChallengeQuery, TError, TData>(
       ['Challenge', variables],
       fetcher<ChallengeQuery, ChallengeQueryVariables>(ChallengeDocument, variables),
+      options
+    );
+export const CreateCommentTypedDataDocument = `
+    mutation createCommentTypedData($request: CreatePublicCommentRequest!) {
+  createCommentTypedData(request: $request) {
+    id
+    expiresAt
+    typedData {
+      types {
+        CommentWithSig {
+          name
+          type
+        }
+      }
+      domain {
+        name
+        chainId
+        version
+        verifyingContract
+      }
+      value {
+        nonce
+        deadline
+        profileId
+        profileIdPointed
+        pubIdPointed
+        contentURI
+        collectModule
+        collectModuleInitData
+        referenceModule
+        referenceModuleInitData
+        referenceModuleData
+      }
+    }
+  }
+}
+    `;
+export const useCreateCommentTypedDataMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(options?: UseMutationOptions<CreateCommentTypedDataMutation, TError, CreateCommentTypedDataMutationVariables, TContext>) =>
+    useMutation<CreateCommentTypedDataMutation, TError, CreateCommentTypedDataMutationVariables, TContext>(
+      ['createCommentTypedData'],
+      (variables?: CreateCommentTypedDataMutationVariables) => fetcher<CreateCommentTypedDataMutation, CreateCommentTypedDataMutationVariables>(CreateCommentTypedDataDocument, variables)(),
       options
     );
 export const ExplorePublicationsDocument = `
