@@ -11,12 +11,20 @@ web3Sdk = ThirdwebSDK("goerli")
 contract = web3Sdk.get_contract("0xCcaA1ABA77Bae6296D386C2F130c46FEc3E5A004")
 proposals = contract.call("getProposals")
 
+# Minting candidate nfts
+nftSdk = ThirdwebSDK('mumbai')
+nftContract = nftSdk.get_contract("0xed6e837Fda815FBf78E8E7266482c5Be80bC4bF9")
+
 @app.route('/')
 def index():
     return "Hello World"
 
 @app.route('/proposals', methods=["GET"])
 def getProposals():
+    # Mint nft based on proposal id
+    proposalCandidate = nftContract.call("lazyMint", _amount, _baseURIForTokens, _data) # Get this from Jupyter notebook -> https://thirdweb.com/mumbai/0xed6e837Fda815FBf78E8E7266482c5Be80bC4bF9/nfts token id 0 (e.g.)
+    createProposal = contract.call("createProposal", _owner, _title, _description, _target, _deadline, _image) # Get this from PUSH req contents
+
     return proposals
 
 @app.route('/login', methods=['POST'])

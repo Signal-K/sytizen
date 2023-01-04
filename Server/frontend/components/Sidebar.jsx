@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { logo, sun } from '../assets';
-import { navlinks } from '../constants';
+import { navlinks } from '../pages/api/proposals/constants';
 import styles from '../styles/Header.module.css';
 
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
