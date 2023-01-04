@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useStateContext } from '../context';
-import { DisplayProposals } from '../components';
+/*import { useContract, useContractRead } from "@thirdweb-dev/react";
 
-const Home = () => {
-  const [isLoading, setIsLoading] = useState(false);
+export default function fetchProposalFromContract () {
+    /*
+    const [isLoading, setIsLoading] = useState(false);
   const [proposals, setProposals] = useState([]);
 
   const { address, contract, getProposals }  = useStateContext();
@@ -17,14 +16,11 @@ const Home = () => {
   useEffect(() => {
     if (contract) fetchProposals();
   }, [address, contract]); // Re-called when these change
+    */
 
-  return (
-    <DisplayProposals // Component that selects different proposals based on props passed here
-      title="All Proposals"
-      isLoading={isLoading}
-      proposals={proposals}
-    />
-  )
-}
+    /*const { contract, isLoading, error } = useContract("0xCcaA1ABA77Bae6296D386C2F130c46FEc3E5A004");
+    const proposalData = contract.call("numberOfClassifications")
+    const allProposals = fetch('/proposals');
 
-export default Home;
+    return allProposals;
+}*/
