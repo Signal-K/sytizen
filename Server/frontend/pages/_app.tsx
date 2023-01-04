@@ -1,15 +1,18 @@
 import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-import Navbar from './lens/components/Navbar';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MoralisProvider } from "react-moralis";
+import Header from "../components/Header";
+import { ChakraProvider } from '@chakra-ui/react';
+
+/*import Navbar from './lens/components/Navbar';
 import { LensProvider } from '../context/lensContext';
 import { ApolloProvider } from "@apollo/client";
-import { lensClient } from './lens/constants/lensConstants';
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const activeChainId = ChainId.Mumbai;
+import { lensClient } from './lens/constants/lensConstants';*/
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const AnyComponent = Component as any;
+  const activeChainId = ChainId.Polygon; // Set to `.Mumbai` for testnet interaction
   const queryClient = new QueryClient();
 
   return (
@@ -23,7 +26,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       >
         <MoralisProvider initializeOnMount={false}>
-              <Component {...pageProps} />
+          <ChakraProvider>
+            <Header />
+            <AnyComponent {...pageProps} />
+          </ChakraProvider>
         </MoralisProvider>
       </ThirdwebProvider>
     </QueryClientProvider>
