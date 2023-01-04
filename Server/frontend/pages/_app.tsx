@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MoralisProvider } from "react-moralis";
+import Header from "../components/Header";
 
 /*import Navbar from './lens/components/Navbar';
 import { LensProvider } from '../context/lensContext';
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       >
         <MoralisProvider initializeOnMount={false}>
+          <Header />
           <Component {...pageProps} />
         </MoralisProvider>
       </ThirdwebProvider>

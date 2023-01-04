@@ -60,13 +60,13 @@ export default function ProfilePage({}: Props) {
                 <p className={styles.profileDescription}>{profileData?.profile?.bio}</p>
                 <p className={styles.followerCount}>{profileData?.profile?.stats.totalFollowers} Followers</p>
             </div>
-            <div className={styles.publicationsContainer}>
+            <center><div className={styles.publicationsContainer}>
                 {
                     publicationsData?.publications.items.map((publication) => (
                         <FeedPost publication={publication} key={publication.id} />
                     ))
                 }
-            </div>
+            </div></center>
     </div>
     )
 }

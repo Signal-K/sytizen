@@ -1,4 +1,5 @@
-import { useAddress, useNetworkMismatch, useNetwork, ConnectWallet, ChainId } from '@thirdweb-dev/react';
+import { useAddress, useNetworkMismatch, useNetwork, ConnectWallet, ChainId, MediaRenderer } from '@thirdweb-dev/react';
+import { profile } from 'console';
 import React from 'react';
 import useLensUser from '../lib/auth/useLensUser';
 import useLogin from '../lib/auth/useLogin';
@@ -50,7 +51,15 @@ export default function SignInButton({}: Props) {
     };
 
     if (profileQuery.data?.defaultProfile) { // If profile exists
-        return <div>Hello {profileQuery.data?.defaultProfile?.handle} </div>
+        return <div>
+            {/* @ts-ignore */}
+            <MediaRenderer src={profileQuery?.data?.defaultProfile?.picture?.original?.url || ""} alt="Profile Picture" style={({
+                width: 48,
+                height: 48,
+                marginTop: 5,
+                borderRadius: 20,
+            })}/>
+        </div>
     };
 
     return (

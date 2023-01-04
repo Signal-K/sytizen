@@ -6,9 +6,18 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/', methods=["GET"])
+# Getting proposals (move to separate file)
+web3Sdk = ThirdwebSDK("goerli")
+contract = web3Sdk.get_contract("0xCcaA1ABA77Bae6296D386C2F130c46FEc3E5A004")
+proposals = contract.call("getProposals")
+
+@app.route('/')
 def index():
     return "Hello World"
+
+@app.route('/proposals', methods=["GET"])
+def getProposals():
+    return proposals
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -73,4 +82,9 @@ def logout():
 
 @app.route('/helloworld')
 def helloworld():
-    return address
+    return "address" #address
+
+# Getting proposals route
+#@app.route('/proposals')
+#def getProposals():
+#    return classifications;

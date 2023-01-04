@@ -4,7 +4,7 @@ import { DisplayProposals } from '../components';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [proposals, setProposals] = useState([]); // Empty array, retrieved from the state context from onchain
+  const [proposals, setProposals] = useState([]);
 
   const { address, contract, getProposals }  = useStateContext();
   const fetchProposals = async () => { // This is to allow us to call this g.request in the useEffect (as the request is async in /context)

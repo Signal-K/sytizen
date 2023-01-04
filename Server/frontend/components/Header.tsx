@@ -5,13 +5,18 @@ import SignInButton from "./SignInButton";
 
 export default function Header () {
     return (
-        <div className={styles.headerContainer}>
-            <div>
-                <Link href={'/'}>
-                    <img src="/logo.png" alt='logo' />
-                </Link>
+        <>
+            <div className={styles.headerContainer}>
+                <div>
+                    <Link href={'/'}>
+                        <img src="/logo.png" alt='logo' className={styles.logo}/>
+                    </Link>
+                </div>
+                <div className={styles.right}>
+                    <SignInButton />
+                </div>
             </div>
-            <SignInButton />
-        </div>
+            <div style={{ height: 64 }} />
+        </>
     )
 }
