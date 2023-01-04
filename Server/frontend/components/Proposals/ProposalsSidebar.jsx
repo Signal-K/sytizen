@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { logo, sun } from '../assets';
-import { navlinks } from '../pages/api/proposals/constants';
+import { logo, sun } from '../../assets';
+import { navlinks } from '../../pages/api/proposals/constants';
 import styles from '../styles/Header.module.css';
 
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
@@ -14,7 +14,7 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
     </div>
 )
 
-const Sidebar = () => {
+const ProposalsSidebar = () => {
     const [isActive, setIsActive] = useState('dashboard');
 
     return (
@@ -31,4 +31,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar;
+export default ProposalsSidebar;

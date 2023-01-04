@@ -1,8 +1,9 @@
 import FeedPost from "../components/FeedPost";
 import { PublicationMainFocus, PublicationSortCriteria, useExplorePublicationsQuery } from "../graphql/generated";
 import styles from '../styles/Home.module.css';
-import Sidebar from '../components/Sidebar';
 import { useState, useEffect } from "react";
+import Sidebar from '../components/Navigation/Sidebar';
+import { Flex, Text, IconButton } from '@chakra-ui/react';
 
 /* Proposals (Lens add-on) contract interaction
 //import { useStateContext, /*getProposals*//* } from '../context/index';
@@ -38,11 +39,14 @@ export default function Home () {
   };
 
   return (
-    <div>
-      <div className='sm:flex hidden mr-10 relative'>
-        <Sidebar />
-      </div>
-      <div className='flex-1 max-sm:w-full max-w:[1280px] mx-auto sm:pr-5'>
+    <Flex w='100%'>
+      <Sidebar />
+      <Flex
+        pos="absolute"
+        top="50%"
+        left="50%"
+        transform="translate(-50%, -50%)"
+      >
         <div className={styles.container}>
           <div className={styles.postsContainer}>
             {data?.explorePublications.items.map((publication) => (
@@ -50,7 +54,7 @@ export default function Home () {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 };

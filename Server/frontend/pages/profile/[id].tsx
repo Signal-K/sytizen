@@ -4,6 +4,8 @@ import React from 'react';
 import FeedPost from '../../components/FeedPost';
 import { useProfileQuery, usePublicationsQuery } from '../../graphql/generated';
 import styles from '../../styles/Profile.module.css';
+import { Flex, Text, IconButton } from '@chakra-ui/react';
+import Sidebar from '../../components/Navigation/Sidebar';
 
 type Props = {}
 
@@ -27,7 +29,7 @@ export default function ProfilePage({}: Props) {
     });
 
     if (publicationsError || profileError) {
-        return <div>Couldn't find this profile</div>;
+        return <div>Unable to find this profile</div>;
     }
 
     if (loadingProfile) {
@@ -35,38 +37,49 @@ export default function ProfilePage({}: Props) {
     }
 
     return (
-        <div className={styles.profileContainer}>
-            <div className={styles.profileContentContainer}>
-                {/* @ts-ignore */}
-                {profileData?.profile?.coverPicture?.original?.url && (
-                        <MediaRenderer
-                            // @ts-ignore
-                            src={profileData?.profile?.coverPicture?.original?.url || ""}
-                            alt={profileData.profile.name || profileData.profile.handle || ""}
-                            className={styles.coverImageContainer}
-                        />
-                )}
-                {/* @ts-ignore */}
-                {profileData?.profile?.picture?.original?.url && (
-                        <MediaRenderer
-                            // @ts-ignore
-                            src={profileData.profile.picture.original.url}
-                            alt={profileData.profile.name || profileData.profile.handle || ""}
-                            className={styles.profilePictureContainer}
-                        />
-                )}
-                <h1 className={styles.profileName}>{profileData?.profile?.name || 'Unknown user'}</h1>
-                <p className={styles.profileHandle}>{profileData?.profile?.handle}</p>
-                <p className={styles.profileDescription}>{profileData?.profile?.bio}</p>
-                <p className={styles.followerCount}>{profileData?.profile?.stats.totalFollowers} Followers</p>
-            </div>
-            <center><div className={styles.publicationsContainer}>
-                {
-                    publicationsData?.publications.items.map((publication) => (
-                        <FeedPost publication={publication} key={publication.id} />
-                    ))
-                }
-            </div></center>
-    </div>
+        <Flex w='100%'>
+            <Sidebar />
+            <center><Flex
+                pos="absolute"
+                top="50%"
+                left="50%"
+                w="60%"
+                transform="translate(-50%)"
+            >
+                <div className={styles.profileContainer}>
+                    <div className={styles.profileContentContainer}>
+                        {/* @ts-ignore */}
+                        {profileData?.profile?.coverPicture?.original?.url && (
+                                <MediaRenderer
+                                    // @ts-ignore
+                                    src={profileData?.profile?.coverPicture?.original?.url || ""}
+                                    alt={profileData.profile.name || profileData.profile.handle || ""}
+                                    className={styles.coverImageContainer}
+                                />
+                        )}
+                        {/* @ts-ignore */}
+                        {profileData?.profile?.picture?.original?.url && (
+                                <MediaRenderer
+                                    // @ts-ignore
+                                    src={profileData.profile.picture.original.url}
+                                    alt={profileData.profile.name || profileData.profile.handle || ""}
+                                    className={styles.profilePictureContainer}
+                                />
+                        )}
+                        <h1 className={styles.profileName}>{profileData?.profile?.name || 'Unknown user'}</h1>
+                        <p className={styles.profileHandle}>{profileData?.profile?.handle}</p>
+                        <p className={styles.profileDescription}>{profileData?.profile?.bio}</p>
+                        <p className={styles.followerCount}>{profileData?.profile?.stats.totalFollowers} Followers</p>
+                    </div>
+                    <center><div className={styles.publicationsContainer}>
+                        {
+                            publicationsData?.publications.items.map((publication) => (
+                                <FeedPost publication={publication} key={publication.id} />
+                            ))
+                        }
+                    </div></center>
+                </div>
+            </Flex></center>
+        </Flex>
     )
 }
