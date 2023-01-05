@@ -1,4 +1,4 @@
-import { MediaRenderer } from '@thirdweb-dev/react';
+import { MediaRenderer, Web3Button } from '@thirdweb-dev/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import FeedPost from '../../components/FeedPost';
@@ -6,12 +6,15 @@ import { useProfileQuery, usePublicationsQuery } from '../../graphql/generated';
 import styles from '../../styles/Profile.module.css';
 import { Flex, Text, IconButton } from '@chakra-ui/react';
 import Sidebar from '../../components/Navigation/Sidebar';
+import { LENS_CONTRACT_ABI, LENS_CONTRACT_ADDRESS } from '../../constants/contracts';
+import { useFollow } from '../../lib/useFollow';
 
 type Props = {}
 
 export default function ProfilePage({}: Props) {
     const router = useRouter();
-    const { id } = router.query;    
+    const { id } = router.query;   
+    const { mutate: followUser } = useFollow(); 
     const { isLoading: loadingProfile, data: profileData, error: profileError } = useProfileQuery({
         request: {
             handle: id,
@@ -71,6 +74,11 @@ export default function ProfilePage({}: Props) {
                         <p className={styles.profileDescription}>{profileData?.profile?.bio}</p>
                         <p className={styles.followerCount}>{profileData?.profile?.stats.totalFollowers} Followers</p>
                     </div>
+                    <Web3Button
+                        contractAddress={LENS_CONTRACT_ADDRESS}
+                        contractAbi={LENS_CONTRACT_ABI}
+                        action={() => followUser(profileData?.profile?.id)}
+                    >Follow User</Web3Button> <br />
                     <center><div className={styles.publicationsContainer}>
                         {
                             publicationsData?.publications.items.map((publication) => (

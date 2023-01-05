@@ -5,15 +5,7 @@ import { useState, useEffect } from "react";
 import Sidebar from '../components/Navigation/Sidebar';
 import { Flex, Text, IconButton } from '@chakra-ui/react';
 
-/* Proposals (Lens add-on) contract interaction
-//import { useStateContext, /*getProposals*//* } from '../context/index';
-//import { useContract, useContractRead } from "@thirdweb-dev/react";
-//import allProposals from './api/proposals/fetchProposals';*/
-
 export default function Home () {
-  //console.log(allProposals);
-
-  // Get publications from Lens
   const { isLoading, error, data } = useExplorePublicationsQuery({
     request: {
       sortCriteria: PublicationSortCriteria.Latest,
@@ -26,9 +18,6 @@ export default function Home () {
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   });
-
-  // Get proposals from contract (which will later be attached to Lens as a custom module)
-  
 
   if (isLoading) {
     return (<div className={styles.container}>Loading</div>)
