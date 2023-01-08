@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-    const { contract } = useContract('0xCcaA1ABA77Bae6296D386C2F130c46FEc3E5A004');
+    const { contract } = useContract('0xed6e837Fda815FBf78E8E7266482c5Be80bC4bF9'); // Goerli contract -> will update to Polygon mainnet when in production
     const { mutateAsync: createProposal } = useContractWrite(contract, 'createProposal'); // Call function & create a proposal, passing in params from the form
     const address = useAddress();
     const connect = useMetamask();

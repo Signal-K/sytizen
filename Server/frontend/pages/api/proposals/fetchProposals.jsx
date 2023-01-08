@@ -1,3 +1,5 @@
+import { StateContextProvider } from "../../../context/proposals";
+import { NavLinkProposals } from '../../../constants/proposals';
 /*import { useContract, useContractRead } from "@thirdweb-dev/react";
 
 export default function fetchProposalFromContract () {
