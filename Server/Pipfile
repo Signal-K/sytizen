@@ -9,8 +9,6 @@ flask = "*"
 flask_cors = "*"
 thirdweb-sdk = "*"
 python-dotenv = "*"
+psycopg2 = "*"
 
 [dev-packages]
-
-[requires]
-python_version = "3.8.9"

@@ -1,15 +1,15 @@
-from flask import Flask
-from flask import request
+from flask import Blueprint, request
 from moralis import auth
 from flask_cors import CORS
-from app import app
+
+moralis_handler = Blueprint('moralis_handler', __name__)
 
 # Moralis setup
 apiKey = "kJfYYpmMmfKhvaWMdD3f3xMMb24B4MHBDDVrfjslkKgTilvMgdwr1bwKUr8vWdHH" # Move to env
 
 # Authentication routes -> move to auth.py later
 # Request a challenge when a user attempts to connect their wallet
-@app.route('/requestChallenge', methods=['GET'])
+@moralis_handler.route('/requestChallenge', methods=['GET'])
 def reqChallenge():
     args = request.args # Fetch the arguments from the request
 
@@ -35,7 +35,7 @@ def reqChallenge():
     return result
 
 # Verify signature from user
-@app.route('/verifyChallenge', methods=['GET'])
+@moralis_handler.route('/verifyChallenge', methods=['GET'])
 def verifyChallenge():
     args = request.args
 
