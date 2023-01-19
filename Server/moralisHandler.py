@@ -2,10 +2,9 @@ from flask import Flask
 from flask import request
 from moralis import auth
 from flask_cors import CORS
+from app import app
 
-# Flask application setup
-app = Flask(__name__)
-CORS(app)
+# Moralis setup
 apiKey = "kJfYYpmMmfKhvaWMdD3f3xMMb24B4MHBDDVrfjslkKgTilvMgdwr1bwKUr8vWdHH" # Move to env
 
 # Authentication routes -> move to auth.py later
@@ -51,7 +50,3 @@ def verifyChallenge():
     ),
 
     return result
-
-# Initialising Flask application
-if __name__ == '__main__':
-    app.run(host='127.0.0.1', port='5000', debug=True)

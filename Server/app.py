@@ -4,6 +4,8 @@ from thirdweb import ThirdwebSDK
 from datetime import datetime, timedelta
 import os
 
+import moralisHandler
+
 app = Flask(__name__)
 
 # Getting proposals (move to separate file)
