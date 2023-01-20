@@ -10,5 +10,8 @@ flask_cors = "*"
 thirdweb-sdk = "*"
 python-dotenv = "*"
 psycopg2 = "*"
+matplotlib = "*"
+lightkurve = "*"
+nbformat = "*"
 
 [dev-packages]

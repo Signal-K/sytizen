@@ -1,6 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from dotenv import load_dotenv
 import psycopg2
+import os
 
 database_connection = Blueprint('database_connection', __name__)
 

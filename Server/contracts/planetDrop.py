@@ -37,3 +37,37 @@ def create_planet():
     contract = sdk.get_contract("0x766215a318E2AD1EbdC4D92cF2A3b70CBedeac31")
     #data = contract.call("lazyMint", _amount, _baseURIForTokens, _data) (POST data)
     # Interaction flow -> https://www.notion.so/skinetics/Sample-Planets-Contract-4c3bdcbca4b9450382f9cc4e72e081f7
+
+"""
+# Flask/api routes
+@app.route('/planet')
+def planet():
+    return jsonify({'planet' : 'planet'})
+
+@app.post('/select_planet')
+def select_planet():
+    data = request.get_json()
+    planetId = data['planetId']
+    planetName = data['planetName']
+    planetTic = data['planetTic']
+    sector_data = lk.search_lightcurve(planetTic, author = 'SPOC', sector = 23)
+    #lc = sector_data.download()
+    #lc.plot()
+    return sector_data
+
+# Show planet data on frontend
+@app.post('/show_planet') # Can we do some calculation for nft revealing using this (i.e. mint nft after classification)
+def show_tic():
+    lc = sector_data.plot()
+    return lc
+
+@app.post('/mint-planet')
+def mint_planet():
+    data = request.get_json()
+    _receiver = data['profileAddress']
+    _tokenId = data['tokenId']
+    _quantity = 1
+    data = contract.call("claim", _receiver, _tokenId, _quantity)
+
+app.run(host='0.0.0.0', port=8080)
+"""
