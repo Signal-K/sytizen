@@ -54,8 +54,7 @@ def search():
     data = request.get_json()
     tic = data['ticid']
     
-    sector_data = lk.search_lightcurve(tic, author = 'SPOC', sector = 18)
-    # post tic & other request data to https://deepnote.com/workspace/star-sailors-49d2efda-376f-4329-9618-7f871ba16007/project/lightkurvehandler-dca7e16c-429d-42f1-904d-43898efb2321/
+    sector_data = lk.search_lightcurve(tic, author = 'SPOC', sector = 18) # post tic & other request data to https://deepnote.com/workspace/star-sailors-49d2efda-376f-4329-9618-7f871ba16007/project/lightkurvehandler-dca7e16c-429d-42f1-904d-43898efb2321/
 
     # Connect to the database
     with connection:
@@ -67,7 +66,7 @@ def search():
             # Get the id of inserted row returned, send to Supabase
             
 
-    sector_data = lk.search_lightcurve(tic, author = 'SPOC', sector = 18)
+    sector_data = lk.search_lightcurve(tic, author = 'SPOC', sector = 18) # new bug discovered: https://www.notion.so/skinetics/Sample-Planets-Contract-4c3bdcbca4b9450382f9cc4e72e081f7#da4bef6caef746ac8017d6511ff7fb52
     #available_data_all = lk.search_lightcurve(tic, author = 'SPOC')
     #select_sectors = available_data_all[0:4]
     #lc_collection = select_sectors.download_all()

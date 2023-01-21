@@ -13,5 +13,9 @@ psycopg2 = "*"
 matplotlib = "*"
 lightkurve = "*"
 nbformat = "*"
+gunicorn = "*"
+sqlalchemy = "*"
+psycopg2-binary = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
