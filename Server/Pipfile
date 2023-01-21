@@ -9,8 +9,13 @@ flask = "*"
 flask_cors = "*"
 thirdweb-sdk = "*"
 python-dotenv = "*"
+psycopg2 = "*"
+matplotlib = "*"
+lightkurve = "*"
+nbformat = "*"
+gunicorn = "*"
+sqlalchemy = "*"
+psycopg2-binary = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
-
-[requires]
-python_version = "3.9.9"

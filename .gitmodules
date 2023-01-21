@@ -7,3 +7,6 @@
 [submodule "container/lib/forge-std"]
 	path = container/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std.git
+[submodule "Server/client"]
+	path = Server/client
+	url = https://github.com/signal-k/client
