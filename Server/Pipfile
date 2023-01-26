@@ -1,11 +1,6 @@
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-
 [packages]
 moralis = "*"
-flask = "*"
+flask = "*"ac
 flask_cors = "*"
 thirdweb-sdk = "*"
 python-dotenv = "*"
@@ -17,5 +12,4 @@ gunicorn = "*"
 sqlalchemy = "*"
 psycopg2-binary = "*"
 flask-sqlalchemy = "*"
-
-[dev-packages]
+supabase = "*"

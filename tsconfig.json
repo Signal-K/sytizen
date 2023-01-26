@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "Classify/generator/src/components/SceneRenderer.jsx"  ],
+, "Classify/generator/SceneRenderer.jsx"  ],
   "exclude": [
     "node_modules"
   ]
