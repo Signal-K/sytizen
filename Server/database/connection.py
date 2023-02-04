@@ -7,7 +7,8 @@ database_connection = Blueprint('database_connection', __name__)
 
 load_dotenv()
 url = os.getenv("DATABASE_URL")
-connection = psycopg2.connect(url)
+print("DATABASE",url)
+connection = psycopg2.connect(dsn=url, user='postgres')
 
 # PostgreSQL queries
 CREATE_USERS_TABLE = (

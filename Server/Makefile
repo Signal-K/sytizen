@@ -6,7 +6,10 @@ build:
 # Default port 5000 is in use on Ventura Macs
 # 7355 chosen for TESS
 run:
-	docker run -it -d -p 7355:7355 sytizen-server
+	docker compose up --build --detach
 
-# stop:
-# 	docker 
+logs:
+	docker compose logs --follow
+
+stop:
+	docker compose down
