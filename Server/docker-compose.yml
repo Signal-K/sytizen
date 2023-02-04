@@ -6,9 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-    # - DATABASE_URL=database:5432
     - DATABASE_URL=postgresql://database:5432/
-    # - DATABASE_URL=postgresql://postgres:O9Boa5X79KyBRhkS@db.qwbufbmxkjfaikoloudl.supabase.co:5432/postgres
     ports:
     - "5000:5000"
     expose: 
