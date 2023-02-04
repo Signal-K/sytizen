@@ -13,7 +13,6 @@ lightkurve = "*"
 nbformat = "*"
 gunicorn = "*"
 sqlalchemy = "*"
-psycopg2 = "*"
 psycopg2-binary = "*"
 flask-sqlalchemy = "*"
 
