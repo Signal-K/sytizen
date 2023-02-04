@@ -9,10 +9,13 @@ RUN pip install pipenv
 # RUN pip install -r requirements.txt
 
 WORKDIR ${PROJECT_DIR}
+COPY Pipfile .
+COPY Pipfile.lock .
+
+
+RUN pipenv install --system
+# RUN pipenv install --system --deploy
 COPY . .
 
-RUN pipenv install --skip-lock
-RUN pipenv graph
-# RUN pipenv install --system --deploy
-
-CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+# CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+CMD ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
