@@ -11,6 +11,9 @@ For convenience, a Makefile supports the following simple operations:
 * `make logs` tails the logs for both containers
 * `make stop` stops and deletes the clusters
 
+For rapid iteration, I use:
+`make stop run logs`
+
 ## Prerequisites
 
 You will need to have a Docker environment available... Docker Desktop or an equivalent
@@ -35,17 +38,12 @@ The easiest solution is to turn off the Airplay Receiver service; an alternative
 
 ## Current Issue
 
-The server (running in docker compose) reports an ImportError:
+The server responds to `http://localhost:5000` with a classic "Hello World"
 
-```
-zen-server-1    | Error: While importing 'app', an ImportError was raised:
-sytizen-server-1    | 
-sytizen-server-1    | Traceback (most recent call last):
-sytizen-server-1    |   File "/usr/local/lib/python3.9/site-packages/flask/cli.py", line 218, in locate_app
-sytizen-server-1    |     __import__(module_name)
-sytizen-server-1    |   File "/app/app.py", line 15, in <module>
-sytizen-server-1    |     from ansible.tic_classify import tic_classify
-sytizen-server-1    |   File "/app/ansible/tic_classify.py", line 2, in <module>
-sytizen-server-1    |     from thirdweb import ThirdwebSDK
-sytizen-server-1    | ModuleNotFoundError: No module named 'thirdweb'
-```
+Several of the blueprints in `app.py` are commented out since they have dependencies on ThirdWeb
+
+# Next Steps
+
+* Database schema for local development
+* Revisit the ThirdWeb dependency issue and
+* Reinstate the commented blueprints

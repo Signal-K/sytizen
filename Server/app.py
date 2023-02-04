@@ -12,15 +12,15 @@ from auth.moralisHandler import moralis_handler
 # from contracts.planetDrop import planet_drop
 from database.connection import database_connection
 # from database.unity-integration import unity_database_connection
-from ansible.tic_classify import tic_classify
+# from ansible.tic_classify import tic_classify
 #from ansible.classify import lightkurve_handler
 
 app = Flask(__name__)
 app.register_blueprint(moralis_handler, url_prefix='/moralis-auth')
 # app.register_blueprint(planet_drop, url_prefix='/planets')
 app.register_blueprint(database_connection, url_prefix='/database')
-app.register_blueprint(unity-database_connection, url_prefix='/database-unity')
-app.register_blueprint(tic_classify, url_prefix='/lightkurve')
+# app.register_blueprint(unity-database_connection, url_prefix='/database-unity')
+# app.register_blueprint(tic_classify, url_prefix='/lightkurve')
 #app.register_blueprint(lightkurve__handler, url_prefix='/lightkurve-handle')
 
 @app.route('/')
