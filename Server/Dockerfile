@@ -11,7 +11,8 @@ RUN pip install pipenv
 WORKDIR ${PROJECT_DIR}
 COPY . .
 
-RUN pipenv install
+RUN pipenv install --skip-lock
+RUN pipenv graph
 # RUN pipenv install --system --deploy
 
 CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
