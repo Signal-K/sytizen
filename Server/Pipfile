@@ -15,5 +15,6 @@ gunicorn = "*"
 sqlalchemy = "*"
 psycopg2-binary = "*"
 flask-sqlalchemy = "*"
+thirdweb-sdk = "*"
 
 [dev-packages]

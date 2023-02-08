@@ -2,7 +2,7 @@
 
 In this folder, `Dockerfile` runs the Flask Server in a container.
 
-The `docker-compose.yml` defines a cluster with the Server and a local PG container
+The `docker-compose.yml` defines a cluster with the Server and a local PostgreSQL container
 
 For convenience, a Makefile supports the following simple operations:
 
@@ -24,7 +24,8 @@ You will need to have a Docker environment available... Docker Desktop or an equ
 
 The build step (`make build`) fails whilst running `pipenv install` during the build of the Docker image.
 
-`thirdweb-sdk` caused errors on `pipenv install`. The output was long and ugly; no resolution has been found, so we are removing this for now.
+`thirdweb-sdk` caused errors on `pipenv install`. The output was long and ugly; but a resolution has been found.
+The problem was the use of the `slim-` base image.  Switching from `p`ython:3.9.9-slim-bullseye` to `python:3.9.9-bullseye` avoided the problem.
 
 ### Ventura - Flask default port 5000
 
@@ -45,5 +46,3 @@ Several of the blueprints in `app.py` are commented out since they have dependen
 # Next Steps
 
 * Database schema for local development
-* Revisit the ThirdWeb dependency issue and
-* Reinstate the commented blueprints

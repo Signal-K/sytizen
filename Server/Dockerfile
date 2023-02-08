@@ -1,4 +1,4 @@
-FROM python:3.9.9-slim-bullseye
+FROM python:3.9.16-bullseye
 
 ENV PROJECT_DIR /app
 
@@ -10,10 +10,10 @@ RUN pip install pipenv
 
 WORKDIR ${PROJECT_DIR}
 COPY Pipfile .
-COPY Pipfile.lock .
+# COPY Pipfile.lock .
 
-
-RUN pipenv install --system
+RUN pipenv install
+# RUN pipenv install --system
 # RUN pipenv install --system --deploy
 COPY . .
 
