@@ -2,7 +2,8 @@
 
 In this folder, `Dockerfile` runs the Flask Server in a container.
 
-The `docker-compose.yml` defines a cluster with the Server and a local PostgreSQL container
+The `docker-compose.yml` defines a cluster with the Server and a local PostgreSQL container.
+It also runs as well as a client, assuming that the client is in `../client` from this location.
 
 For convenience, a Makefile supports the following simple operations:
 
@@ -29,13 +30,27 @@ The problem was the use of the `slim-` base image.  Switching from `p`ython:3.9.
 
 ### Ventura - Flask default port 5000
 
-Flask runs by default on port 5000.  However, on macos Ventura, there is a system service "Airplay Receiver" listening on this port.
+Flask runs by default on port 5000.  However, on macOS Ventura, there is a system service "Airplay Receiver" listening on this port.
 
 In this case, `localhost:5000` does not reach the Flask app, although `127.0.0.1:5000` does.
 
 The easiest solution is to turn off the Airplay Receiver service; an alternative is to run Flask on a different port... perhaps 7355 for TESS?
 
 [Here's a full discussion of the issue](https://blog.yimingliu.com/2023/01/01/cannot-connect-to-flask-development-server-on-localhost-port-5000/).
+
+### Supabase, local
+
+Following the guidance [here](https://supabase.com/docs/guides/self-hosting/docker) I was able to get Supabase running locally.
+
+```
+git clone --depth 1 https://github.com/supabase/supabase
+cd supabase/docker
+cp .env.example .env
+docker compose up
+```
+
+However, the vanilla installation is complicated, unconfigured and potentially of limited utility.
+
 
 ## Current Issue
 

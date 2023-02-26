@@ -28,7 +28,19 @@ services:
     - "5432"
     networks:
     - back-tier
+  client:
+    build:
+      context: ../../client
+    ports:
+    - "3000:3000"
+    expose:
+    - "3000"
+    depends_on:
+    - server
+    networks:
+    - front-tier
+    - back-tier
 
 networks:
-  # front-tier: {}
+  front-tier: {}
   back-tier: {}
