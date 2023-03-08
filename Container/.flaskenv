@@ -1,0 +1,4 @@
+FLASK_ENV=development
+FLASK_APP=main.py
+SUPABASE_URL= 
+SUPABASE_KEY= 

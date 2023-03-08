@@ -5,7 +5,7 @@ def dot(a, b):
     x1, y1, z1 = a
     x2, y2, z2 = b
     return x1 * x2 + y1 * y2 + z1 * z2
-
+x
 
 def cos_vec(a, b):
     return dot(a, b) / np.sqrt(dot(a, a) * dot(b, b))
