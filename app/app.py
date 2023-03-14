@@ -1,63 +1,59 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS, cross_origin
+from supabase_py import client, create_client
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-db = SQLAlchemy(app)
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_ANON_KEY")
 
-class Planet(db.Model):
-  id = db.Column(db.Integer, primary_key=True)
-  title = db.Column(db.String(80), unique=True, nullable=False)
-  content = db.Column(db.String(120), unique=True, nullable=False)
+url = "https://afwwxlhknelxylrfvexi.supabase.co"
+key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmd3d4bGhrbmVseHlscmZ2ZXhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjY0MzQ4MTgsImV4cCI6MTk4MjAxMDgxOH0.gk1F8Br9__04cvzqYIeeQ-U08KATiHovAw3r3ofNGAo"
 
-  def __init__(self, title, content):
-    self.title = title
-    self.content = content
+supabase: client = create_client(url, key)
 
-db.create_all()
+# Function to retrieve planet data from supa
+def find_all_planets(): # Right now this is just demo data, we'll push this data to Supa from Lightkurve later
+    data = supabase.table("Planetss").select("*").execute()
+    return data['data']
 
-# Get a specific planet
-@app.route('/planets/<id>', methods=['GET'])
-def get_planet(id):
-  planet = Planet.query.get(id)
-  del planet.__dict__['_sa_instance_state']
-  return jsonify(planet.__dict__)
+planets = find_all_planets()
+print(planets)
 
-# Get & return all planets
-@app.route('/planets', methods=['GET'])
+# Function to add a new planet to the store/supa
+def add_planet_to_DB(title, ticId) -> dict: # See `models/TIC.py`
+    planet = {
+        "title": title,
+        "ticId": ticId,
+    }
+    data = supabase.table("Planetss").insert(planet).execute()
+    planets = find_all_planets()
+
+    return data['data']
+
+# GET request -> return all planets in storage/db in JSON format
+@app.route('/planets')
 def get_planets():
-  planets = []
-  for planet in db.session.query(Planet).all():
-    del planet.__dict__['_sa_instance_state']
-    planets.append(planet.__dict__)
-  return jsonify(planets)
+    planets = find_all_planets()
+    return jsonify({
+        'planets': planets, # Then present this on react frontend, port 5000 -> 3000
+    })
 
-# Create a planet
-@app.route('/planets', methods=['POST'])
-def create_planet():
-  body = request.get_json()
-  db.session.add(Planet(body['title'], body['content']))
-  db.session.commit()
-  return "planet created"
-
-# Update a specific planet
-@app.route('/planets/<id>', methods=['PUT'])
-def update_planet(id):
-  body = request.get_json()
-  db.session.query(Planet).filter_by(id=id).update(
-    dict(title=body['title'], content=body['content']))
-  db.session.commit()
-  return "planet updated"
-
-# Delete a specific planet
-@app.route('/planets/<id>', methods=['DELETE'])
-def delete_planet(id):
-  db.session.query(Planet).filter_by(id=id).delete()
-  db.session.commit()
-  return "planet deleted"
+@app.route('/planets/add', methods=['POST'])
+def add_planet():
+    data = request.get_json()
+    try:
+        title = data['title']
+        ticId = data['ticId']
+        if data:
+            data = add_planet_to_DB(title, ticId)
+            planets = find_all_planets()
+            return jsonify(data), 201
+    except:
+        return Response('''{"message": "Bad Request"}''', status=400, mimetype='application/json')

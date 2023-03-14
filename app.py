@@ -1,4 +1,6 @@
 from flask import Flask, request, make_response, jsonify, Blueprint
+from flask_cors import CORS, cross_origin
+from supabase_py import client, create_client
 
 import base64
 from io import BytesIO
@@ -11,6 +13,21 @@ from database.datastore import solObjects # get this from database.store / supab
 import time
 
 app = Flask(__name__)
+CORS(app)
+
+if __name__ == '__main__':
+    app.run(debug = True)
+
+def createSupabaseClient(): # add to separate file
+    url: str = os.environ.get("SUPABASE_URL")
+    key: str = os.environ.get("SUPABASE_ANON_KEY")
+
+    url = "https://afwwxlhknelxylrfvexi.supabase.co"
+    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmd3d4bGhrbmVseHlscmZ2ZXhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjY0MzQ4MTgsImV4cCI6MTk4MjAxMDgxOH0.gk1F8Br9__04cvzqYIeeQ-U08KATiHovAw3r3ofNGAo"
+
+    supabase: client = create_client(url, key)
+
+createSupabaseClient()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
