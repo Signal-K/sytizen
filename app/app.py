@@ -1,10 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+if __name__ == '__main__':
+    app.run(debug=True)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 db = SQLAlchemy(app)
 
 class Planet(db.Model):
@@ -16,8 +20,7 @@ class Planet(db.Model):
     self.title = title
     self.content = content
 
-with app.app_context():
-    db.create_all()
+db.create_all()
 
 # Get a specific planet
 @app.route('/planets/<id>', methods=['GET'])
