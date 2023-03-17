@@ -1,14 +1,16 @@
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-
 [packages]
-supabase = "*"
+moralis = "*"
+flask = "*"ac
+flask_cors = "*"
+thirdweb-sdk = "*"
+python-dotenv = "*"
+psycopg2 = "*"
+matplotlib = "*"
 lightkurve = "*"
+nbformat = "*"
+gunicorn = "*"
+sqlalchemy = "*"
+psycopg2-binary = "*"
+flask-sqlalchemy = "*"
+supabase = "*"
 gotrue = "*"
-
-[dev-packages]
-
-[requires]
-python_version = "3.10"
