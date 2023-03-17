@@ -5,10 +5,10 @@ from supabase_py import client, create_client
 import base64
 from io import BytesIO
 
-from .datastore import supabase, find_all_planets, add_planet_to_DB
+from .datastore import supabase, find_all_planets, add_planet_to_DB, planets
 # from Generator import gen_image # add this to a blueprint
 
-from .views import main
+from .classify import classify
 
 from .main import gen_image
 
@@ -16,7 +16,7 @@ from .main import gen_image
 app = Flask(__name__)
 
 # Flask blueprints
-app.register_blueprint(main, url_prefix='/classify')
+app.register_blueprint(classify, url_prefix='/classify')
 CORS(app)
 
 if __name__ == '__main__':
@@ -24,13 +24,8 @@ if __name__ == '__main__':
         gen_image(seed)
     app.run(debug = True)
 
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    for seed in range(0, 10):
-        gen_image(seed)
-    return 'hello world'
-
 @app.route('/get_image')
 def get_image():
+    #for seed in range(0, 10):
+       #gen_image(seed)
     return send_file('out0.png', mimetype='image/png')

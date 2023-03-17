@@ -9,10 +9,11 @@ planets = find_all_planets()
 print(planets)
 
 # Function to add a new planet to the store/supa
-def add_planet_to_DB(title) -> dict: # See `models/TIC.py`
+def add_planet_to_DB(title, ticId) -> dict: # See `models/TIC.py`
     planet = {
         "title": title,
+        "ticId": ticId,
     }
-    data = supabase.table("Planets").insert(planet).execute()
+    data = supabase.table("Planetss").insert(planet).execute() # Planetsss table on "Testing Playground" project
 
     return data['data']
