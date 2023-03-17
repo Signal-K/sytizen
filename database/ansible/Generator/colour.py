@@ -1,6 +1,5 @@
 import numpy as np
 
-
 biome_deep_water = {
     "maxA": 0,
     "minA": None,
