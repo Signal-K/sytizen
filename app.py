@@ -1,14 +1,14 @@
 from flask import Flask, request, make_response, jsonify, Blueprint
 from flask_cors import CORS, cross_origin
 from supabase_py import client, create_client
-
+ 
 import base64
 from io import BytesIO
 
 from .datastore import supabase, find_all_planets, add_planet_to_DB
 # from Generator import gen_image # add this to a blueprint
 
-from .views import main
+from views import main
 
 # Flask application/container initialisation
 app = Flask(__name__)
