@@ -298,7 +298,7 @@ def colorize(x, y, z, c, vT, vH):
     pond_tot = np.zeros_like(c)
 
     for biome in biome_list:
-        ok = np.ones_like(pond_tot, dtype=bool)#np.bool)
+        ok = np.ones_like(pond_tot, dtype=bool)#bool)
 
         if biome['minA'] is not None:
             ok = ok & (A >= biome['minA'])

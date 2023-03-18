@@ -24,6 +24,12 @@ if __name__ == '__main__':
         gen_image(seed)
     app.run(debug = True)
 
+@app.route('/')
+def index():
+    for seed in range(0, 10):
+        gen_image(seed)
+    return "Hello, this is the index"
+
 @app.route('/get_image')
 def get_image():
     #for seed in range(0, 10):

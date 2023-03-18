@@ -188,7 +188,7 @@ def gen_image(seed):
     im = apply_illum(a, b, c)
     plt.axis("off")
     plt.imshow(im)
-    plt.imsave("out"+str(seed)+".png", im) # Change this to be a "generated/out" dir in the generator dir
+    plt.imsave("static/out"+str(seed)+".png", im) # Change this to be a "generated/out" dir in the generator dir
     plt.show()
     # send img to ipfs
 
