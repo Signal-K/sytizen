@@ -1,6 +1,7 @@
 import numpy as np
 
-from .geometry import dot
+from geometry import dot
+#from .geometry import dot
 
 def fract(x):
     return x - np.floor(x)

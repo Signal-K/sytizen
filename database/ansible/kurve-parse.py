@@ -50,3 +50,55 @@ def mint_planet():
     data = contract.call("claim", _receiver, _tokenId, _quantity)
 
 app.run(host='0.0.0.0', port=8080)
+
+import lightkurve as lk
+import random
+import string
+from supabase import create_client
+
+# Connect to Supabase
+supabase_url = 'https://<your-project>.supabase.co'
+supabase_key = '<your-anon-key>'
+client = create_client(supabase_url, supabase_key)
+
+# Define a function to generate random TIC ids
+def generate_tic_id():
+    letters = string.ascii_uppercase
+    digits = string.digits
+    random_letters = ''.join(random.choice(letters) for i in range(3))
+    random_digits = ''.join(random.choice(digits) for i in range(4))
+    return f'KOI-{random_letters}{random_digits}'
+
+# Define a function to upload data to Supabase
+def upload_to_supabase(name, image_link, radius, period):
+    data = {
+        'name': name,
+        'image': image_link,
+        'radius': radius,
+        'period': period
+    }
+    response = client.table('lightcurves').insert(data).execute()
+    if response['status'] == 201:
+        print(f'Successfully uploaded {name} to Supabase!')
+    else:
+        print(f'Failed to upload {name} to Supabase.')
+
+# Generate 5 random TIC ids and create Lightcurve objects
+for i in range(5):
+    tic_id = generate_tic_id()
+    print(f'Generating Lightcurve for TIC ID: {tic_id}')
+    lc = lk.search_lightcurve(tic_id).download_all()
+
+    # Save the Lightcurve plot to a file and get the link
+    fig = lc[0].plot()
+    image_file = f'{tic_id}.png'
+    fig.savefig(image_file)
+    image_link = client.storage.from_file(image_file, f'lightcurves/{image_file}').public_url()
+
+    # Get the name, radius, and orbital period
+    name = lc[0].target_name
+    radius = lc[0].header['RADIUS']
+    period = lc[0].header['TPERIOD']
+
+    # Upload the data to Supabase
+    upload_to_supabase(name, image_link, radius, period)
