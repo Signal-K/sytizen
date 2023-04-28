@@ -1,53 +1,79 @@
-import random
-import uuid
 import os
-import urllib.request
-from supabase import create_client
-from lightkurve import search_lightcurvefile, search_lightcurve
+import uuid
+import random
+import string
+import requests
+import supabase
+import lightkurve as lk
+import matplotlib.pyplot as plt
 
-# Supabase credentials
+# Initialize Supabase client with your Supabase credentials
 supabase_url = 'https://qwbufbmxkjfaikoloudl.supabase.co'
 supabase_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3YnVmYm14a2pmYWlrb2xvdWRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NDE3NTksImV4cCI6MTk4NTUxNzc1OX0.RNz5bvsVwLvfYpZtUjy0vBPcho53_VS2AIVzT8Fm-lk'
+# Connect to supabase
+supabase_client = supabase.Client(supabase_url, supabase_key)
 
-# Output directory for saving lightcurve images
-OUTPUT_DIR = 'output'
+# Define TIC IDs to retrieve lightcurves for
+tic_ids = [
+    'KOI-4878.01',
+    'KOI-456.04',
+    'KOI-3456.02',
+    'KOI-5737.01',
+    'KOI-5806.01',
+    'KOI-5499.01',
+    'KOI-2194.03',
+    'KOI-6108.01',
+    'KOI-5938.01',
+    'KOI-5087.01',
+    'KOI-5948.01',
+    'KOI-5176.01',
+    'KOI-5949.01',
+    'KOI-5506.01',
+    'KOI-6239.01',
+    'KOI-5888.01',
+    'KOI-5068.01',
+    'KOI-5541.01',
+    'KOI-5959.01',
+    'KOI-5236.01',
+    'KOI-5819.01',
+    'KOI-5413.01',
+    'KOI-5202.01',
+    'KOI-1871.01',
+    'KOI-5653.01',
+    'KOI-5237.01',
+    'KOI-6151.01',
+    'KOI-5545.01',
+]
 
-# Supabase table name
-TABLE_NAME = 'lightkurves'
+# Define output directory
+output_dir = 'output'
 
-# Connect to Supabase
-supabase = create_client(supabase_url, supabase_key)
+# Create output directory if it doesn't exist
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
-# Search for lightcurve file
-lcf = search_lightcurve('KOI-5737').download()
-
-try:
-    # Generate planet ID
+# Loop through TIC IDs and retrieve lightcurves
+for tic_id in tic_ids:
+    # Construct filename for the lightcurve
+    filename = f"{tic_id}.png"
+    # Construct path for the lightcurve image
+    path = os.path.join(output_dir, filename)
+    # Retrieve the lightcurve data for the TIC ID
+    lc = lk.search_lightcurvefile(tic_id).download_all().stitch()
+    # Plot the lightcurve and save the image
+    plt.gcf().savefig(path)#lc.plot().savefig(path)
+    # Retrieve radius and orbital period from lightcurve metadata
+    radius = lc.meta.get('r_star')
+    period = lc.meta.get('orbital_period')
+    # Generate a unique ID for the planet
     planet_id = str(uuid.uuid4())
-
-    # Save lightcurve image to output directory
-    filename = "KOI-5737.png"
-    path = os.path.join(OUTPUT_DIR, filename)
-    lcf.plot().figure.savefig(path)
-
-    # Upload image to Supabase storage bucket
-    
-    supabase.storage().from_('lightkurves').upload('output/' + filename, file)
-    #with open('output/' + filename, 'rb+') as f:
-        #res = supabase.storage().from_('planets').upload(filename, os.path.abspath(filename))
-
-    image_url = supabase.storage.upload(filename, image_data)
-
-    # Insert data into Supabase table
+    # Construct data object to be inserted into Supabase table
     data = {
         'planetId': planet_id,
-        'image': image_url.public_url,
-        'name': 'KOI-5737',
-        'radius': random.uniform(0.1, 1.0),
-        'orbital_period': random.uniform(1, 100)
+        'image': f"https://your-website.com/{filename}",
+        'name': tic_id,
+        'radius': radius,
+        'orbital_period': period,
     }
-    supabase.table(TABLE_NAME).insert(data).execute()
-
-    print("Inserted planet KOI-5737")
-except Exception as e:
-    print(f"Failed to insert planet: {e}")
+    # Insert data into Supabase table
+    supabase_client.table('lightcurves').insert(data)
