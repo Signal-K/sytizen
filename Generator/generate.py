@@ -47,9 +47,9 @@ for tic_id in tic_ids:
             'image': image_url.public_url,
             'name': tic_id,
             'radius': random.uniform(0.1, 1.0),
-            'orbital_period': random.uniform(1, 100)
+            'orbitalperiod': random.uniform(1, 100)
         }
-        supabase.table(TABLE_NAME).insert(data).execute()
+        supabase.table('lightkurves').insert(data).execute()
         
         print(f"Inserted planet {tic_id}")
     except:
