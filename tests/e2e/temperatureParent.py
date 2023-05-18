@@ -1,9 +1,7 @@
 import lightkurve as lk
 
-# Search for a light curve of the object
-search_result = lk.search_lightcurvefile('KIC 8462852', mission='Kepler')
+search_result = lk.search_lightcurve('KIC 8462852', mission='Kepler')
 lc = search_result.download().PDCSAP_FLUX.remove_nans().remove_outliers()
 
-# Estimate the temperature of the parent star
-temperature = lc.estimate_temperature()
-print(f"The estimated temperature of the parent star is {temperature:.0f} K")
+teff = search_result.target_table['teff'][0]
+print(f"The temperature of the parent star is {teff} K")

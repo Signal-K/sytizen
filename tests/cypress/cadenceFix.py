@@ -75,7 +75,7 @@ supabase_url = 'https://qwbufbmxkjfaikoloudl.supabase.co'
 supabase_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3YnVmYm14a2pmYWlrb2xvdWRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NDE3NTksImV4cCI6MTk4NTUxNzc1OX0.RNz5bvsVwLvfYpZtUjy0vBPcho53_VS2AIVzT8Fm-lk'
 # Connect to supabase
 supabase = create_client(supabase_url, supabase_key)
-table_name = 'lightkurves'
+table_name = 'planetsss' # aka lightkurves
 
 # Create output directory if it doesn't exist
 if not os.path.exists('output'):
@@ -103,10 +103,10 @@ for tic_id in TIC_IDS:
         period = 1#'lc.header-period'#"lc.header['period']"
 
         # Calculating temperature
-        """tpf = lk.search_targetpixelfile(tic_id).download()#, quarter=4).download() # Download target pixel file for the anomaly
+        tpf = lk.search_targetpixelfile(tic_id).download()#, quarter=4).download() # Download target pixel file for the anomaly
         lctpf = tpf.to_lightkurve()
         lctpf_params = lctpf.estimate_stellar_parameters() #teff = tpf.estimate_stellar_parameters().effective_temperature.value # Estimate the effective temperature of the parent star"""
-        """tpf = lk.search_targetpixelfile(tic_id).download()
+        tpf = lk.search_targetpixelfile(tic_id).download()
         lc = tpf.to_lightcurve().normalize()
         lctpf_params = tpf.get_lightcurve('PDCSAP_FLUX').estimate_stellar_parameters()
         # Estimate the temperature of the planet assuming a Bond albedo of 0.3
@@ -116,9 +116,9 @@ for tic_id in TIC_IDS:
         sigma_sb = 5.670374419e-08 # Stefan-Boltzmann constant in W/(m^2 K^4)
         t_planet = ((lctpf_params / 5777.0) ** 0.5) * ((1 - 0.3) ** 0.25) * ((r * 69.911e6))#teff / 5777.0) ** 0.5) * ((1 - 0.3) ** 0.25) * ((r * 69.911e6))"""
         
-        supabase.table('lightkurves').insert({
-            'id': tic_id,
-            'image': 'https://deepnote.com/workspace/star-sailors-49d2efda-376f-4329-9618-7f871ba16007/project/Star-Sailors-Light-Curve-Plot-b4c251b4-c11a-481e-8206-c29934eb75da/%2Foutput%2F',# + str(tic_id), + '.png'#image_url,
+        supabase.table('planetsss').insert({
+            #'id': tic_id,
+            #'image': 'https://deepnote.com/workspace/star-sailors-49d2efda-376f-4329-9618-7f871ba16007/project/Star-Sailors-Light-Curve-Plot-b4c251b4-c11a-481e-8206-c29934eb75da/%2Foutput%2F',# + str(tic_id), + '.png'#image_url,
             'content': name,
             'radius': radius,
             'orbital_period': period,
