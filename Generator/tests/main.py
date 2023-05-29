@@ -6,9 +6,14 @@ from PIL import Image
 texture_size = 1024
 
 # Define the parameters for generating the planet
-planet_radius = 1.0
-land_threshold = 0.2
-water_level = 0.2
+planet_radius = 1.0 # If > 2, planet would be a gas giant. Convert this from the radius parameter in planetsss
+land_threshold = 0.4 # How much land is generated.
+water_level = 0.2 # Water level on the planet
+life_toggle = True # Toggle for life presence
+gas_giant_toggle = False
+if planet_radius >= 2.0:
+    gas_giant_toggle = True
+rings_toggle = False # False by default
 
 # Generate the height map using Perlin noise
 def generate_height_map(size, scale):
@@ -73,7 +78,11 @@ def generate_planet_texture(height_map, moisture_map):
             # Apply transition color between land and water
             else:
                 blend_factor = (height - water_level) / (land_threshold - water_level)
-                color = (int(255 * moisture * blend_factor), int(255 * moisture * blend_factor), 0)
+                color = (
+                    int(255 * moisture * blend_factor),
+                    int(255 * moisture * blend_factor),
+                    int(255 * moisture * blend_factor),
+                )
 
             pixels[i, j] = color
 
@@ -89,7 +98,7 @@ def generate_planet():
     planet_texture = generate_planet_texture(height_map, moisture_map)
     
     # Save the texture to a file (optional)
-    planet_texture.save("planet_texture.png")
+    planet_texture.save("output/planet_texture.png")
 
     return planet_texture
 
