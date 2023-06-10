@@ -28,6 +28,11 @@ def add_planet():
     try:
         title = data['title']
         ticId = data['ticId']
+        # Generate a static image
+        # for seed in range(0, 10):
+            # gen_image(seed)
+            # return send_file('static/out0.png', mimetype='image/png')
+            # Upload this image to supabase
         data = add_planet_to_DB(title, ticId)
         return jsonify(data), 201
     except:

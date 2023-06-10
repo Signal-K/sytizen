@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, jsonify, request, Response
 from .datastore import supabase, find_all_planets, add_planet_to_DB, planets
 # from .app import app
 # from views.models import Planet
-
+# from .main import gen_image
 # views.py
 classify = Blueprint('classify', __name__)
 
@@ -28,6 +28,21 @@ def add_planet():
     try:
         title = data['title']
         ticId = data['ticId']
+        # Generate a static image
+        # for seed in range(0, 10):
+            # gen_image(seed)
+            # return send_file('static/out0.png', mimetype='image/png')
+            # Upload this image to supabase
+            #"""axios.post('https://b4c251b4-c11a-481e-8206-c29934eb75da.deepnoteproject.com/planets/add', {
+            #    get image from static/out0.png -> https://deepnote.com/workspace/star-sailors-49d2efda-376f-4329-9618-7f871ba16007/project/Star-Sailors-Light-Curve-Plot-b4c251b4-c11a-481e-8206-c29934eb75da/%2Fstatic%2Fout0.png. This is generated on Deepnote then...permanent URL
+            #    Lightkurve -> https://deepnote.com/workspace/star-sailors-49d2efda-376f-4329-9618-7f871ba16007/project/Star-Sailors-Light-Curve-Plot-b4c251b4-c11a-481e-8206-c29934eb75da/%2Fstatic%2Flightcurve.fits
+            #}).then(res => {
+            #    set this as the url of the image. Still need to determine how to upload it to Supabase storage (could we link an IPFS when it's generated?)
+            #    console.log('res', res.data);
+            #}).catch(err => {
+            #    console.log('error in request', err);
+            #})
+            #"""
         data = add_planet_to_DB(title, ticId)
         return jsonify(data), 201
     except:
