@@ -5,10 +5,10 @@
 </head>
 <body>
     <h1>Star Sailors - Result</h1>
-    <h3>TIC ID: {{ tic_id }}</h3>
-    <p>Amplitude: {{ amplitude }}</p>
-    <p>Number of Trees: {{ num_trees }}</p>
-    <p>Habitability: {{ habitability }}</p>
-    <a href="/">Back to Calculation</a>
+    <h2>Result for TIC ID: {{ tic_id }}</h2>
+<p><strong>Amplitude:</strong> {{ amplitude }} (Explanation: The amplitude represents the variation in the brightness of the star over time.)</p>
+<p><strong>Number of Trees:</strong> {{ num_trees }} (Explanation: The number of trees is determined based on the amplitude and indicates a rough estimate of habitability.)</p>
+<p><strong>Habitability:</strong> {{ habitability }} (Explanation: The habitability value combines the number of trees with the amplitude to provide an indicator of potential habitability.)</p>
+
 </body>
 </html>
