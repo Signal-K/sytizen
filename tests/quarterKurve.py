@@ -16,26 +16,72 @@ import numpy as np
 
 app = Flask(__name__)
 
-def calculate_number_of_trees(amplitude):
+# def calculate_number_of_trees(habitability, flux, amplitude):
+#     # Set the thresholds and corresponding factors for habitability, flux, and amplitude
+#     habitability_thresholds = [40, 70]  # Adjust these values as needed
+#     habitability_factors = [0.5, 1.0]  # Adjust these values as needed
+
+#     flux_thresholds = [0.01, 0.1, 1.0]  # Adjust these values as needed
+#     flux_factors = [1.01, 1.1, 1.5]  # Adjust these values as needed
+
+#     amplitude_thresholds = [0.1, 0.5, 1.0]  # Adjust these values as needed
+#     amplitude_factors = [1.01, 1.1, 1.5]  # Adjust these values as needed
+
+#     # Extract the value from the habitability, flux, and amplitude quantities if they are quantities
+#     if hasattr(habitability, 'value'):
+#         habitability = habitability.value
+#     if hasattr(flux, 'value'):
+#         flux = flux.value
+#     if hasattr(amplitude, 'value'):
+#         amplitude = amplitude.value
+
+#     # Determine the habitability factor based on the habitability score
+#     habitability_factor = 1.0
+#     for i, threshold in enumerate(habitability_thresholds):
+#         if habitability >= threshold:
+#             habitability_factor = habitability_factors[i]
+#             break
+
+#     # Determine the flux factor based on the flux value
+#     flux_factor = 1.0
+#     for i, threshold in enumerate(flux_thresholds):
+#         if flux < threshold:
+#             flux_factor = flux_factors[i]
+#             break
+
+#     # Determine the amplitude factor based on the amplitude value
+#     amplitude_factor = 1.0
+#     for i, threshold in enumerate(amplitude_thresholds):
+#         if amplitude < threshold:
+#             amplitude_factor = amplitude_factors[i]
+#             break
+
+#     # Calculate the number of trees based on habitability, flux, and amplitude factors
+#     num_trees = int(habitability * habitability_factor * flux_factor * amplitude_factor)
+
+#     return num_trees
+
+def calculate_number_of_trees(habitability):
     # Set the thresholds and corresponding number of trees
-    thresholds = [0.1, 0.5, 1.0]  # Adjust these values as needed
-    num_trees = [10, 5, 1]  # Adjust these values as needed
+    thresholds = [10, 40, 70, 100]  # Adjust these values as needed
+    num_trees = [1, 10, 40, 60]  # Adjust these values as needed
 
-    # Convert amplitude to a NumPy array
-    amplitude = np.array(amplitude)
+    # Extract the value from the habitability quantity if it's a quantity
+    if hasattr(habitability, 'value'):
+        habitability = habitability.value
 
-    # Find the corresponding number of trees based on the amplitude
+    # Find the corresponding number of trees based on the habitability score
     for i, threshold in enumerate(thresholds):
-        if np.all(amplitude < threshold):
+        if habitability < threshold:
             return num_trees[i]
 
-    # If the amplitude is above the highest threshold, return the lowest number of trees
+    # If the habitability score is above the highest threshold, return the highest number of trees
     return num_trees[-1]
 
 def determine_habitability(num_trees, amplitude):
-    # Convert num_trees and amplitude to NumPy arrays
-    num_trees = np.array(num_trees)
-    amplitude = np.array(amplitude)
+    # Convert the num_trees and amplitude to dimensionless scalars if they have units
+    num_trees = num_trees.value if hasattr(num_trees, "value") else num_trees
+    amplitude = amplitude.value if hasattr(amplitude, "value") else amplitude
 
     # Calculate habitability as a combination of the number of trees and amplitude
     habitability = (num_trees * 10) + (amplitude * 1000)
@@ -84,7 +130,7 @@ def index():
 
             resource_type = determine_resource_type(star_radius, planet_radius)
 
-            return render_template('result.html', tic_id=tic_id, median_flux=median_flux, num_trees=num_trees, habitability=habitability,
+            return render_template('result.html', tic_id=tic_id, amplitude=median_flux, num_trees=num_trees, habitability=habitability,
                                    life_type=life_type, resource_type=resource_type)
         except Exception as e:
             error_message = str(e)
@@ -175,4 +221,4 @@ def result1():
     return render_template('result1.html')
 
 if __name__ == '__main__':
-    app.run() # Show flask app to the side of deepnote/planet, colouring for console, display latest feed from Supabase, iframe alternative to play.skinetics.tech in the index dir. Also add in actual API functionality. Send a request from Unity, get the tic id, only return the number of trees for that endpoint, update trees variable value
+    app.run() # Show flask app to the side of deepnote/planet, colouring for console, display latest feed from Supabase, iframe alternative to play.skinetics.tech in the index dir. Also add in actual API functionality. Send a request from Unity, get the tic id, only return the number of trees for that endpoint, update trees variable value. Get some method to save this in a supabase table/unity editor to save on loading times, do a search on exofop for any confirmed statuses for the chosen tic id?, allow customisation methods based on returned values. Deploying flask app on Zima/rpi/urbit?

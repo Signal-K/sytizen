@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Star Sailors - Result</title>
+    <title>Result</title>
 </head>
 <body>
-    <h1>Star Sailors - Result</h1>
-    <h2>Result for TIC ID: {{ tic_id }}</h2>
-<p><strong>Amplitude:</strong> {{ amplitude }} (Explanation: The amplitude represents the variation in the brightness of the star over time.)</p>
-<p><strong>Number of Trees:</strong> {{ num_trees }} (Explanation: The number of trees is determined based on the amplitude and indicates a rough estimate of habitability.)</p>
-<p><strong>Habitability:</strong> {{ habitability }} (Explanation: The habitability value combines the number of trees with the amplitude to provide an indicator of potential habitability.)</p>
-
+    <h1>Result</h1>
+    <p><strong>TIC ID:</strong> {{ tic_id }}</p>
+    <p><strong>Amplitude:</strong> {{ amplitude }}</p>
+    <p><strong>Electron/s Rate:</strong> The amplitude represents the standard deviation of the flux values in the light curve. It provides a measure of the variation in brightness of the star over time. A higher amplitude indicates a larger variation in brightness.</p>
+    <p><strong>Number of Trees:</strong> {{ num_trees }}</p>
+    <p><strong>Habitability:</strong> {{ habitability }}</p>
+    <p><strong>Habitability Explanation:</strong> The habitability score combines the number of trees and the amplitude. The number of trees is determined based on the amplitude and provides a rough estimate of habitability. The higher the number of trees, the more suitable the planet may be for supporting life. The habitability score takes into account both the number of trees and the amplitude to provide an indicator of potential habitability.</p>
+    <p><strong>Life Type:</strong> {{ life_type }}</p>
+    <p><strong>Resource Type:</strong> {{ resource_type }}</p>
 </body>
 </html>
