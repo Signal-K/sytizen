@@ -61,31 +61,28 @@ app = Flask(__name__)
 
 #     return num_trees
 
-def calculate_number_of_trees(habitability):
-    # Set the thresholds and corresponding number of trees
-    thresholds = [10, 40, 70, 100]  # Adjust these values as needed
-    num_trees = [1, 10, 40, 60]  # Adjust these values as needed
+def calculate_number_of_trees_amplitude(amplitude):
+    thresholds = [0.1, 0.5, 1.0] # Thresholds and corresponding number of trees
+    num_trees = [10, 5, 1]
 
-    # Extract the value from the habitability quantity if it's a quantity
-    if hasattr(habitability, 'value'):
-        habitability = habitability.value
-
-    # Find the corresponding number of trees based on the habitability score
+    # Find the number of trees based on amplitude
     for i, threshold in enumerate(thresholds):
-        if habitability < threshold:
-            return num_trees[i], num_trees
+        if amplitude < threshold:
+            return num_trees[i]
 
-    # If the habitability score is above the highest threshold, return the highest number of trees
     return num_trees[-1]
 
-def determine_habitability(num_trees, amplitude):
-    # Convert the num_trees and amplitude to dimensionless scalars if they have units
-    num_trees = num_trees.value if hasattr(num_trees, "value") else num_trees
-    amplitude = amplitude.value if hasattr(amplitude, "value") else amplitude
-
-    # Calculate habitability as a combination of the number of trees and amplitude
-    habitability = (num_trees * 10) + (amplitude * 1000)
+def calculate_habitability(amplitude, tic_numerals):
+    # Calculate habitability as a combination of amplitude and numerical part of the Tic ID
+    habitability = amplitude * int(tic_numerals)
     return habitability
+
+def determine_resource_type(habitability):
+    # Determine the resource type based on habitability
+    if habitability >= 5000:
+        return "Complex resources such as rare minerals and metals"
+    else:
+        return "Basic resources such as carbon and minerals"
 
 def determine_life_type(habitability):
     # Determine the most likely type of life based on habitability score
@@ -98,10 +95,12 @@ def determine_life_type(habitability):
     else:
         return "No known life forms"
 
-def determine_resource_type(star_radius, planet_radius):
-    # Determine the resource type based on star and planet radius
-    if star_radius > 1.0 and planet_radius > 1.0:
-        return "Heavy elements such as gold, silver, and iron"
+def determine_resource_type(habitability):
+    # Determine the resource type based on habitability
+    #     # Determine the resource type based on star and planet radius
+#     if star_radius > 1.0 and planet_radius > 1.0:
+    if habitability >= 5000:
+        return "Complex resources such as rare minerals and metals"
     else:
         return "Basic resources such as carbon and minerals"
 
@@ -109,34 +108,28 @@ def determine_resource_type(star_radius, planet_radius):
 def index():
     if request.method == 'POST':
         tic_id = request.form['tic_id']
+        tic_numerals = ''.join(filter(str.isdigit, tic_id))
 
         try:
             lc = lk.search_lightcurve(tic_id).download()
             flux = lc.flux
-            median_flux = np.nanmedian(flux)  # Calculate the median using numpy
+            median_flux = np.nanmedian(flux).value
+            num_trees = calculate_number_of_trees_amplitude(median_flux)
 
-            # Calculate the number of trees based on the median flux
-            num_trees = calculate_number_of_trees(median_flux)
-
-            # Determine habitability score
-            habitability = determine_habitability(num_trees, median_flux)
+            # Calculate habitability based on amplitude and numerical part of Tic ID
+            habitability = calculate_habitability(median_flux, tic_numerals)
 
             # Determine the most likely type of life
             life_type = determine_life_type(habitability)
 
-            # Determine the resource type based on star and planet radius
-            star_radius = 1.0  # Assumption: Radius of the star is equal to the Sun's radius
-            planet_radius = median_flux * star_radius
-
-            resource_type = determine_resource_type(star_radius, planet_radius)
+            # Determine the type of resources based on habitability
+            resource_type = determine_resource_type(habitability)
 
             return render_template('result.html', tic_id=tic_id, amplitude=median_flux, num_trees=num_trees, habitability=habitability,
                                    life_type=life_type, resource_type=resource_type)
         except Exception as e:
             error_message = str(e)
             return render_template('error.html', error_message=error_message)
-
-    return render_template('index.html')
 
 def determine_planet_type(star_radius, star_mass, period, median_flux):
     # Perform the planet type determination logic based on star information, period, and median flux
