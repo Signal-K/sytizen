@@ -278,5 +278,15 @@ def tic_index():
 def result1():
     return render_template('result1.html')
 
+@app.route('/screenshot', methods=['POST'])
+def process_screenshot():
+    if 'file' not in request.files:
+        return 'No file part', 400
+
+    file = request.files['file']
+    # Send to db/user state for the creation of the post card
+
+    return 'Screenshot received & processed successfully', 200#, file
+
 if __name__ == '__main__':
     app.run() # Show flask app to the side of deepnote/planet, colouring for console, display latest feed from Supabase, iframe alternative to play.skinetics.tech in the index dir. Also add in actual API functionality. Send a request from Unity, get the tic id, only return the number of trees for that endpoint, update trees variable value. Get some method to save this in a supabase table/unity editor to save on loading times, do a search on exofop for any confirmed statuses for the chosen tic id?, allow customisation methods based on returned values. Deploying flask app on Zima/rpi/urbit?

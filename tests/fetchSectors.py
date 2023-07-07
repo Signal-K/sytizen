@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from lightkurve import TessTargetPixelFile
+from lightkurve import search_targetpixelfile
 
 app = Flask(__name__)
 
@@ -8,9 +8,10 @@ def index():
     if request.method == 'POST':
         tic_id = request.form['tic_id']
         try:
-            tpf = TessTargetPixelFile.from_archive(tic_id, exptime=1800)
-            sectors = tpf.sector
-            authors = tpf.meta['AUTHORS']
+            search_result = search_targetpixelfile(tic_id, mission='TESS')
+            tpf = search_result.download(quality_bitmask='default')
+            sectors = tpf.meta.get('SECTOR', [])
+            authors = tpf.meta.det('AUTHOR', '')
             tpf.plot()
             return render_template('sectorResult.html', sectors=sectors, authors=authors)
 
