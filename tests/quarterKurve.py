@@ -9,13 +9,6 @@ import numpy as np
 
 app = Flask(__name__)
 
-from flask import Flask, request, render_template
-import lightkurve as lk
-import matplotlib.pyplot as plt
-import numpy as np
-
-app = Flask(__name__)
-
 # def calculate_number_of_trees(habitability, flux, amplitude):
 #     # Set the thresholds and corresponding factors for habitability, flux, and amplitude
 #     habitability_thresholds = [40, 70]  # Adjust these values as needed
