@@ -26,7 +26,7 @@ def get_planet():
             return jsonify({"error": "Planet ID is required"}), 400
 
         # Construct the Supabase URL with query parameters directly in the URL
-        supabase_url = f"{SUPABASE_URL}/rest/v1/planetsss?id=eq.{planet_id}&select=*"
+        supabase_url = f"{SUPABASE_URL}/rest/v1/planetsss?id=eq.{planet_id}&select=ticId"  # Updated to select ticId field only
 
         # Set up headers with Supabase API key
         headers = {
@@ -41,8 +41,8 @@ def get_planet():
         if response.status_code == 200:
             data = response.json()
             if data:
-                tic_id = data[0].get('ticId')
-                return render_template('planet.html', planet_id=planet_id, tic_id=tic_id)
+                tic_id = data[0].get('ticId')  # Corrected to 'ticId'
+                return jsonify({"planet_id": planet_id, "ticId": tic_id})  # Corrected to 'ticId'
             else:
                 return jsonify({"error": "Planet not found"}), 404
         else:
@@ -52,8 +52,6 @@ def get_planet():
 
 @app.route('/plot_lightcurve/<planet_id>')
 def plot_lightcurve(planet_id):
-    # In a real application, you would use the planet_id to fetch the corresponding TIC ID
-    # Here, we'll use a dummy TIC ID for demonstration purposes
     tic_id = "KOI-4871"
 
     # Download the light curve
