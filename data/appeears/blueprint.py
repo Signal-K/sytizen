@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-# Auth setup
+# Auth setup (non-Supabase, for NASA-EDC)
 username = 'mcdepth'
 pswd = 'VgZ#MNYz5&Fv$@TPF!q*kJCeKw' # getpass.getpass('Password: ')
 
