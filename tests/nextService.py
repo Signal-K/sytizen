@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 import lightkurve as lk
 import numpy as np
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 data_store = [] # Empty list -> will cross-reference db data at next stage
 
