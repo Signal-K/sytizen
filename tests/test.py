@@ -1,27 +1,4 @@
-from flask import Flask, request, jsonify
-import requests
 from astroquery.mast import Catalogs
-
-app = Flask(__name__)
-
-TIC_API_URL = "https://exo.mast.stsci.edu/api/v0.1/exoplanets/keplerid/"
-
-@app.route("/get_star_info", methods=["GET"])
-def get_star_info():
-    tic_id = request.args.get("tic_id")
-
-    try:
-        # Make an HTTP request to the TIC API to retrieve star information
-        response = requests.get(f"{TIC_API_URL}{tic_id}")
-        response_data = response.json()
-
-        # Extract relevant information from the response, e.g., star name
-        star_name = response_data.get("star_name")
-
-        return jsonify({"star_name": star_name})
-    except Exception as e:
-        return jsonify({"error": str(e)})
-
 
 def get_stellar_parameters(tic_id):
     try:
@@ -52,5 +29,7 @@ def get_stellar_parameters(tic_id):
     except Exception as e:
         return {"error": str(e)}
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Example usage
+tic_id = "55525572"
+stellar_info = get_stellar_parameters(tic_id)
+print(stellar_info)
