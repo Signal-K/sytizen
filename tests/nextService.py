@@ -6,6 +6,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+app.config['TIMEOUT'] = 600
+
 data_store = [] # Empty list -> will cross-reference db data at next stage
 
 @app.route('/receive_data', methods=['POST'])
@@ -43,7 +45,7 @@ def process_tic_id():
 
     try:
         # Use lightkurve to process the TIC ID and generate a period value
-        search_result = lk.search_lightcurvefile(tic_id, quarter=1)
+        search_result = lk.search_lightcurvefile(tic_id)#, quarter=1)
         if not search_result:
             return jsonify({"error": "No light curve data found for the given TIC ID"}), 404
 
@@ -75,22 +77,23 @@ def flux_variability():
 
     try:
         # Use lightkurve to process the TIC ID and calculate the flux variability metric (e.g., standard deviation)
-        search_result = lk.search_lightcurvefile(tic_id, quarter=1)
-        if not search_result:
+        search_result = lk.search_lightcurvefile(tic_id).download_all()
+        
+        if len(search_result) == 0:
             return jsonify({"error": "No light curve data found for the given TIC ID"}), 404
 
-        # Download the light curve data
-        lc = search_result.download()
+        # Retrieve the first light curve in the list
+        lc = search_result[0].PDCSAP_FLUX  # You can choose a specific flux type as needed
 
         # Convert the flux data to a NumPy array
-        flux_data = np.array(lc.flux)
+        flux_data = lc.flux
 
         # Check if the flux data is empty or contains NaN values
-        if len(flux_data) == 0 or np.isnan(flux_data).all():
+        if len(flux_data) == 0 or flux_data.mask.all():
             return jsonify({"ticId": tic_id, "flux_stddev": None, "error": "Unable to calculate flux variability due to data characteristics"}), 200
 
         # Calculate the standard deviation and convert to a Python float
-        flux_stddev = float(np.nanstd(flux_data))
+        flux_stddev = float(flux_data.std())
 
         return jsonify({"ticId": tic_id, "flux_stddev": flux_stddev}), 200
 
