@@ -1,24 +1,42 @@
 from flask import Flask, request, jsonify
 import requests
+import numpy as np
 from astroquery.mast import Catalogs
+from astropy import units as u
+from astropy.coordinates import SkyCoord
 
 app = Flask(__name__)
 
 TIC_API_URL = "https://exo.mast.stsci.edu/api/v0.1/exoplanets/keplerid/"
 
-@app.route("/get_star_info", methods=["GET"])
+@app.route("/get_star_info", methods=["POST"])
 def get_star_info():
-    tic_id = request.args.get("tic_id")
+    tic_id = request.args.get("ticId")
+    result = Catalogs.query_criteria(catalog='Tic', ID=tic_id) # Query the TIC catalogue based on the initial request
 
     try:
-        # Make an HTTP request to the TIC API to retrieve star information
-        response = requests.get(f"{TIC_API_URL}{tic_id}")
-        response_data = response.json()
+        if len(result) == 0:
+            return "No information found for the given TIC ID"
 
-        # Extract relevant information from the response, e.g., star name
-        star_name = response_data.get("star_name")
+        # Initial values for star info
+        star = result[0]
+        metallicity = star['Teff']
+        luminosity = star['lum']
+        mass = star['mass']
+        color = star['Tmag']
+        # star_type = star['StarType']
 
-        return jsonify({"star_name": star_name})
+        """ return {
+            "Metallicity (Teff)": metallicity,
+            "Luminosity (lum)": luminosity,
+            "Mass (mass)": mass,
+            "Color (Tmag)": color,
+            # "Star Type": star_type
+        }"""
+
+        star_info = get_star_info(tic_id)
+
+        return jsonify(star_info)
     except Exception as e:
         return jsonify({"error": str(e)})
 
