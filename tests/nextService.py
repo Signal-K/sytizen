@@ -77,28 +77,28 @@ def flux_variability():
 
     try:
         # Use lightkurve to process the TIC ID and calculate the flux variability metric (e.g., standard deviation)
-        search_result = lk.search_lightcurvefile(tic_id).download_all()
+        search_result = lk.search_lightcurvefile(tic_id)
         
         if len(search_result) == 0:
             return jsonify({"error": "No light curve data found for the given TIC ID"}), 404
 
-        # Retrieve the first light curve in the list
-        lc = search_result[0].PDCSAP_FLUX  # You can choose a specific flux type as needed
+        # Download the first available light curve
+        lc = search_result[0].download().SAP_FLUX  # Access the 'SAP_FLUX' attribute directly
 
-        # Convert the flux data to a NumPy array
-        flux_data = lc.flux
+        # Access the scalar value of the flux data and calculate the standard deviation
+        flux_data = lc.flux.value
 
         # Check if the flux data is empty or contains NaN values
-        if len(flux_data) == 0 or flux_data.mask.all():
+        if len(flux_data) == 0 or np.isnan(flux_data).all():
             return jsonify({"ticId": tic_id, "flux_stddev": None, "error": "Unable to calculate flux variability due to data characteristics"}), 200
 
         # Calculate the standard deviation and convert to a Python float
-        flux_stddev = float(flux_data.std())
+        flux_stddev = float(np.std(flux_data))
 
         return jsonify({"ticId": tic_id, "flux_stddev": flux_stddev}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-        
+
 if __name__ == '__main__':
     app.run(debug=True)
