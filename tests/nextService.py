@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 import lightkurve as lk
+from astroquery.mast import Catalogs
 import numpy as np
 from flask_cors import CORS
+from math import log10
 
 app = Flask(__name__)
 CORS(app)
@@ -99,6 +101,75 @@ def flux_variability():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/get_star_info', methods=['POST'])
+def get_star_info():
+    try:
+        tic_id = request.json.get("ticId")
+        result = Catalogs.query_criteria(catalog="Tic", ID=tic_id)
+
+        if len(result) == 0:
+            return jsonify({"error": "No information found for the given TIC ID."})
+
+        star = result[0]
+        Tmag = star['Tmag']  # Tmag as a substitute for color index
+        #Teff = star['Teff']  # Effective temperature in K
+        mass = star['mass']  # Stellar mass in solar masses
+        radius = star['rad']  # Stellar radius in solar radii
+        luminosity = star['lum']  # Stellar luminosity in solar luminosities
+        # star_type = star['StarType']  # Star type (e.g., 'Main Sequence', 'Population II')
+
+        # Calculate effective temperature (Teff) using Tmag as a substitute for B-V
+        BV = (Tmag - 2.85) / (-0.075)  # Reverse calculation for B-V
+        #Teff = 4600 * (1 / (0.92 * BV + 1.7) + 1 / (0.92 * BV + 0.62))
+        #if 100 <= Teff <= 4000000:
+            # Estimate metallicity based on Teff
+        #    metallicity = 3.49 - 0.85 * log10(Teff)
+        #else:
+        #    return jsonify({"error": "Effective temperature (Teff) is out of valid range."})
+
+        # Estimate metallicity based on Teff
+        metallicity = 3.49 - 0.85 * log10(Teff)
+
+        # Adjust metallicity based on star type (for illustrative purposes)
+        # if star_type == 'Population II':
+            # metallicity -= 1.0  # Lower metallicity for Population II stars
+
+        # Adjust metallicity based on mass, radius, and luminosity (for illustrative purposes)
+        if mass > 2.0 and radius > 2.0 and luminosity > 10.0:
+            metallicity -= 0.5  # Lower metallicity for high-mass giants
+
+        return jsonify({
+            "Tmag (Color Index Approximation)": Tmag,
+            "Effective Temperature (Teff)": Teff,
+            "Stellar Mass (solar masses)": mass,
+            "Stellar Radius (solar radii)": radius,
+            "Stellar Luminosity (solar luminosities)": luminosity,
+            # "Star Type": star_type,
+            # "Star": star,
+            "Estimated Metallicity ([Fe/H])": metallicity
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@app.route('/get_metallicity', methods=['POST'])
+def get_metallicity():
+    try:
+        data = request.get_json()
+        tic_id = data['tic_id']
+
+        # Query the MAST catalog for the star's information
+        result = Catalogs.query_criteria(catalog="Tic", ID=tic_id)
+        
+        if len(result) == 0:
+            return jsonify({"error": "No information found for the given TIC ID."}), 404
+
+        # Extract the metallicity information (assuming it's labeled as [Fe/H])
+        metallicity = result[0]['[Fe/H]']
+
+        return jsonify({"metallicity": metallicity})
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
     app.run(debug=True)
