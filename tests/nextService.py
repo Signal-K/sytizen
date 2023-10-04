@@ -113,40 +113,27 @@ def get_star_info():
 
         star = result[0]
         Tmag = star['Tmag']  # Tmag as a substitute for color index
-        #Teff = star['Teff']  # Effective temperature in K
+        BV = (Tmag - 2.85) / (-0.075)  # Calculate B-V color index
+        color = BV
+
         mass = star['mass']  # Stellar mass in solar masses
         radius = star['rad']  # Stellar radius in solar radii
         luminosity = star['lum']  # Stellar luminosity in solar luminosities
-        # star_type = star['StarType']  # Star type (e.g., 'Main Sequence', 'Population II')
 
-        # Calculate effective temperature (Teff) using Tmag as a substitute for B-V
-        BV = (Tmag - 2.85) / (-0.075)  # Reverse calculation for B-V
-        #Teff = 4600 * (1 / (0.92 * BV + 1.7) + 1 / (0.92 * BV + 0.62))
-        #if 100 <= Teff <= 4000000:
-            # Estimate metallicity based on Teff
-        #    metallicity = 3.49 - 0.85 * log10(Teff)
-        #else:
-        #    return jsonify({"error": "Effective temperature (Teff) is out of valid range."})
-
-        # Estimate metallicity based on Teff
-        metallicity = 3.49 - 0.85 * log10(Teff)
-
-        # Adjust metallicity based on star type (for illustrative purposes)
-        # if star_type == 'Population II':
-            # metallicity -= 1.0  # Lower metallicity for Population II stars
+        # Use assumptions to estimate metallicity based on color, star type, mass, radius, and luminosity
+        metallicity = 0.0  # Initialize metallicity
 
         # Adjust metallicity based on mass, radius, and luminosity (for illustrative purposes)
         if mass > 2.0 and radius > 2.0 and luminosity > 10.0:
             metallicity -= 0.5  # Lower metallicity for high-mass giants
 
         return jsonify({
-            "Tmag (Color Index Approximation)": Tmag,
-            "Effective Temperature (Teff)": Teff,
+            "Color (B-V Index Approximation)": color,
             "Stellar Mass (solar masses)": mass,
             "Stellar Radius (solar radii)": radius,
             "Stellar Luminosity (solar luminosities)": luminosity,
-            # "Star Type": star_type,
-            # "Star": star,
+        #    "Star Type": star_type,
+        #    "Star": star,
             "Estimated Metallicity ([Fe/H])": metallicity
         })
     except Exception as e:
