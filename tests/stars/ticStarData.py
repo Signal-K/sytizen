@@ -27,7 +27,7 @@ def get_star_info(tic_id):
         "Mass (mass)": mass,
         "Color (Tmag)": color,
         # "Star Type": star_type
-    }
+    } # https://www.notion.so/skinetics/Unity-Randomisation-LightKurve-via-Flask-fac86634e02f4086b7c936c83e66f79a?pvs=4
 
 def get_metallicity_from_gaia(tic_id):
     query = f"SELECT metallicity FROM gaiadr2.gaia_source WHERE source_id = {tic_id}"
