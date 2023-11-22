@@ -1,0 +1,31 @@
+3,2023-02-23 16:06:35.73981+00,Data type discussion,"Discussion about how data should be presented to the web client from the backend (for this '"citizen science'" discussion webapp):
+
+https://elianna.notion.site/Dataset-structure-Discussion-42d23cf1ced447138c6ffef1c01df286
+
+Based on my current understanding and very limited scope so far, I''m storing things in a database just as fields.
+E.g. stats/fields relating to exoplanet data (say, from the TESS telescope which provides the Lightkurve dataset/module) would include temperature, radius, etc. So there would be a table on the database for planets which is where any dataset relating to '"planets'" would store its data, and each datapoint would then be tagged by which collection it was part of (e.g. '"Exoplanet 42'" may have been added by '"Survey 21'" but is also included in '"Survey 27'" and everything is in the one table on the db)
+
+Most of the discussion/examples refer to planets simply because that''s what we''ve built up so far
+
+There''s a few limitations to this:
+1. Some datapoints (say from different collections) may have extra fields (e.g. Survey 31 may have a field for aphelion but every other survey doesn''t...so how do we structure for missing fields?
+2. What happens if a user wants to add a dataset but adds new fields that are already existing -> e.g. Survey 109 adds a new radius field?
+3. What happens if an entry gets duplicated? We could set up a way for people to edit fields, but then how do we moderate that?
+
+Ultimately, I think we can build out the initial system with these limitations for now as it will only be us who''s using & building on the platform, which means we can assume that there won''t be any malicious intent, and there won''t be so much data that it becomes impossible to fix mistakes. Once we have a better understanding of how we''ll migrate this over to Nodes we''ll hopefully get closer to solving this issues/limitations. I think the way the data will be stored will mostly remain the same -> either datasets in the form of tables, or preferably modules like Lightkurve that can then be imported (maybe we could look for a tool that could automate this process -> storing the data directly on IPFS anyway). Long-term we only will have user data & unpublished content existing on the relational off-chain DB so I think we''ll be fine with this model. However, some research on the frontend & API structure will need to be put in as well to ensure that regardless of what model/dataset is being used, anything can be queried by the API and the UX/UI design remains consistent regardless of how many fields or what fields are being displayed
+
+In short, data should be presented in tabular format if possible -> Field Name, Field Content. For every collection/dataset/article we work with, we should write a standard for what each table should consist of so that I can set that up on the backend.",cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,"{'"tag1'": '"architecture'", '"tag2'": '"data'"}"
+4,2023-02-23 16:16:53.285625+00,Dockerfile Devlog Update,"I have a Dockerfile (not yet commited) based on the [Next.js example](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile) that should run the Client at localhost:3000.  
+
+Currently, there’s an issue while building it during `yarn --frozen-lockfile` I think there may be an issue with the Yarn version… used to generate the lockfile.
+
+In fact, the start of the output shows
+
+> #14 0.797 ➤ YN0050: The --frozen-lockfile option is deprecated; use --immutable and/or --immutable-cache instead
+> 
+
+This indicates the age of the example!  I can work from there.
+
+Once that works, the docker-compose cluster in `Sytizen/server` will spin up a client container as well.
+
+.",cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,

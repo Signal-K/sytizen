@@ -1,0 +1,10 @@
+1,Potion,Heals you,1,https://cdn-icons-png.flaticon.com/512/5305/5305029.png,Consumable,,1,
+2,Sword,Stab stab,2,https://cdn-icons-png.flaticon.com/512/1218/1218741.png,Weapon,,1,
+3,Armour,Less stab,2,https://cdn-icons-png.flaticon.com/512/1065/1065537.png,Cosmetic,,1,
+5,Hoe,Till the dirt,10,https://cdn-icons-png.flaticon.com/512/2168/2168028.png,Tool,,1,
+4,Axe,Chop,2,https://cdn-icons-png.flaticon.com/512/1825/1825371.png,Tool,,1,
+6,Shovel,Bury me,1,https://cdn-icons-png.flaticon.com/512/4360/4360026.png,Tool,,1,
+7,Pencil,Good at splleing,3,https://cdn-icons-png.flaticon.com/512/2541/2541991.png,Tool,,1,
+10,Aerocamera,"Level 1 iteration of your camera, which allows you to see the stars and their hidden planets",0,https://github.com/Signal-K/client/blob/FCDB-4/public/assets/Inventory/Items/AeroCameraLevel1NoBg.png?raw=true,Achievement,8,1,
+9,Golden Telescope,You've completed your first part of the journey as a Star Sailor - you're now able to view the closest and simplest of exoplanet candidates,0,https://github.com/Signal-K/client/blob/FCDB-4/public/assets/Inventory/Items/GoldenTelescopeLevel1noBg.png?raw=true,Achievement,8,1,
+8,The Golden Telescope,Each user gets one upon completion of the first tutorial mission,0,https://qwbufbmxkjfaikoloudl.supabase.co/storage/v1/object/public/media/items/GoldenTelescopeLevel1noBg.png,Achievement,,1,"{'"{\'"old image\'":\'"https://cdn-icons-png.flaticon.com/512/2991/2991566.png\'"}'"}"
