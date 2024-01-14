@@ -36,9 +36,9 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
                 "id": anomaly_id, 
                 "content": content, 
                 # "anomalytype": 'planet',
-                "anomalytype": "zoodexOthers",
+                "anomalytype": "telescopeClouds",
                 # "anomalySet": anomaly_set,
-                "anomalySet": "zoodex-planktonPortal",
+                "anomalySet": "lidar-EarthClouds",
                 "parentAnomaly": 69, #69
             }
             response = supabase.table('anomalies').insert(data).execute()
@@ -73,8 +73,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "zoodex"
-    local_directory = "zoodex" 
+    bucket_name = "telescope"
+    local_directory = "telescope" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
