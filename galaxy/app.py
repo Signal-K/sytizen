@@ -6,35 +6,14 @@ app = Flask(__name__)
 # app.config["SQLALCHEMY_DATABASE_URI"] = ""
 # db.init_app(app)
 
-# Create Supabase client
-
+# Create Supabase client 
 SUPABASE_URL = 'https://qwbufbmxkjfaikoloudl.supabase.co'
 SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3YnVmYm14a2pmYWlrb2xvdWRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NDE3NTksImV4cCI6MTk4NTUxNzc1OX0.RNz5bvsVwLvfYpZtUjy0vBPcho53_VS2AIVzT8Fm-lk'
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# class InventoryUsers(db.Model):
-#     __tablename__ = 'inventoryUSERS'
-
-#     id = db.Column(db.BigInteger, primary_key=True)
-#     item = db.Column(db.BigInteger, db.ForeignKey('inventoryITEMS.id'))
-#     owner = db.Column(db.String, db.ForeignKey('profiles.id'))
-#     quantity = db.Column(db.Float)
-#     location = db.Column(db.BigInteger, db.ForeignKey('inventoryPLANETS.id'))
-#     sector = db.Column(db.BigInteger, db.ForeignKey('basePlanetSectors.id'))
-#     planetSector = db.Column(db.BigInteger, db.ForeignKey('basePlanetSectors.id'))
-
-# class InventoryItems(db.Model):
-#     __tablename__ = 'inventoryITEMS'
-
-#     id = db.Column(db.BigInteger, primary_key=True)
-#     name = db.Column(db.String)
-#     description = db.Column(db.Text)
-#     cost = db.Column(db.Integer)
-#     icon_url = db.Column(db.String)
-#     ItemCategory = db.Column(db.String)
-#     parentItem = db.Column(db.BigInteger)
-#     itemLevel = db.Column(db.Float, default=1.0)
-#     oldAssets = db.Column(db.ARRAY(db.Text))
+@app.route('/test')
+def test():
+    return "Test"
 
 # Route to fetch items from inventoryITEMS table
 @app.route('/items')
