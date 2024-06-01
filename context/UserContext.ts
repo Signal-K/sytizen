@@ -1,4 +1,4 @@
-/*import {createContext, useEffect, useState} from "react";
+export { }/*import {createContext, useEffect, useState} from "react";
 import {useSession, useSupabaseClient} from "@supabase/auth-helpers-react";
 
 export const UserContext = createContext({});
