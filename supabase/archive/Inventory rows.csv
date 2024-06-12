@@ -1,0 +1,9 @@
+id,item,owner,quantity,notes,parentItem,time_of_deploy,anomaly
+1,29,c533b926-ac87-44f5-bbc4-76e3b4419475,1,Created upon the completion of mission 1,,2024-06-10 15:20:57.733+00,
+3,12,c533b926-ac87-44f5-bbc4-76e3b4419475,1,Reward for completing mission 3,,2024-06-10 15:21:15.145+00,2
+2,22,c533b926-ac87-44f5-bbc4-76e3b4419475,1,Reward for completing mission 2,,2024-06-10 15:21:10.5+00,2
+10,14,c533b926-ac87-44f5-bbc4-76e3b4419475,1,Created by crafting 14 for mission 7,3,2024-06-10 15:22:59.718+00,2
+4,23,c533b926-ac87-44f5-bbc4-76e3b4419475,1,First Rover Created By User using Vehicle Structure 2. For mission 5,,,2
+20,30,c533b926-ac87-44f5-bbc4-76e3b4419475,1,,,,2
+28,11,c533b926-ac87-44f5-bbc4-76e3b4419475,1,Reward from mining station id: 20,,,2
+29,26,c533b926-ac87-44f5-bbc4-76e3b4419475,1,,,,2
