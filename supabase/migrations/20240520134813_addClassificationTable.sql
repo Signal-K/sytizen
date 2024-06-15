@@ -5,6 +5,7 @@ create table
     content text null,
     author uuid null,
     anomaly bigint null,
+    classificationType text null,
     media json null,
     constraint classifications_pkey primary key (id),
     constraint classifications_anomaly_fkey foreign key (anomaly) references "anomalies" (id),
