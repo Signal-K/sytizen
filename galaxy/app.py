@@ -31,4 +31,4 @@ def get_user_inventory(user_id):
 
 # Main function to run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
