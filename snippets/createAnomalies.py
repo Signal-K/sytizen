@@ -3,6 +3,7 @@ import shutil
 import lightkurve as lk
 import matplotlib.pyplot as plt
 from supabase import create_client, Client
+import re  # Import the regex library
 
 # Initialize Supabase client
 supabase_url = 'https://hlufptwhzkpkkjztimzo.supabase.co'
@@ -16,6 +17,13 @@ def upload_to_supabase(filepath, bucket_name, folder_name, file_name):
 
 # Function to insert a new anomaly and get its ID
 def insert_anomaly(tic_id):
+    # Extract the numeric part of the TIC ID for use as the id
+    match = re.search(r'\d+', tic_id)
+    tic_id_numeric = int(match.group()) if match else None
+    
+    if tic_id_numeric is None:
+        raise ValueError("TIC ID must contain a numeric value to be used as the anomaly ID.")
+
     configuration = {
         "mass": None,
         "ticId": tic_id,
@@ -28,6 +36,7 @@ def insert_anomaly(tic_id):
     }
 
     data = {
+        "id": tic_id_numeric,  # Use the numeric part of the TIC ID as the primary key
         "content": tic_id,
         "ticId": tic_id,
         "anomalytype": "planet",
@@ -35,7 +44,7 @@ def insert_anomaly(tic_id):
         "configuration": configuration
     }
 
-    response = supabase.table("anomalies").insert(data).execute()
+    response = supabase.table("anomalies").upsert(data).execute()
     anomaly_id = response.data[0]['id']
     return anomaly_id
 
@@ -47,8 +56,8 @@ def generate_lightcurves(tic_id, output_dir):
     lc_collection = select_sector.download_all()
 
     # Plot individual light curves
-    lc = select_sector.download_all()
     fig1, ax1 = plt.subplots()
+    lc = select_sector.download_all()
     lc.plot(ax=ax1, linewidth=0, marker='.', markersize=1, color='midnightblue', alpha=0.3)
     fig1.savefig(os.path.join(output_dir, 'individual_light_curves.png'))
     plt.close(fig1)
@@ -61,7 +70,7 @@ def generate_lightcurves(tic_id, output_dir):
     plt.close(fig2)
 
     # Bin the light curves with a larger bin time
-    bin_time = 1 / 24  # 1-hour binning
+    bin_time = 15 / 24 / 60  # 15-minute binning
     lc_collection_binned = lc_collection_stitched.bin(bin_time)
     fig3, ax3 = plt.subplots()
     lc_collection_binned.plot(ax=ax3, linewidth=0, marker='o', markersize=4, color='red', alpha=0.7)
@@ -76,11 +85,11 @@ def generate_lightcurves(tic_id, output_dir):
     fig4.savefig(os.path.join(output_dir, 'stitched_and_binned_light_curves.png'))
     plt.close(fig4)
 
-    # Optional: Zoom in on a specific time range to highlight transits
+    # Zoom in on a specific time range to highlight transits
     fig5, ax5 = plt.subplots(figsize=(10, 5))
     lc_collection_stitched.plot(ax=ax5, linewidth=0, marker='.', markersize=1, color='midnightblue', alpha=0.3, label='Unbinned')
     lc_collection_binned.plot(ax=ax5, linewidth=0, marker='o', markersize=4, color='red', alpha=0.7, label='Binned')
-    ax5.set_xlim(lc_collection_stitched.time.min().value, lc_collection_stitched.time.min().value + 10)  # Example zoom range
+    ax5.set_xlim(lc_collection_stitched.time.min().value, lc_collection_stitched.time.min().value + 5)  # Adjust zoom range here
     ax5.legend()
     fig5.savefig(os.path.join(output_dir, 'zoomed_light_curves.png'))
     plt.close(fig5)
@@ -112,5 +121,5 @@ def main(tic_ids):
         print(f"Processed TIC ID {tic_id}, Anomaly ID: {anomaly_id}")
 
 if __name__ == "__main__":
-    tic_ids_list = ['TIC1', 'TIC2', 'TIC3']  # Replace with your actual TIC IDs
+    tic_ids_list = ['TIC 50365310', 'TIC 88863718']
     main(tic_ids_list)

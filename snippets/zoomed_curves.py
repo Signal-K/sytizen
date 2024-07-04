@@ -2,7 +2,7 @@ import os
 import shutil
 import matplotlib.pyplot as plt
 import lightkurve as lk
- 
+
 # Clear the output directory
 output_dir = 'output'
 if os.path.exists(output_dir):
@@ -36,7 +36,7 @@ fig2.savefig(os.path.join(output_dir, 'stitched_light_curves.png'))
 plt.close(fig2)
 
 # Bin the light curves with a larger bin time
-bin_time = 1 / 24  # 1-hour binning
+bin_time = 1 / 12
 lc_collection_binned = lc_collection_stitched.bin(bin_time)
 fig3, ax3 = plt.subplots()
 lc_collection_binned.plot(ax=ax3, linewidth=0, marker='o', markersize=4, color='red', alpha=0.7)
@@ -51,11 +51,11 @@ ax4.legend()
 fig4.savefig(os.path.join(output_dir, 'stitched_and_binned_light_curves.png'))
 plt.close(fig4)
 
-# Optional: Zoom in on a specific time range to highlight transits
+# Zoom in on a specific time range to highlight transits
 fig5, ax5 = plt.subplots(figsize=(10, 5))
 lc_collection_stitched.plot(ax=ax5, linewidth=0, marker='.', markersize=1, color='midnightblue', alpha=0.3, label='Unbinned')
 lc_collection_binned.plot(ax=ax5, linewidth=0, marker='o', markersize=4, color='red', alpha=0.7, label='Binned')
-ax5.set_xlim(lc_collection_stitched.time.min().value, lc_collection_stitched.time.min().value + 10)  # Example zoom range
+ax5.set_xlim(lc_collection_stitched.time.min().value, lc_collection_stitched.time.min().value + 5)  # Adjust zoom range here
 ax5.legend()
 fig5.savefig(os.path.join(output_dir, 'zoomed_light_curves.png'))
 plt.close(fig5)
