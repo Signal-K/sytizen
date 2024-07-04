@@ -25,7 +25,7 @@ for anomaly in anomalies_list.data:
     TIC = tic_id
     period = config.get('orbital_period', 13)
     t0 = 303  # You may need to adjust this value as per your requirements
-
+ 
     # Search and download lightcurve data
     sector_data = lk.search_lightcurve(TIC)
     lc = sector_data.download()

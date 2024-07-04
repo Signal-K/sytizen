@@ -29,7 +29,7 @@ for anomaly in anomalies:
     # Process each classification
     for classification in classifications_response.data:
         content = classification['content']
-
+ 
         # Check if classification type matches any configuration key
         for classification_type in classification_types:
             if classification_type in content:
