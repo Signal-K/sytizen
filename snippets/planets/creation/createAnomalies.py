@@ -12,11 +12,34 @@ supabase: Client = create_client(supabase_url, supabase_key)
 
 # Function to upload images to Supabase storage
 def upload_to_supabase(filepath, bucket_name, folder_name, file_name):
+    # Check if the file already exists in the bucket
+    existing_files = supabase.storage.from_(bucket_name).list(folder_name)
+    if file_name in [file['name'] for file in existing_files]:
+        print(f"Skipping upload for {file_name} as it already exists.")
+        return
+    
     with open(filepath, 'rb') as f:
         supabase.storage.from_(bucket_name).upload(f"{folder_name}/{file_name}", f.read(), file_options={"content-type": "image/png"})
 
+# Function to check if the anomaly already exists
+def anomaly_exists(tic_id):
+    match = re.search(r'\d+', tic_id)
+    tic_id_numeric = int(match.group()) if match else None
+    
+    if tic_id_numeric is None:
+        raise ValueError("TIC ID must contain a numeric value to be used as the anomaly ID.")
+    
+    response = supabase.table("anomalies").select("id").eq("id", tic_id_numeric).execute()
+    return len(response.data) > 0
+
 # Function to insert a new anomaly and get its ID
 def insert_anomaly(tic_id):
+    if anomaly_exists(tic_id):
+        print(f"Anomaly for {tic_id} already exists. Skipping...")
+        match = re.search(r'\d+', tic_id)
+        tic_id_numeric = int(match.group()) if match else None
+        return tic_id_numeric
+
     # Extract the numeric part of the TIC ID for use as the id
     match = re.search(r'\d+', tic_id)
     tic_id_numeric = int(match.group()) if match else None
@@ -109,6 +132,10 @@ def main(tic_ids):
     os.makedirs(output_dir)
 
     for tic_id in tic_ids:
+        if anomaly_exists(tic_id):
+            print(f"Anomaly for {tic_id} already exists. Skipping...")
+            continue
+
         anomaly_id = insert_anomaly(tic_id)
         anomaly_folder = str(anomaly_id)
 
@@ -121,5 +148,5 @@ def main(tic_ids):
         print(f"Processed TIC ID {tic_id}, Anomaly ID: {anomaly_id}")
 
 if __name__ == "__main__":
-    tic_ids_list = ['TIC 50365310', 'TIC 88863718']
+    tic_ids_list = ['TIC 50365310', 'TIC 88863718', 'TIC 124709665', 'TIC 106997505', 'TIC 238597883', 'TIC 169904935', 'TIC 156115721', 'TIC 65212867', 'TIC 440801822']
     main(tic_ids_list)
