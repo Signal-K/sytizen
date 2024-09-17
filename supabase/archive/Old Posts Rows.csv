@@ -1,0 +1,30 @@
+id,content,author,created_at,media,planets
+8,User 2 test,fdd401bf-3925-49ba-a155-4c3dba8dd93f,2023-02-06 05:25:27.395683+00,[],
+9,User 1 test,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-02-06 05:25:51.270489+00,[],
+10,"New day, new post, new me.",cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-02-07 04:36:39.502662+00,[],
+12,"Discussion about how data should be presented to the web client from the backend (for this ""citizen science"" discussion webapp):
+
+https://elianna.notion.site/Dataset-structure-Discussion-42d23cf1ced447138c6ffef1c01df286
+
+Based on my current understanding and very limited scope so far, I'm storing things in a database just as fields.
+E.g. stats/fields relating to exoplanet data (say, from the TESS telescope which provides the Lightkurve dataset/module) would include temperature, radius, etc. So there would be a table on the database for planets which is where any dataset relating to ""planets"" would store its data, and each datapoint would then be tagged by which collection it was part of (e.g. ""Exoplanet 42"" may have been added by ""Survey 21"" but is also included in ""Survey 27"" and everything is in the one table on the db)
+
+Most of the discussion/examples refer to planets simply because that's what we've built up so far
+
+There's a few limitations to this:
+1. Some datapoints (say from different collections) may have extra fields (e.g. Survey 31 may have a field for aphelion but every other survey doesn't...so how do we structure for missing fields?
+2. What happens if a user wants to add a dataset but adds new fields that are already existing -> e.g. Survey 109 adds a new radius field?
+3. What happens if an entry gets duplicated? We could set up a way for people to edit fields, but then how do we moderate that?
+
+Ultimately, I think we can build out the initial system with these limitations for now as it will only be us who's using & building on the platform, which means we can assume that there won't be any malicious intent, and there won't be so much data that it becomes impossible to fix mistakes. Once we have a better understanding of how we'll migrate this over to Nodes we'll hopefully get closer to solving this issues/limitations. I think the way the data will be stored will mostly remain the same -> either datasets in the form of tables, or preferably modules like Lightkurve that can then be imported (maybe we could look for a tool that could automate this process -> storing the data directly on IPFS anyway). Long-term we only will have user data & unpublished content existing on the relational off-chain DB so I think we'll be fine with this model. However, some research on the frontend & API structure will need to be put in as well to ensure that regardless of what model/dataset is being used, anything can be queried by the API and the UX/UI design remains consistent regardless of how many fields or what fields are being displayed
+
+In short, data should be presented in tabular format if possible -> Field Name, Field Content. For every collection/dataset/article we work with, we should write a standard for what each table should consist of so that I can set that up on the backend.",cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-02-21 15:00:32.964742+00,[],
+11,Some code & screenshot of the generator page in signal-k/client,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-02-08 13:26:15.649305+00,"[""https://qwbufbmxkjfaikoloudl.supabase.co/storage/v1/object/public/media/1675862738305cebdc7a2-d8af-45b3-b37f-80f328ff54d6carbon (1).png"",""https://qwbufbmxkjfaikoloudl.supabase.co/storage/v1/object/public/media/imgonline-com-ua-twotoone-wnkSKAAFqNdmU3S.jpg""]",
+13,,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-03-07 05:51:53.777511+00,"[""https://qwbufbmxkjfaikoloudl.supabase.co/storage/v1/object/public/media/1678168309828cebdc7a2-d8af-45b3-b37f-80f328ff54d6ameer-basheer-gV6taBJuBTk-unsplash.jpg""]",
+16,Here's a pdf. The link to it is https://qwbufbmxkjfaikoloudl.supabase.co/storage/v1/object/public/media/1679318445135cebdc7a2-d8af-45b3-b37f-80f328ff54d6Owl.pdf,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-03-20 13:20:50.829413+00,"[""https://qwbufbmxkjfaikoloudl.supabase.co/storage/v1/object/public/media/1679318445135cebdc7a2-d8af-45b3-b37f-80f328ff54d6Owl.pdf""]",
+17,I believe planetId 8 should be considered confirmed.,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-04-18 01:39:07.156388+00,[],
+18,I believe that planetId 43 should be considered a planet because it has a regular transit time.,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-04-21 04:51:53.089407+00,[],
+20,Excited to see how this works!,4860b718-7607-4f7f-bdb6-563b0320b460,2023-05-01 02:14:27.794993+00,[],
+21,Excited to see how this works!,4860b718-7607-4f7f-bdb6-563b0320b460,2023-05-01 02:14:27.897718+00,[],
+22,@gizmotronn oi dog get rid of the picture bruh,924d6839-d194-49c7-bc28-5791d5e9700e,2023-06-20 12:57:22.060335+00,[],
+24,Project 1,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2024-02-09 13:10:33.599983+00,[],

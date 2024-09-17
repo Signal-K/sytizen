@@ -1,0 +1,7 @@
+id,content,created_at,temperature,metallicity,luminosity,colour,starType,distanceFromEarth,galaxy,constellation
+1,KOI-571,2023-12-11 02:18:39.878811+00,3755,-0.26,0.055,,M1,582,Milky Way,Cygnus
+2,KOI-172,2023-12-11 02:21:40.840099+00,5911.15,0.29,0.8,,G4V,2430,Milky Way,Cygnus
+3,KOI-4742,2023-12-11 06:53:00.803436+00,4402,-0.37,0.117,,K5V,1206,Milky Way,Lyra
+4,KOI-87,2023-12-11 06:53:44.251352+00,5596,-0.255,0.79,,G5V,640,Milky Way,Cygnus
+5,K2-112,2023-12-11 06:59:23.393353+00,2566,0.04,0.000553,,M8V,40.66,Milky Way,Aquarius
+6,TOI-700,2023-12-11 07:00:06.861286+00,3840,-0.07,0.0233,,M2V,101.4,Milky Way,Dorado

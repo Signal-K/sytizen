@@ -1,0 +1,9 @@
+id,anomaly,owner,deposit_old,created_at,coverUrl,exploration_start_time,explored,structure,deposit,note
+25,2,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,2024-03-18 03:29:51.470609+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00119/ids/edr/browse/zcam/ZR0_0119_0677499911_318EBY_N0041250ZCAM08113_1100LMJ01_1200.jpg,,false,,17,
+1,,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,Iron,2024-01-08 13:21:12.05609+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00090/ids/edr/browse/edl/EBE_0090_0674952393_193ECM_N0040048EDLC00090_0030LUJ01_1200.jpg,,false,,,
+2,2,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,Iron,2024-01-08 13:21:52.906999+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00090/ids/edr/browse/edl/EBE_0090_0674952393_193ECM_N0040048EDLC00090_0030LUJ01_1200.jpg,,false,,11,
+11,2,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,2024-02-17 04:16:45.972633+00,,,false,,20,
+18,2,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,2024-02-17 04:19:07.411643+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00150/ids/edr/browse/ncam/NLE_0150_0680270504_692ECM_N0051812NCAM00209_07_0LLJ01_1200.jpg,,false,,18,
+20,,acd2a804-4b6d-408f-8510-6716bd1bac99,,2024-03-02 21:49:16.297465+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00066/ids/edr/browse/ncam/NLF_0066_0672809564_553ECM_N0032208NCAM02066_01_295J01_1200.jpg,,false,,13,
+21,,acd2a804-4b6d-408f-8510-6716bd1bac99,,2024-03-02 21:49:23.519672+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00066/ids/edr/browse/ncam/NLF_0066_0672809564_553ECM_N0032208NCAM02066_01_295J01_1200.jpg,,false,,15,
+22,,acd2a804-4b6d-408f-8510-6716bd1bac99,,2024-03-02 21:49:30.590549+00,https://mars.nasa.gov/mars2020-raw-images/pub/ods/surface/sol/00066/ids/edr/browse/ncam/NLF_0066_0672809564_553ECM_N0032208NCAM02066_01_295J01_1200.jpg,,false,,13,

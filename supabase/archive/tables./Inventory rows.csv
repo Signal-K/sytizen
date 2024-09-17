@@ -1,0 +1,8 @@
+id,item,owner,quantity,notes,parentItem,time_of_deploy,anomaly
+7,13,5c521fb2-2824-4a77-a740-57f2976fc4e1,3,Created upon the completion of mission 5,,2024-06-06 16:40:00.911+00,1
+8,15,5c521fb2-2824-4a77-a740-57f2976fc4e1,2,Created upon the completion of mission 5,,2024-06-06 16:40:00.911+00,1
+18,13,5c521fb2-2824-4a77-a740-57f2976fc4e1,2,"Created upon the deployment of the user's first automaton, for mission 6",6,2024-06-06 18:06:46.091+00,1
+19,15,5c521fb2-2824-4a77-a740-57f2976fc4e1,1,"Created upon the deployment of the user's first automaton, for mission 6",6,2024-06-06 18:06:46.091+00,1
+23,13,5c521fb2-2824-4a77-a740-57f2976fc4e1,1,,,,1
+24,13,5c521fb2-2824-4a77-a740-57f2976fc4e1,1,,,,1
+25,15,5c521fb2-2824-4a77-a740-57f2976fc4e1,1,,,,1

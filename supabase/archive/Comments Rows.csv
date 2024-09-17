@@ -1,0 +1,16 @@
+id,post_id,parent_comment_id,content,author,created_at,parent
+1,15,,This is a test comment,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-07-11 00:09:16+00,
+2,15,1,A test nested comment,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-07-11 05:20:17+00,
+3,17,,test,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,2023-07-21 01:49:43+00,
+10,16,1,Test,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+11,15,1,Test,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+12,8,1,Test,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+13,27,1,"It was a little awkward to see with the light blue texture on white background, but there was a slight pattern of repeating dips on this light curve. I'll take a look and see if I can get some new sectors to add to this planet.",cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+14,25,1,Definitely looks like there's a planet here. Also worth noting that all the dips line up near-perfectly when the curve is phase-folded,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+15,22,1,test,e3344c5c-384f-4898-aea6-397c2ac1edf6,,
+16,22,1,,e3344c5c-384f-4898-aea6-397c2ac1edf6,,
+17,45,1,"Yep, if you look at the binned graph (on the left-hand side), you'll see there's a recurring pattern of dips. The phase-folded graph (on the right-hand side) shows all those dips folded onto each other. Since they all appear to line up, it's likely that there is a planet here :)",cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+18,78,1,Note that the jupyter file can be seen in the github link in the deepnote block for this planet :),cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,
+22,,,ipfs://QmVCkTNwiAneGd4CZ7j2GM12n2dj8qy2c7vjWyv3fCgZ38/Frame%201000002890.png,,,
+27,,,ipfs://QmbSNxhpW8PzfpTU6MCCrQRGmsVbpDnkbp3S1v2jb18U5R/Frame%201000002911.png,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,24
+28,,,ipfs://QmbSNxhpW8PzfpTU6MCCrQRGmsVbpDnkbp3S1v2jb18U5R/MVxWanderers_Storytelling101_Session2.m4a,cebdc7a2-d8af-45b3-b37f-80f328ff54d6,,24
