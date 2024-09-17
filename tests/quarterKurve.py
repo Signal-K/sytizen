@@ -1,17 +1,10 @@
 from flask import Flask, request, render_template, jsonify
 import lightkurve as lk
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 from io import BytesIO
 import base64
 import requests
 import json
-import numpy as np
-
-app = Flask(__name__)
-
-from flask import Flask, request, render_template
-import lightkurve as lk
-import matplotlib.pyplot as plt
 import numpy as np
 
 app = Flask(__name__)
