@@ -1,0 +1,10 @@
+[workspace]
+
+members = [
+    "auth",
+    "context",
+    "deepnote",
+    "docs",
+    "tests",
+    "lib"
+]

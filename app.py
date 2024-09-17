@@ -1,17 +1,18 @@
-from flask import Flask, render_template, Blueprint, jsonify
-import lightkurve as lk
-import os
-from supabase import create_client
+from flask import Flask
+from flask_cors import CORS
+import uuid
+from datetime import datetime
 
-"""# Flask blueprints ""
-from database.classify import classify
-from views.lightkurve import lightkurve_bp"""
+from tests.quarterKurve import quarterKurve_bp
+from tests.lightKurve import lightKurve_bp
+from auth.federated import federated_bp
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route("/")
-def index():
-    return "Hello world"
+app.register_blueprint(quarterKurve_bp, url_prefix='/quarterkurve')
+app.register_blueprint(lightKurve_bp, url_prefix='/lightkurve')
+app.register_blueprint(federated_bp, url_prefix='/federated')
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)

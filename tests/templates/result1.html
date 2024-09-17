@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Light Curve Result</title>
+</head>
+<body>
+    <h1>Light Curve Result</h1>
+    <img src="data:image/png;base64,{{ image_data }}" alt="Light Curve">
+    <h2>Result for TIC ID: {{ tic_id }}</h2>
+<p><strong>Period:</strong> {{ period }} (Explanation: The period represents the time it takes for the planet to complete one orbit around its star.)</p>
+<p><strong>t0:</strong> {{ t0 }} (Explanation: The t0 value corresponds to the initial transit time of the planet across the star.)</p>
+</body>
+</html>
