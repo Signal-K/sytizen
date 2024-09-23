@@ -9,8 +9,8 @@ RUN pip install pipenv
 # RUN pip install -r requirements.txt
 
 WORKDIR ${PROJECT_DIR}
-COPY Pipfile .
-# COPY Pipfile.lock .
+# COPY Pipfile .
+# # COPY Pipfile.lock .
 
 RUN pipenv install
 # RUN pipenv install --system
