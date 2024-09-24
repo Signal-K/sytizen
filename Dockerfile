@@ -1,21 +1,20 @@
-FROM python:3.9.16-bullseye
+# Use the official Python image from the Docker Hub
+FROM python:3.11-slim
 
-ENV PROJECT_DIR /app
-
+# Set the working directory in the container
 WORKDIR /app
-RUN pip install pipenv
 
-# COPY requirements.txt requirements.txt
-# RUN pip install -r requirements.txt
+# Copy the requirements file into the container
+COPY requirements.txt ./
 
-WORKDIR ${PROJECT_DIR}
-# COPY Pipfile .
-# # COPY Pipfile.lock .
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pipenv install
-# RUN pipenv install --system
-# RUN pipenv install --system --deploy
+# Copy the rest of the application code into the container
 COPY . .
 
-# CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
-CMD ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
+# Expose the port that Flask will run on
+EXPOSE 5000
+
+# Command to run the Flask app with live reload enabled (debug mode)
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5001", "--reload"]
