@@ -32,7 +32,7 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 def main():
     supabase = init_supabase_client()
     bucket_name = "zoodex"
-    local_directory = "zoodex" 
+    local_directory = "clouds" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 

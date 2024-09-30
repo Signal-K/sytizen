@@ -1,2 +1,4 @@
 Flask==2.3.0
 python-dotenv
+supabase
+flask-cors
