@@ -1,161 +1,173 @@
-from flask import Flask, jsonify, request
-from supabase import create_client, Client
-import matplotlib.pyplot as plt
-from io import BytesIO
-import pandas as pd
-import requests
 import os
+from flask import Flask, jsonify
+from supabase import create_client, Client
+from pathlib import Path
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
-# Supabase credentials
-SUPABASE_URL = 'https://hlufptwhzkpkkjztimzo.supabase.co'
-SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsdWZwdHdoemtwa2tqenRpbXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyOTk3NTUsImV4cCI6MjAzMTg3NTc1NX0.v_NDVWjIU_lJQSPbJ_Y6GkW3axrQWKXfXVsBEAbFv_I'
-SUPABASE_STORAGE_URL = 'https://hlufptwhzkpkkjztimzo.supabase.co/storage/v1'
+SUPABASE_URL = 'http://127.0.0.1:54321'
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
+supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+def init_supabase_client():
+    url = "http://127.0.0.1:54321"
+    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
+    return create_client(url, key)
 
+supabase_client = init_supabase_client()
 
 @app.route('/')
-def index():
-    try:
-        # Fetch anomalies of type "planet"
-        response = supabase.from_("anomalies").select("*").eq("anomalytype", "planet").execute()
-        if response['status'] == 200:
-            anomalies = response['data']
-            for anomaly in anomalies:
-                anomaly_id = anomaly['id']
-                tic_id = anomaly['configuration']['ticId']
-                create_lightkurve_graph(anomaly_id, tic_id)
-            return 'Lightkurve graphs created and uploaded successfully.'
-        else:
-            return 'Failed to fetch anomalies from Supabase.'
-    except Exception as e:
-        return f'Error: {str(e)}'
+def hello_world():
+    return 'Hello, World! Yay'
 
-@app.route('/upload-lightcurve', methods=['POST'])
-def upload_lightcurve():
-    try:
-        data = request.get_json()
-        tic_id = data.get('ticId')
-        anomaly_id = data.get('anomalyId')
-
-        if not tic_id or not anomaly_id:
-            return jsonify({'message': 'TIC Id and anomaly Id are required'}), 400
-
-        # Generate lightcurve graph and upload to Supabase
-        success = generate_and_upload_lightcurve(tic_id, anomaly_id)
-        
-        if success:
-            return jsonify({'message': f'Lightcurve uploaded successfully for Anomaly ID: {anomaly_id}'}), 200
-        else:
-            return jsonify({'message': 'Failed to generate or upload lightcurve image'}), 500
-    except Exception as e:
-        return jsonify({'message': str(e)}), 500
-
-def generate_and_upload_lightcurve(tic_id, anomaly_id):
-    try:
-        # Generate lightcurve graph
-        img_bytes = generate_lightcurve_graph(tic_id)
-        if img_bytes:
-            # Upload image to Supabase storage
-            upload_image_to_supabase(tic_id, anomaly_id, img_bytes)
+def upload_file_to_supabase(bucket_name: str, file_path: str, destination_path: str):
+    with open(file_path, "rb") as file:
+        try:
+            response = supabase_client.storage.from_(bucket_name).upload(destination_path, file)
+            print(f"Uploaded {file_path} -> {destination_path}")
             return True
-        else:
+        except Exception as e:
+            print(f"Failed to upload {file_path} -> {destination_path}: {e}")
             return False
-    except Exception as e:
-        print(f'Error: {str(e)}')
-        return False
 
-def generate_lightcurve_graph(tic_id):
+def upload_directory_to_supabase(bucket_name: str, local_directory: str):
+    for root, dirs, files in os.walk(local_directory):
+        for file_name in files:
+            if file_name.startswith('.'):
+                continue
+
+            file_path = os.path.join(root, file_name)
+            relative_path = os.path.relpath(file_path, local_directory)
+            destination_path = Path(relative_path).as_posix()
+
+            success = upload_file_to_supabase(bucket_name, file_path, destination_path)
+            if not success:
+                return False
+    return True
+
+@app.route('/upload-directory', methods=['GET'])
+def upload_directory():
     try:
-        # Retrieve lightcurve data using lightkurve
-        lc = lk.search_lightcurvefile(tic_id).download().PDCSAP_FLUX
-        # Fold the lightcurve
-        folded_lc = lc.fold(period=lc.period)
+        bucket_name = "zoodex"
+        local_directory = "zoodex" 
         
-        # Plot the folded lightcurve
-        plt.figure(figsize=(10, 6))
-        folded_lc.scatter(color='lightblue', alpha=0.6)
-        plt.title(f'Folded Lightcurve for TIC ID: {tic_id}')
-        plt.xlabel('Phase')
-        plt.ylabel('Flux')
-        plt.grid(True)
+        upload_success = upload_directory_to_supabase(bucket_name, local_directory)
         
-        # Save plot to BytesIO object
-        img_bytes = BytesIO()
-        plt.savefig(img_bytes, format='png')
-        img_bytes.seek(0)
-        plt.close()
+        if upload_success:
+            return jsonify({"message": "Directory uploaded successfully!"}), 200
+        else:
+            return jsonify({"message": "Failed to upload directory."}), 500
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
+
+@app.route('/anomalies', methods=['GET'])
+def get_anomalies():
+    try:
+        print("Attempting to fetch anomalies...")
+        response = supabase_client.from_('anomalies').select('*').execute()
         
-        return img_bytes
-    except Exception as e:
-        print(f'Error generating lightcurve graph: {str(e)}')
-        return None
-
-def upload_image_to_supabase(tic_id, anomaly_id, img_bytes):
-    try:
-        # Upload image to Supabase storage under "anomalies" folder with anomaly_id
-        upload_url = f'{SUPABASE_STORAGE_URL}/object/public/anomalies/{anomaly_id}/{tic_id}_phase.png'
-        headers = {
-            'apikey': SUPABASE_KEY,
-            'Content-Type': 'image/png'
-        }
-        response = requests.post(upload_url, headers=headers, data=img_bytes)
-        if response.status_code == 201:
-            print(f'Image uploaded successfully for TIC ID: {tic_id} under Anomaly ID: {anomaly_id}')
-            return True
+        
+        if response.data:
+            print(f"Supabase response: {response.data}") 
+            return jsonify(response.data), 200
         else:
-            print(f'Failed to upload image for TIC ID: {tic_id} under Anomaly ID: {anomaly_id}')
-            return False
+            print(f"No data found. Error: {response.error_message if response.error_message else 'Unknown error'}")
+            return jsonify({"error": response.error_message or "No anomalies found"}), 404
+
     except Exception as e:
-        print(f'Error uploading image to Supabase: {str(e)}')
-        return False
+        print(f"An error occurred: {str(e)}") 
+        return jsonify({"error": str(e)}), 500
 
-
-def create_lightkurve_graph(anomaly_id, tic_id):
+def list_files_in_bucket(bucket_name: str):
     try:
-        # Example URL for lightkurve data (replace with your data retrieval method)
-        lightkurve_url = f"https://example.com/lightkurve/{tic_id}"
-        response = requests.get(lightkurve_url)
-        if response.status_code == 200:
-            data = pd.read_csv(BytesIO(response.content))
-            # Example phase-folded plot (replace with your actual plot generation logic)
-            plt.figure(figsize=(8, 6))
-            plt.scatter(data['phase'], data['flux'], color='lightblue', alpha=0.6)
-            plt.xlabel('Phase')
-            plt.ylabel('Flux')
-            plt.title(f'Phase-folded lightkurve for TIC ID: {tic_id}')
-            plt.grid(True)
-            # Save plot to a BytesIO object
-            img_bytes = BytesIO()
-            plt.savefig(img_bytes, format='png')
-            img_bytes.seek(0)
-            # Upload image to Supabase storage
-            upload_image_to_supabase(anomaly_id, img_bytes)
-            plt.close()
-        else:
-            print(f'Failed to fetch lightkurve data for TIC ID: {tic_id}')
+        response = supabase_client.storage.from_(bucket_name).list()
+        
+    
+        file_tree = {}
+        
+        for item in response.data:
+            path_parts = item.name.split('/')
+            current_level = file_tree
+            
+           
+            for part in path_parts:
+                if part not in current_level:
+                    current_level[part] = {}
+                current_level = current_level[part]
+        
+        return file_tree
+    
     except Exception as e:
-        print(f'Error creating lightkurve graph: {str(e)}')
-
-
-def upload_image_to_supabase(anomaly_id, img_bytes):
+        print(f"Error fetching files from bucket: {str(e)}")
+        return {}
+    
+# @app.route('/buckets', methods=['GET'])
+def list_files_in_bucket_zoodex():
     try:
-        # Upload image to Supabase storage under "anomalies" folder with anomaly_id
-        upload_url = f'{SUPABASE_STORAGE_URL}/object/public/anomalies/{anomaly_id}/phase.png'
-        headers = {
-            'apikey': SUPABASE_KEY,
-            'Content-Type': 'image/png'
-        }
-        response = requests.post(upload_url, headers=headers, data=img_bytes)
-        if response.status_code == 201:
-            print(f'Image uploaded successfully for anomaly ID: {anomaly_id}')
-        else:
-            print(f'Failed to upload image for anomaly ID: {anomaly_id}')
+    
+        response = supabase_client.storage.from_("zoodex").list()
+        
+    
+        file_tree = {}
+        
+    
+        if isinstance(response, list):
+            for item in response:
+            
+                path_parts = item['name'].split('/')
+                current_level = file_tree
+                
+               
+                for part in path_parts:
+                    if part not in current_level:
+                        current_level[part] = {}
+                    current_level = current_level[part]
+                    
+            
+                current_level['__file__'] = item['name'] 
+                
+    
+        def clean_tree(tree):
+            for key, value in list(tree.items()):
+                if '__file__' in value:
+                    
+                    value['__file__'] = value['__file__']
+                else:
+                    
+                    clean_tree(value)
+                    
+                    if not value:
+                        del tree[key]
+
+        clean_tree(file_tree)  
+        
+        return jsonify(file_tree)  
+    
     except Exception as e:
-        print(f'Error uploading image to Supabase: {str(e)}')
+        print(f"Error fetching files from bucket: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/buckets', methods=['GET'])
+def list_files_in_burrowing_owl_folder():
+    try:
+        response = supabase_client.storage.from_("zoodex").list("zoodex-burrowingOwl/")
+        files_list = [item['name'] for item in response if not item['name'].endswith('/')]
+        return jsonify(files_list)
+    except Exception as e:
+        print(f"Error fetching files from bucket: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/list-files/<string:bucket_name>', methods=['GET'])
+def list_files(bucket_name):
+    try:
+        file_tree = list_files_in_bucket(bucket_name)
+        return jsonify(file_tree), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    print("Supabase client initialized at startup")
+    app.run(host='0.0.0.0', port=5001, debug=True)
