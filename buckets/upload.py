@@ -35,10 +35,11 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
             data = {
                 "id": anomaly_id, 
                 "content": content, 
+                # "anomalytype": 'planet',
                 "anomalytype": "cloud",
                 # "anomalySet": anomaly_set,
                 "anomalySet": "cloudspottingOnMars",
-                "parentAnomaly": 40 # 69 
+                "parentAnomaly": 40, #69
             }
             response = supabase.table('anomalies').insert(data).execute()
             print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
