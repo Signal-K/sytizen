@@ -20,9 +20,9 @@ def determine_planet_type(params):
                 return "Water world"
             return "Super-Earth"
         elif params['radius'] <= 4:
-            return "Ice giant"
+            return "IceGiant"
         else:
-            return "Gas Giant"
+            return "GasGiant"
     return "Anomaly"
 
 def calculate_temperature(star_temp, distance=None, period=None):
@@ -48,9 +48,9 @@ def generate_color_map(temp_eq, planet_type):
             color_map = ['#5cb85c', '#4cae4c', '#449d44', '#398439']
     elif planet_type == "Water world":
         color_map = ['#5bc0de', '#46b8da', '#31b0d5', '#269abc']
-    elif planet_type == "Ice giant":
+    elif planet_type == "IceGiant":
         color_map = ['#5bc0de', '#31b0d5', '#269abc', '#204d74']
-    elif planet_type == "Gas Giant":
+    elif planet_type == "GasGiant":
         color_map = ['#f0ad4e', '#ec971f', '#d58512', '#c67605']
     else:
         color_map = ['#5e5e5e', '#4e4e4e', '#3e3e3e', '#2e2e2e']
