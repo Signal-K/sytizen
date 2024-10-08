@@ -36,10 +36,10 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
                 "id": anomaly_id, 
                 "content": content, 
                 # "anomalytype": 'planet',
-                "anomalytype": "cloud",
+                "anomalytype": "telescopeClouds",
                 # "anomalySet": anomaly_set,
-                "anomalySet": "cloudspottingOnMars",
-                "parentAnomaly": 40, #69
+                "anomalySet": "lidar-EarthClouds",
+                "parentAnomaly": 69, #69
             }
             response = supabase.table('anomalies').insert(data).execute()
             print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
@@ -73,8 +73,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "clouds"
-    local_directory = "clouds" 
+    bucket_name = "telescope"
+    local_directory = "telescope" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
