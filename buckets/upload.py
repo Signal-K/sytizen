@@ -36,9 +36,9 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
                 "id": anomaly_id, 
                 "content": content, 
                 # "anomalytype": 'planet',
-                "anomalytype": "satellitePics",
+                "anomalytype": "automatonSatellitePhoto",
                 # "anomalySet": anomaly_set,
-                "anomalySet": "satellite-planetFout",
+                "anomalySet": "automaton-aiForMars",
                 "parentAnomaly": 40, #69
             }
             response = supabase.table('anomalies').insert(data).execute()
@@ -73,8 +73,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "telescope"
-    local_directory = "satellite/satellite-planetFour" 
+    bucket_name = "telescope/automaton-aiForMars"
+    local_directory = "automatons/automatons-ai4Mars" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
