@@ -1,0 +1,73 @@
+Anomaly Type: planet
+  - ID: 50365310, Content: TIC 50365310
+    Classifications:
+      * ID: 12, Content: this is NOT a test
+      * ID: 1, Content: Test
+      * ID: 20, Content: Test
+  - ID: 6, Content: TOI-700d
+    Classifications:
+      * ID: 12, Content: this is NOT a test
+      * ID: 1, Content: Test
+      * ID: 20, Content: Test
+  - ID: 1, Content: Kepler-69c
+    Classifications:
+      * ID: 12, Content: this is NOT a test
+      * ID: 1, Content: Test
+      * ID: 20, Content: Test
+
+Anomaly Type: zoodexOthers
+  - ID: 47335863, Content: 47335863
+    Classifications:
+      * ID: 9, Content: 
+
+Anomaly Type: telescope-minorPlanet
+  - ID: 100879215, Content: 100879215
+    Classifications:
+      * ID: 19, Content: In the center of the circle
+
+Anomaly Type: automatonSatellitePhoto
+  - ID: 79738567, Content: 79738567
+    Classifications:
+      * ID: 18, Content: ano345678tg7uybhkjqwfvertgqwyukehrjvrew7rtfgoyuhtgfvbwer8ioghtgbvaer8iotyhzjgzveb5rilhk
+      * ID: 17, Content: another testerhguijboknm yaghedrthjnrtgrjnstzrednhjy
+      * ID: 16, Content: Test
+  - ID: 57538410, Content: 57538410
+    Classifications:
+      * ID: 18, Content: ano345678tg7uybhkjqwfvertgqwyukehrjvrew7rtfgoyuhtgfvbwer8ioghtgbvaer8iotyhzjgzveb5rilhk
+      * ID: 17, Content: another testerhguijboknm yaghedrthjnrtgrjnstzrednhjy
+      * ID: 16, Content: Test
+  - ID: 57511112, Content: 57511112
+    Classifications:
+      * ID: 18, Content: ano345678tg7uybhkjqwfvertgqwyukehrjvrew7rtfgoyuhtgfvbwer8ioghtgbvaer8iotyhzjgzveb5rilhk
+      * ID: 17, Content: another testerhguijboknm yaghedrthjnrtgrjnstzrednhjy
+      * ID: 16, Content: Test
+
+Anomalies of Type: planet
+  - ID: 69, Content: Earth
+  - ID: 50365310, Content: TIC 50365310
+  - ID: 65212867, Content: TIC 65212867
+  - ID: 88863718, Content: TIC 88863718
+  - ID: 106997505, Content: TIC 106997505
+  - ID: 124709665, Content: TIC 124709665
+  - ID: 156115721, Content: TIC 156115721
+  - ID: 169904935, Content: TIC 169904935
+  - ID: 238597883, Content: TIC 238597883
+  - ID: 440801822, Content: TIC 440801822
+  - ID: 3, Content: Kepler-442b
+  - ID: 4, Content: Kepler-22b
+  - ID: 5, Content: Trappist-1f
+  - ID: 6, Content: TOI-700d
+  - ID: 1, Content: Kepler-69c
+  - ID: 277039287, Content: 277039287
+  - ID: 57299130, Content: 57299130
+  - ID: 21720215, Content: 21720215
+  - ID: 263723967, Content: 263723967
+  - ID: 284300833, Content: 284300833
+  - ID: 269343479, Content: 269343479
+  - ID: 345724317, Content: 345724317
+  - ID: 210904767, Content: 210904767
+  - ID: 329981856, Content: 329981856
+  - ID: 201175570, Content: 201175570
+  - ID: 2, Content: Kepler-186f
+  - ID: 35, Content: Earth Globe
+
