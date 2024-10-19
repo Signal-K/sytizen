@@ -1,0 +1,1191 @@
+TIC 69 not found.
+TIC 50365310 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC      20    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 07 2019 TESS-SPOC    1800    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019  CDIPS    1800    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800    50365310      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021  CDIPS    1800    50365310      0.0
+TIC 65212867 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC      20    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 07 2019 TESS-SPOC    1800    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800    65212867      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800    65212867      0.0
+TIC 88863718 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC      20    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023   SPOC      20    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023   SPOC     120    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 07 2019 TESS-SPOC    1800    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 61 2023 TESS-SPOC     200    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023    QLP     200    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019  CDIPS    1800    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   803328651      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800    88863718      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021  CDIPS    1800    88863718      0.0
+TIC 106997505 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 61 2023 TESS-SPOC     200   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023    QLP     200   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   106997505      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   106997505      0.0
+TIC 124709665 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 33 2020   SPOC      20   124709665      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 33 2020   SPOC     120   124709665      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 33 2020 TESS-SPOC     600   124709665      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   124709665      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 33 2020    QLP     600   124709665      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   124709665      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   124709665      0.0
+TIC 156115721 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC      20   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 08 2019    QLP    1800   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023    QLP     200   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 08 2019 GSFC-ELEANOR-LITE    1800   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   156115721      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 08 2019   TGLC    1800   156115721      0.0
+TIC 169904935 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC      20   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 61 2023 TESS-SPOC     200   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023    QLP     200   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   169904935      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   169904935      0.0
+TIC 238597883 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC      20   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021   SPOC     120   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 09 2019 TESS-SPOC    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 07 2019 TESS-SPOC    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 62 2023 TESS-SPOC     200   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 61 2023 TESS-SPOC     200   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 09 2019    QLP    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023    QLP     200   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 62 2023    QLP     200   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019 PATHOS    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 09 2019 GSFC-ELEANOR-LITE    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 09 2019  CDIPS    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 09 2019 PATHOS    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019  CDIPS    1800   238597883      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021  CDIPS    1800   238597883      0.0
+TIC 440801822 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 33 2020   SPOC      20   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 33 2020   SPOC     120   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 46 2021   SPOC     120   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 44 2021   SPOC     120   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 45 2021   SPOC     120   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 33 2020 TESS-SPOC     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 46 2021 TESS-SPOC     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 45 2021 TESS-SPOC     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 44 2021 TESS-SPOC     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 71 2023 TESS-SPOC     200   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 33 2020    QLP     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 46 2021    QLP     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 45 2021    QLP     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 44 2021    QLP     600   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 71 2023    QLP     200   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 72 2023    QLP     200   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   440801822      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   440801822      0.0
+TIC 3 not found.
+TIC 4 not found.
+TIC 5 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 38 2021    QLP     600           5      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 65 2023    QLP     200           5      0.0
+TIC 6 not found.
+TIC 1 not found.
+TIC 277039287 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 67 2023   SPOC     120   277039287      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 67 2023 TESS-SPOC     200   277039287      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 67 2023    QLP     200   277039287      0.0
+TIC 57299130 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 24 2020   SPOC     120    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 25 2020   SPOC     120    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 51 2022   SPOC     120    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 52 2022   SPOC     120    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 24 2020 TESS-SPOC    1800    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 25 2020 TESS-SPOC    1800    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 51 2022 TESS-SPOC     600    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 52 2022 TESS-SPOC     600    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 24 2020    QLP    1800    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 25 2020    QLP    1800    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 51 2022    QLP     600    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 52 2022    QLP     600    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 78 2024    QLP     200    57299130      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 79 2024    QLP     200    57299130      0.0
+TIC 21720215 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 79 2024   SPOC     120    21720215      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 25 2020 TESS-SPOC    1800    21720215      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 25 2020    QLP    1800    21720215      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 79 2024    QLP     200    21720215      0.0
+  - SearchResult containing 1 data products.
+
+ #    mission    year  author  exptime target_name distance
+                                  s                 arcsec 
+--- ------------ ---- -------- ------- ----------- --------
+  0 TESS Sector  2020 DIAMANTE    1800    21720215      0.0
+TIC 263723967 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 25 2020 TESS-SPOC    1800   263723967      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 52 2022 TESS-SPOC     600   263723967      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 25 2020    QLP    1800   263723967      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 52 2022    QLP     600   263723967      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 79 2024    QLP     200   263723967      0.0
+TIC 284300833 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 78 2024   SPOC     120   284300833      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 51 2022    QLP     600   284300833      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 78 2024    QLP     200   284300833      0.0
+  - SearchResult containing 1 data products.
+
+ #    mission    year  author  exptime target_name distance
+                                  s                 arcsec 
+--- ------------ ---- -------- ------- ----------- --------
+  0 TESS Sector  2020 DIAMANTE    1800   284300833      0.0
+TIC 269343479 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023   SPOC     120   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 07 2019 TESS-SPOC    1800   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 34 2021 TESS-SPOC     600   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 61 2023 TESS-SPOC     200   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019    QLP    1800   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 34 2021    QLP     600   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 61 2023    QLP     200   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #    mission    year  author  exptime target_name distance
+                                  s                 arcsec 
+--- ------------ ---- -------- ------- ----------- --------
+  0 TESS Sector  2019 DIAMANTE    1800   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 07 2019 GSFC-ELEANOR-LITE    1800   269343479      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 07 2019   TGLC    1800   269343479      0.0
+TIC 345724317 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 25 2020 TESS-SPOC    1800   345724317      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 52 2022 TESS-SPOC     600   345724317      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 25 2020    QLP    1800   345724317      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 52 2022    QLP     600   345724317      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 79 2024    QLP     200   345724317      0.0
+TIC 210904767 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 12 2019   SPOC     120   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 65 2023   SPOC     120   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 12 2019 TESS-SPOC    1800   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 39 2021 TESS-SPOC     600   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 65 2023 TESS-SPOC     200   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 12 2019    QLP    1800   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 39 2021    QLP     600   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 65 2023    QLP     200   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 12 2019  CDIPS    1800   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 12 2019 PATHOS    1800   210904767      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 39 2021  CDIPS    1800   210904767      0.0
+TIC 329981856 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 11 2019 TESS-SPOC    1800   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 12 2019 TESS-SPOC    1800   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 38 2021 TESS-SPOC     600   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 65 2023 TESS-SPOC     200   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 11 2019    QLP    1800   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 12 2019    QLP    1800   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 38 2021    QLP     600   329981856      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 65 2023    QLP     200   329981856      0.0
+TIC 201175570 found:
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 69 2023   SPOC     120   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 68 2023   SPOC     120   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 69 2023 TESS-SPOC     200   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year   author  exptime target_name distance
+                                     s                 arcsec 
+--- -------------- ---- --------- ------- ----------- --------
+  0 TESS Sector 68 2023 TESS-SPOC     200   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 01 2018    QLP    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 02 2018    QLP    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 28 2020    QLP     600   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 29 2020    QLP     600   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 68 2023    QLP     200   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 69 2023    QLP     200   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 02 2018   TGLC    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 01 2018   TGLC    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 01 2018 GSFC-ELEANOR-LITE    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 02 2018  TASOC    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 01 2018  TASOC    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year       author      exptime target_name distance
+                                             s                 arcsec 
+--- -------------- ---- ----------------- ------- ----------- --------
+  0 TESS Sector 02 2018 GSFC-ELEANOR-LITE    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 02 2018  TASOC    1800   201175570      0.0
+  - SearchResult containing 1 data products.
+
+ #     mission     year author exptime target_name distance
+                                  s                 arcsec 
+--- -------------- ---- ------ ------- ----------- --------
+  0 TESS Sector 01 2018  TASOC    1800   201175570      0.0
+TIC 2 not found.
+TIC 35 not found.

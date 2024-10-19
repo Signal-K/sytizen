@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Initialize Supabase client
 def init_supabase_client():
-    url = "http://127.0.0.1:54321"  
+    url = "http://127.0.0.1:54321"
     key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
     return create_client(url, key)
 
@@ -35,11 +35,8 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                # "anomalytype": 'planet',
-                "anomalytype": "telescopeMinor",
-                # "anomalySet": anomaly_set,
-                "anomalySet": "telescope-minorPlanet",
-                # "parentAnomaly": 40, #69
+                "anomalytype": "zoodexOthers",
+                "anomalySet": 'zoodex-nestQuestGo',
             }
             response = supabase.table('anomalies').insert(data).execute()
             print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
@@ -49,32 +46,33 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
         print(f"Anomaly {anomaly_id} already exists in the database. Skipping insertion.")
 
 def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_directory: str):
-    for root, dirs, files in os.walk(local_directory):
-        for file_name in files:
-            if file_name.startswith('.'):
-                continue
+    # Iterate over each subfolder in the local directory
+    for anomaly_folder in os.listdir(local_directory):
+        full_path = os.path.join(local_directory, anomaly_folder)
+        if os.path.isdir(full_path):
+            # Treat each subfolder as an anomaly
+            anomaly_id = anomaly_folder  # Use the folder name as the anomaly ID
+            anomaly_set = "telescope-minorPlanet"  # Set a consistent anomaly set
+            
+            # Insert the anomaly into the database
+            insert_into_anomalies(supabase, anomaly_id, anomaly_id, anomaly_set)
+            
+            # Upload all files from the subfolder
+            for root, _, files in os.walk(full_path):
+                for file_name in files:
+                    if file_name.startswith('.'):
+                        continue
+                    
+                    file_path = os.path.join(root, file_name)
+                    relative_path = os.path.relpath(file_path, local_directory)
+                    destination_path = f"{anomaly_id}/{Path(relative_path).as_posix()}"
 
-            file_path = os.path.join(root, file_name)
-            relative_path = os.path.relpath(file_path, local_directory)
-            destination_path = Path(relative_path).as_posix()
-
-            anomaly_set = Path(root).name 
-
-            anomaly_id = Path(file_name).stem
-            try:
-                anomaly_id = int(anomaly_id) 
-                content = anomaly_id 
-            except ValueError:
-                anomaly_id = anomaly_set 
-                content = anomaly_set  
-
-            if upload_file_to_supabase(supabase, bucket_name, file_path, destination_path):
-                insert_into_anomalies(supabase, anomaly_id, content, anomaly_set)
+                    upload_file_to_supabase(supabase, bucket_name, file_path, destination_path)
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "telescope/telescope-dailyMinorPlanet"
-    local_directory = "telescope/telescope-dailyMinorPlanet" 
+    bucket_name = "zoodex/zoodex-nestQuestGo"
+    local_directory = "zoodex/zoodex-nestQuestGo"
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
