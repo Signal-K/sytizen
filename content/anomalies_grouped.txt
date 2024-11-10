@@ -1,46 +1,73 @@
 Anomaly Type: planet
-  - ID: 50365310, Content: TIC 50365310
+  - ID: 69, Content: Earth
     Classifications:
-      * ID: 12, Content: this is NOT a test
-      * ID: 1, Content: Test
-      * ID: 20, Content: Test
+      * ID: 31, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Test', 'cloudName': 'Test'}
+      * ID: 32, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Test', 'cloudName': 'Test'}
+      * ID: 33, Content: rhenartyg, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'rhenartyg', 'location': 'er4hbdtnr', 'cloudName': 'yhe'}
+      * ID: 25, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Melbin', 'cloudName': 'I think we should add this'}
+      * ID: 26, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Melbin', 'cloudName': 'I think we should add this'}
+      * ID: 27, Content: hetj, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'hetj', 'location': 'rehte', 'cloudName': 'het'}
+      * ID: 28, Content: gr4wyghrh, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 29, Content: gr4wyghrh, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 30, Content: gr4wyghrh, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': {'uploadUrl': 'http://127.0.0.1:54321/storage/v1/object/public/media/1729343895649-fa07195a-f69e-4cbb-a11a-a3e993e49d14-screenshot.jpg'}, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 41, Content: Test, Type: planet, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {'field_0': 'test'}, 'classificationOptions': {'': {'1': True}}}
+      * ID: 42, Content: Help, Type: planet, ClassificationConfig: {'votes': 6, 'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {'field_0': 'htr'}, 'classificationOptions': {'': {'1': True}}}
   - ID: 6, Content: TOI-700d
     Classifications:
-      * ID: 12, Content: this is NOT a test
-      * ID: 1, Content: Test
-      * ID: 20, Content: Test
-  - ID: 1, Content: Kepler-69c
+      * ID: 31, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Test', 'cloudName': 'Test'}
+      * ID: 32, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Test', 'cloudName': 'Test'}
+      * ID: 33, Content: rhenartyg, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'rhenartyg', 'location': 'er4hbdtnr', 'cloudName': 'yhe'}
+      * ID: 25, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Melbin', 'cloudName': 'I think we should add this'}
+      * ID: 26, Content: Test, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Melbin', 'cloudName': 'I think we should add this'}
+      * ID: 27, Content: hetj, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'hetj', 'location': 'rehte', 'cloudName': 'het'}
+      * ID: 28, Content: gr4wyghrh, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 29, Content: gr4wyghrh, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': None, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 30, Content: gr4wyghrh, Type: userUpload-lidar-EarthCloud, ClassificationConfig: {'media': {'uploadUrl': 'http://127.0.0.1:54321/storage/v1/object/public/media/1729343895649-fa07195a-f69e-4cbb-a11a-a3e993e49d14-screenshot.jpg'}, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 41, Content: Test, Type: planet, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {'field_0': 'test'}, 'classificationOptions': {'': {'1': True}}}
+      * ID: 42, Content: Help, Type: planet, ClassificationConfig: {'votes': 6, 'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {'field_0': 'htr'}, 'classificationOptions': {'': {'1': True}}}
+
+Anomaly Type: telescopeOthers
+  - ID: 70403661, Content: 70403661
     Classifications:
-      * ID: 12, Content: this is NOT a test
-      * ID: 1, Content: Test
-      * ID: 20, Content: Test
+      * ID: 22, Content: test, Type: DiskDetective, ClassificationConfig: {'votes': 2}
+      * ID: 21, Content: Test, Type: DiskDetective, ClassificationConfig: {'votes': 4}
+      * ID: 23, Content: Test, Type: DiskDetective, ClassificationConfig: {'votes': 2, 'createdBy': None, 'structureId': 3103, 'activePlanet': 69, 'additionalFields': {'field_0': 'htrjtyr'}, 'classificationOptions': {'Objects between inner and outer circles': True, 'Object is extended beyond the outer circle': True}}
+      * ID: 38, Content: Blueish-white object that is about half the radius of the inner circle, Type: DiskDetective, ClassificationConfig: {'votes': 4, 'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'3': True}}}
 
 Anomaly Type: zoodexOthers
-  - ID: 47335863, Content: 47335863
+  - ID: 757597575, Content: 757597575
     Classifications:
-      * ID: 9, Content: 
+      * ID: 40, Content: Appears to be two owls together, feet firmly planted on a surface, Type: zoodex-burrowingOwl, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {}, 'classificationOptions': {'': {'1': True, '2': True}}}
 
-Anomaly Type: telescope-minorPlanet
-  - ID: 100879215, Content: 100879215
+Anomaly Type: cloud
+  - ID: 8423850802, Content: 8423850802
     Classifications:
-      * ID: 19, Content: In the center of the circle
+      * ID: 24, Content: Test, Type: cloud, ClassificationConfig: {'votes': 4, 'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {'field_0': 'Test', 'field_1': 'Tes', 'field_2': 'tew'}, 'classificationOptions': {'': {'1': True}, 'White colour': {'1': True, '2': True}}}
+
+Anomaly Type: gaseousMapping
+  - ID: 77798610, Content: 77798610
+    Classifications:
+      * ID: 39, Content: Quite blurry, but I think I can see some circular action, Type: lidar-jovianVortexHunter, ClassificationConfig: {'votes': 1, 'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'1': True}}}
+
+Anomaly Type: satellitePics
+  - ID: 83742405, Content: 83742405
+    Classifications:
+      * ID: 37, Content: For the most part, it looks like the surface is relatively smooth (obviously it's a bit lumpy, but comparatively speaking it's "smooth-ish". There are some shadows that appear to me to point towards larger hill formations., Type: satellite-planetFour, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'4': True, '5': True}}}
 
 Anomaly Type: automatonSatellitePhoto
-  - ID: 79738567, Content: 79738567
+  - ID: 69592674, Content: 69592674
     Classifications:
-      * ID: 18, Content: ano345678tg7uybhkjqwfvertgqwyukehrjvrew7rtfgoyuhtgfvbwer8ioghtgbvaer8iotyhzjgzveb5rilhk
-      * ID: 17, Content: another testerhguijboknm yaghedrthjnrtgrjnstzrednhjy
-      * ID: 16, Content: Test
-  - ID: 57538410, Content: 57538410
+      * ID: 34, Content: As well as what looks to be a rover tread mark in the soil :), Type: automaton-aiForMars, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True, '3': True}}}
+      * ID: 35, Content: Test, Type: automaton-aiForMars, ClassificationConfig: {'createdBy': 29, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True}}}
+  - ID: 57511636, Content: 57511636
     Classifications:
-      * ID: 18, Content: ano345678tg7uybhkjqwfvertgqwyukehrjvrew7rtfgoyuhtgfvbwer8ioghtgbvaer8iotyhzjgzveb5rilhk
-      * ID: 17, Content: another testerhguijboknm yaghedrthjnrtgrjnstzrednhjy
-      * ID: 16, Content: Test
-  - ID: 57511112, Content: 57511112
+      * ID: 34, Content: As well as what looks to be a rover tread mark in the soil :), Type: automaton-aiForMars, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True, '3': True}}}
+      * ID: 35, Content: Test, Type: automaton-aiForMars, ClassificationConfig: {'createdBy': 29, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True}}}
+
+Anomaly Type: telescopeMinor
+  - ID: 90670192, Content: 90670192
     Classifications:
-      * ID: 18, Content: ano345678tg7uybhkjqwfvertgqwyukehrjvrew7rtfgoyuhtgfvbwer8ioghtgbvaer8iotyhzjgzveb5rilhk
-      * ID: 17, Content: another testerhguijboknm yaghedrthjnrtgrjnstzrednhjy
-      * ID: 16, Content: Test
+      * ID: 36, Content: Very faint, but it does follow & work!, Type: telescope-minorPlanet, ClassificationConfig: {'createdBy': 21, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True}}}
 
 Anomalies of Type: planet
   - ID: 69, Content: Earth

@@ -1,0 +1,46 @@
+Author: fa07195a-f69e-4cbb-a11a-a3e993e49d14
+  Anomaly ID: 69
+    Classification Type: userUpload-lidar-EarthCloud
+      * ID: 31, Content: Test, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Test', 'cloudName': 'Test'}
+      * ID: 32, Content: Test, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Test', 'cloudName': 'Test'}
+      * ID: 33, Content: rhenartyg, ClassificationConfig: {'media': None, 'comment': 'rhenartyg', 'location': 'er4hbdtnr', 'cloudName': 'yhe'}
+      * ID: 25, Content: Test, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Melbin', 'cloudName': 'I think we should add this'}
+      * ID: 26, Content: Test, ClassificationConfig: {'media': None, 'comment': 'Test', 'location': 'Melbin', 'cloudName': 'I think we should add this'}
+      * ID: 27, Content: hetj, ClassificationConfig: {'media': None, 'comment': 'hetj', 'location': 'rehte', 'cloudName': 'het'}
+      * ID: 28, Content: gr4wyghrh, ClassificationConfig: {'media': None, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 29, Content: gr4wyghrh, ClassificationConfig: {'media': None, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+      * ID: 30, Content: gr4wyghrh, ClassificationConfig: {'media': {'uploadUrl': 'http://127.0.0.1:54321/storage/v1/object/public/media/1729343895649-fa07195a-f69e-4cbb-a11a-a3e993e49d14-screenshot.jpg'}, 'comment': 'gr4wyghrh', 'location': 'rhrhregh', 'cloudName': 'rgherghrethg'}
+  Anomaly ID: 69592674
+    Classification Type: automaton-aiForMars
+      * ID: 34, Content: As well as what looks to be a rover tread mark in the soil :), ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True, '3': True}}}
+  Anomaly ID: 57511636
+    Classification Type: automaton-aiForMars
+      * ID: 35, Content: Test, ClassificationConfig: {'createdBy': 29, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True}}}
+  Anomaly ID: 90670192
+    Classification Type: telescope-minorPlanet
+      * ID: 36, Content: Very faint, but it does follow & work!, ClassificationConfig: {'createdBy': 21, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'2': True}}}
+  Anomaly ID: 70403661
+    Classification Type: DiskDetective
+      * ID: 22, Content: test, ClassificationConfig: {'votes': 2}
+      * ID: 21, Content: Test, ClassificationConfig: {'votes': 4}
+      * ID: 23, Content: Test, ClassificationConfig: {'votes': 2, 'createdBy': None, 'structureId': 3103, 'activePlanet': 69, 'additionalFields': {'field_0': 'htrjtyr'}, 'classificationOptions': {'Objects between inner and outer circles': True, 'Object is extended beyond the outer circle': True}}
+      * ID: 38, Content: Blueish-white object that is about half the radius of the inner circle, ClassificationConfig: {'votes': 4, 'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'3': True}}}
+  Anomaly ID: 83742405
+    Classification Type: satellite-planetFour
+      * ID: 37, Content: For the most part, it looks like the surface is relatively smooth (obviously it's a bit lumpy, but comparatively speaking it's "smooth-ish". There are some shadows that appear to me to point towards larger hill formations., ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'4': True, '5': True}}}
+  Anomaly ID: 8423850802
+    Classification Type: cloud
+      * ID: 24, Content: Test, ClassificationConfig: {'votes': 4, 'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {'field_0': 'Test', 'field_1': 'Tes', 'field_2': 'tew'}, 'classificationOptions': {'': {'1': True}, 'White colour': {'1': True, '2': True}}}
+  Anomaly ID: 77798610
+    Classification Type: lidar-jovianVortexHunter
+      * ID: 39, Content: Quite blurry, but I think I can see some circular action, ClassificationConfig: {'votes': 1, 'createdBy': None, 'structureId': None, 'activePlanet': 69, 'additionalFields': {}, 'classificationOptions': {'': {'1': True}}}
+  Anomaly ID: 6
+    Classification Type: planet
+      * ID: 41, Content: Test, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {'field_0': 'test'}, 'classificationOptions': {'': {'1': True}}}
+      * ID: 42, Content: Help, ClassificationConfig: {'votes': 6, 'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {'field_0': 'htr'}, 'classificationOptions': {'': {'1': True}}}
+
+Author: 91813f0e-7ec7-4a6a-8d99-28a66c1608fd
+  Anomaly ID: 757597575
+    Classification Type: zoodex-burrowingOwl
+      * ID: 40, Content: Appears to be two owls together, feet firmly planted on a surface, ClassificationConfig: {'createdBy': None, 'structureId': None, 'activePlanet': 30, 'additionalFields': {}, 'classificationOptions': {'': {'1': True, '2': True}}}
+
