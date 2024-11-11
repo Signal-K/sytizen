@@ -11,7 +11,8 @@ def fetch_anomalies(supabase: Client):
     return response.data
 
 def fetch_classifications(supabase: Client):
-    response = supabase.table('classifications').select("*").execute()
+    # Explicitly select classificationtype and other fields
+    response = supabase.table('classifications').select("id, content, anomaly, classificationtype, classificationConfiguration").execute()
     return response.data
 
 def group_anomalies_by_type(anomalies, classifications):
@@ -49,7 +50,9 @@ def export_to_txt(grouped_anomalies, planet_anomalies, filename='anomalies_group
                 if classifications:
                     file.write("    Classifications:\n")
                     for classification in classifications:
-                        file.write(f"      * ID: {classification['id']}, Content: {classification['content']}\n")
+                        file.write(f"      * ID: {classification['id']}, Content: {classification['content']}, ")
+                        file.write(f"Type: {classification['classificationtype']}, ")
+                        file.write(f"ClassificationConfig: {classification['classificationConfiguration']}\n")
             file.write("\n")
         
         # Write planet anomalies
