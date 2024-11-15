@@ -29,24 +29,43 @@ def check_anomaly_exists(supabase: Client, anomaly_id):
         print(f"Error checking for anomaly {anomaly_id}: {e}")
         return False
 
-def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: str):
+def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
+    try:
+        # Check if the anomaly exists and if avatar_url is missing
+        response = supabase.table('anomalies').select("avatar_url").eq("id", anomaly_id).execute()
+        if len(response.data) > 0:
+            return response.data[0]["avatar_url"] is None
+        return False
+    except Exception as e:
+        print(f"Error checking avatar_url for anomaly {anomaly_id}: {e}")
+        return False
+
+def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_set: str, avatar_url: str):
     if not check_anomaly_exists(supabase, anomaly_id):
         try:
+            # Insert new anomaly with avatar_url
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                # "anomalytype": 'planet',
-                "anomalytype": "gaseousMapping",
-                # "anomalySet": anomaly_set,
-                "anomalySet": "lidar-jovianVortexHunter",
-                "parentAnomaly": 50, #69
+                "anomalytype": "telescopeClouds",
+                "anomalySet": anomaly_set,
+                "parentAnomaly": 69,
+                "avatar_url": avatar_url
             }
             response = supabase.table('anomalies').insert(data).execute()
             print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
         except Exception as e:
             print(f"Failed to insert anomaly {anomaly_id}: {e}")
     else:
-        print(f"Anomaly {anomaly_id} already exists in the database. Skipping insertion.")
+        # Check if the anomaly needs its avatar_url updated
+        if check_anomaly_needs_avatar_update(supabase, anomaly_id):
+            try:
+                response = supabase.table('anomalies').update({"avatar_url": avatar_url}).eq("id", anomaly_id).execute()
+                print(f"Updated anomaly {anomaly_id} with new avatar_url.")
+            except Exception as e:
+                print(f"Failed to update avatar_url for anomaly {anomaly_id}: {e}")
+        else:
+            print(f"Anomaly {anomaly_id} already has an avatar_url. Skipping update.")
 
 def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_directory: str):
     for root, dirs, files in os.walk(local_directory):
@@ -68,13 +87,16 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
                 anomaly_id = anomaly_set 
                 content = anomaly_set  
 
+            # Upload file and if successful, insert or update the anomaly
             if upload_file_to_supabase(supabase, bucket_name, file_path, destination_path):
-                insert_into_anomalies(supabase, anomaly_id, content, anomaly_set)
+                # Create the avatar_url with the relative path in the Supabase bucket
+                avatar_url = f"{bucket_name}/{destination_path}"
+                insert_or_update_anomalies(supabase, anomaly_id, content, anomaly_set, avatar_url)
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "telescope/lidar-jovianVortexHunter"
-    local_directory = "satellite/lidar-jovianVortexHunters" 
+    bucket_name = "telescope/automaton-aiForMars"
+    local_directory = "automatons/automatons-ai4Mars" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
