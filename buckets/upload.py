@@ -4,8 +4,8 @@ from pathlib import Path
 
 # Initialize Supabase client
 def init_supabase_client():
-    url = "http://127.0.0.1:54321"  
-    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
+    url = "https://hlufptwhzkpkkjztimzo.supabase.co"  
+    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsdWZwdHdoemtwa2tqenRpbXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyOTk3NTUsImV4cCI6MjAzMTg3NTc1NX0.v_NDVWjIU_lJQSPbJ_Y6GkW3axrQWKXfXVsBEAbFv_I"
     return create_client(url, key)
 
 def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, destination_path: str):
@@ -31,7 +31,6 @@ def check_anomaly_exists(supabase: Client, anomaly_id):
 
 def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
     try:
-        # Check if the anomaly exists and if avatar_url is missing
         response = supabase.table('anomalies').select("avatar_url").eq("id", anomaly_id).execute()
         if len(response.data) > 0:
             return response.data[0]["avatar_url"] is None
@@ -43,13 +42,12 @@ def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
 def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_set: str, avatar_url: str):
     if not check_anomaly_exists(supabase, anomaly_id):
         try:
-            # Insert new anomaly with avatar_url
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                "anomalytype": "telescopeClouds",
-                "anomalySet": anomaly_set,
-                "parentAnomaly": 69,
+                "anomalytype": "telescopeMinor",
+                "anomalySet": "telescope-minorPlanet", # anomaly_set,
+                "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
             response = supabase.table('anomalies').insert(data).execute()
@@ -57,7 +55,6 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
         except Exception as e:
             print(f"Failed to insert anomaly {anomaly_id}: {e}")
     else:
-        # Check if the anomaly needs its avatar_url updated
         if check_anomaly_needs_avatar_update(supabase, anomaly_id):
             try:
                 response = supabase.table('anomalies').update({"avatar_url": avatar_url}).eq("id", anomaly_id).execute()
@@ -95,8 +92,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "telescope/automaton-aiForMars"
-    local_directory = "automatons/automatons-ai4Mars" 
+    bucket_name = "telescope/telescope-dailyMinorPlanet"
+    local_directory = "telescope/telescope-dailyMinorPlanet" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
