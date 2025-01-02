@@ -4,8 +4,8 @@ from pathlib import Path
 
 # Initialize Supabase client
 def init_supabase_client():
-    url = "https://hlufptwhzkpkkjztimzo.supabase.co"  
-    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsdWZwdHdoemtwa2tqenRpbXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyOTk3NTUsImV4cCI6MjAzMTg3NTc1NX0.v_NDVWjIU_lJQSPbJ_Y6GkW3axrQWKXfXVsBEAbFv_I"
+    url = "http://127.0.0.1:54321"  
+    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
     return create_client(url, key)
 
 def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, destination_path: str):
