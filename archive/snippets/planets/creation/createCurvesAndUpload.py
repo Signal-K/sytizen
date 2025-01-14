@@ -18,7 +18,7 @@ def upload_to_supabase(filepath, bucket_name, folder_name, file_name):
 # Process each anomaly
 for anomaly in anomalies_list.data:
     anomaly_id = anomaly['id']
-    config = anomaly['configuration']
+    config = anomaly['configuration'] 
     tic_id = config['ticId']
 
     # Define TIC and other parameters from the configuration
