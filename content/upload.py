@@ -93,7 +93,7 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 def main():
     supabase = init_supabase_client()
     bucket_name = "anomalies" #telescope/telescope-dailyMinorPlanet"
-    local_directory = "telescope/telescope-dailyMinorPlanet" 
+    local_directory = "anomalies" # "telescope/telescope-dailyMinorPlanet" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
