@@ -14,12 +14,15 @@ def plot_sectors_with_temperature(tic_id, bin_time_minutes=15):
     """
     bin_time_days = bin_time_minutes / 24 / 60  # Convert minutes to days
 
-    # Query stellar temperature
+    # Query stellar properties
     star_info = Catalogs.query_object(f"TIC {tic_id}", catalog="TIC")
     if len(star_info) == 0:
         print(f"Star information not found for TIC {tic_id}.")
         return
+    
+    # Extract temperature and radius if available
     temperature = star_info[0]['Teff'] if 'Teff' in star_info.columns else 'Unknown'
+    radius = star_info[0]['rad'] if 'rad' in star_info.columns else 'Unknown'  # Fixed column name
 
     # Search for light curves
     search_result = lk.search_lightcurve(f"TIC {tic_id}", author="SPOC")
@@ -46,7 +49,7 @@ def plot_sectors_with_temperature(tic_id, bin_time_minutes=15):
         lc_binned.plot(marker='o', linewidth=0, color=color, alpha=0.8, markersize=5, label='Binned')
 
         plt.title(f"TIC {tic_id} - Sector {lc.sector}\n"
-                  f"Stellar Temperature: {temperature} K | Binning: {bin_time_minutes} min")
+                  f"Stellar Temperature: {temperature} K | Radius: {radius} R☉ | Binning: {bin_time_minutes} min")
         plt.xlabel("Time [BTJD days]")
         plt.ylabel("Normalized Flux")
         plt.legend()
