@@ -45,8 +45,8 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                "anomalytype": "zoodexOthers", # "planet",
-                "anomalySet": "zoodex-clickACoral", # anomaly_set,
+                "anomalytype": "planet", # "planet",
+                "anomalySet": "telescope-tess", # anomaly_set,
                 # "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
@@ -92,8 +92,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "zoodex/zoodex-clickACoral" #telescope/telescope-dailyMinorPlanet"
-    local_directory = "zoodex/zoodex-clickACoral" #"telescope/telescope-dailyMinorPlanet" 
+    bucket_name = "anomalies" #telescope/telescope-dailyMinorPlanet"
+    local_directory = "anomalies" #"telescope/telescope-dailyMinorPlanet" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
