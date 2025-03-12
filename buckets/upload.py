@@ -4,8 +4,8 @@ from pathlib import Path
 
 # Initialize Supabase client
 def init_supabase_client():
-    url = "https://hlufptwhzkpkkjztimzo.supabase.co"      
-    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsdWZwdHdoemtwa2tqenRpbXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyOTk3NTUsImV4cCI6MjAzMTg3NTc1NX0.v_NDVWjIU_lJQSPbJ_Y6GkW3axrQWKXfXVsBEAbFv_I"
+    url = "http://127.0.0.1:54321"  
+    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
     return create_client(url, key)
 
 def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, destination_path: str):
@@ -45,8 +45,8 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                "anomalytype": "satellitePics", # "gaseousMapping", # "planet",
-                "anomalySet": "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
+                "anomalytype": "telescopeMinor", # "satellitePics", # "gaseousMapping", # "planet",
+                "anomalySet": "telescope-minorPlanet", # "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
                 # "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
@@ -92,8 +92,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
-    local_directory = "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    bucket_name = 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
+    local_directory = "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
