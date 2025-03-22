@@ -17,9 +17,9 @@ def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, 
         except Exception as e:
             if "Duplicate" in str(e):
                 print(f"File already exists: {file_path}. Proceeding with database insertion.")
-                return True  
+                return True   
             print(f"Failed to upload {file_path} -> {destination_path}: {e}")
-            return False
+            return False 
 
 def check_anomaly_exists(supabase: Client, anomaly_id):
     try:
@@ -35,8 +35,8 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                "anomalytype": "zoodexOthers",
-                "anomalySet": 'zoodex-nestQuestGo',
+                "anomalytype": 'cloud', #"zoodexOthers",
+                "anomalySet": 'balloon-marsCloudShapes',# 'zoodex-nestQuestGo',
             }
             response = supabase.table('anomalies').insert(data).execute()
             print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
@@ -52,7 +52,7 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
         if os.path.isdir(full_path):
             # Treat each subfolder as an anomaly
             anomaly_id = anomaly_folder  # Use the folder name as the anomaly ID
-            anomaly_set = "telescope-minorPlanet"  # Set a consistent anomaly set
+            anomaly_set = "balloon-marsCloudShapes"  # Set a consistent anomaly set
             
             # Insert the anomaly into the database
             insert_into_anomalies(supabase, anomaly_id, anomaly_id, anomaly_set)
@@ -71,8 +71,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = "zoodex/zoodex-nestQuestGo"
-    local_directory = "zoodex/zoodex-nestQuestGo"
+    bucket_name = 'telescope/balloon-marsCloudsShapes' # "zoodex/zoodex-nestQuestGo"
+    local_directory = 'telescope/balloon-marsCloudsShapes' # "zoodex/zoodex-nestQuestGo"
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 

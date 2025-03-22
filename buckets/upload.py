@@ -45,8 +45,8 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                "anomalytype": "telescopeMinor", # "satellitePics", # "gaseousMapping", # "planet",
-                "anomalySet": "telescope-minorPlanet", # "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
+                "anomalytype": "cloud", # "telescopeMinor", # "satellitePics", # "gaseousMapping", # "planet",
+                "anomalySet": 'balloon-marsCloudShapes', # "telescope-minorPlanet", # "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
                 # "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
@@ -92,8 +92,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
-    local_directory = "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    bucket_name = 'telescope/balloon-marsCloudsShapes' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
+    local_directory = 'telescope/balloon-marsCloudsShapes' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
