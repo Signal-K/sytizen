@@ -45,8 +45,8 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
             data = {
                 "id": anomaly_id, 
                 "content": content, 
-                "anomalytype": "telescopeMinor", # "telescopeMinor", # "satellitePics", # "gaseousMapping", # "planet",
-                "anomalySet": 'active-asteroids', # "telescope-minorPlanet", # "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
+                "anomalytype": "telescopeSignal", # "telescopeMinor", # "telescopeMinor", # "satellitePics", # "gaseousMapping", # "planet",
+                "anomalySet": "telescope-awa", # 'active-asteroids', # "telescope-minorPlanet", # "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
                 # "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
@@ -92,8 +92,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
 def main():
     supabase = init_supabase_client()
-    bucket_name = 'telescope/telescope-active-asteroids' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
-    local_directory = 'telescope/telescope-active-asteroids' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    bucket_name = 'telescope/telescope-areWeAlone' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
+    local_directory = 'telescope/telescope-areWeAlone' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
     
     upload_directory_to_supabase(supabase, bucket_name, local_directory)
 
