@@ -5,4 +5,4 @@ FOR INSERT
 USING (auth.uid() IS NOT NULL);
 
 -- Secondary
-(bucket_id = 'anomalies'::text)
+(bucket_id = "anomalies"::text)

@@ -7,12 +7,12 @@ def init_supabase_client():
     return create_client(url, key)
 
 def fetch_anomalies(supabase: Client):
-    response = supabase.table('anomalies').select("*").execute()
+    response = supabase.table("anomalies").select("*").execute()
     return response.data
 
 def fetch_classifications(supabase: Client):
     # Explicitly select classificationtype and other fields
-    response = supabase.table('classifications').select("id, content, anomaly, classificationtype, classificationConfiguration").execute()
+    response = supabase.table("classifications").select("id, content, anomaly, classificationtype, classificationConfiguration").execute()
     return response.data
 
 def group_anomalies_by_type(anomalies, classifications):
@@ -26,12 +26,12 @@ def group_anomalies_by_type(anomalies, classifications):
         if anomaly_id in classified_anomaly_ids:
             anomaly_type = anomaly['anomalytype']
             if anomaly_type not in grouped_anomalies:
-                grouped_anomalies[anomaly_type] = {'anomalies': [], 'classifications': []}
-            grouped_anomalies[anomaly_type]['anomalies'].append(anomaly)
+                grouped_anomalies[anomaly_type] = {"anomalies": [], "classifications": []}
+            grouped_anomalies[anomaly_type]["anomalies"].append(anomaly)
             # Add all classifications for this anomaly
             for classification in classifications:
                 if classification['anomaly'] == anomaly_id:
-                    grouped_anomalies[anomaly_type]['classifications'].append(classification)
+                    grouped_anomalies[anomaly_type]["classifications"].append(classification)
 
     return grouped_anomalies
 
@@ -43,10 +43,10 @@ def export_to_txt(grouped_anomalies, planet_anomalies, filename='anomalies_group
         # Write grouped anomalies
         for anomaly_type, data in grouped_anomalies.items():
             file.write(f"Anomaly Type: {anomaly_type}\n")
-            for anomaly in data['anomalies']:
+            for anomaly in data["anomalies"]:
                 file.write(f"  - ID: {anomaly['id']}, Content: {anomaly['content']}\n")
                 # Write associated classifications
-                classifications = data['classifications']
+                classifications = data["classifications"]
                 if classifications:
                     file.write("    Classifications:\n")
                     for classification in classifications:

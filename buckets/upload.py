@@ -1,29 +1,58 @@
 import os
+import sys
+import signal
 from supabase import create_client, Client
 from pathlib import Path
 
+def signal_handler(sig, frame):
+    print('\n\nUpload interrupted by user. Exiting gracefully...')
+    sys.exit(0)
+
 # Initialize Supabase client
 def init_supabase_client():
-    url = 'https://api.starsailors.space' # "http://127.0.0.1:54321"  
-    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
-    return create_client(url, key)
-
+   
+    # Try service role key first, fallback to anon key
+    try:
+        return create_client(url, service_role_key)
+    except:
+        print("Warning: Using anonymous key - storage uploads may fail")
+        return create_client(url, anon_key)
 def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, destination_path: str):
     with open(file_path, "rb") as file:
         try:
-            response = supabase.storage.from_(bucket_name).upload(destination_path, file)
+            # Try uploading with upsert=True to handle existing files
+            response = supabase.storage.from_(bucket_name).upload(
+                destination_path, 
+                file, 
+                file_options={"upsert": "true"}
+            )
             print(f"Uploaded {file_path} -> {destination_path}")
             return True
         except Exception as e:
             if "Duplicate" in str(e):
-                print(f"File already exists: {file_path}. Proceeding with database insertion.")
-                return True  
-            print(f"Failed to upload {file_path} -> {destination_path}: {e}")
-            return False
+                print(f"File already exists: {file_path}. Trying to update...")
+                try:
+                    # Try updating the existing file
+                    response = supabase.storage.from_(bucket_name).update(destination_path, file)
+                    print(f"Updated {file_path} -> {destination_path}")
+                    return True
+                except Exception as update_error:
+                    print(f"Failed to update {file_path}: {update_error}")
+                    return False
+            elif "Unauthorized" in str(e) or "signature verification failed" in str(e):
+                print(f"Authorization failed for {file_path}. Check your API key permissions.")
+                print("You may need to:")
+                print("1. Use a service role key instead of anonymous key")
+                print("2. Update your RLS policies to allow uploads")
+                print("3. Make the bucket public for uploads")
+                return False
+            else:
+                print(f"Failed to upload {file_path} -> {destination_path}: {e}")
+                return False
 
 def check_anomaly_exists(supabase: Client, anomaly_id):
     try:
-        response = supabase.table('anomalies').select("*").eq("id", anomaly_id).execute()
+        response = supabase.table("anomalies").select("*").eq("id", anomaly_id).execute()
         return len(response.data) > 0
     except Exception as e:
         print(f"Error checking for anomaly {anomaly_id}: {e}")
@@ -31,7 +60,7 @@ def check_anomaly_exists(supabase: Client, anomaly_id):
 
 def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
     try:
-        response = supabase.table('anomalies').select("avatar_url").eq("id", anomaly_id).execute()
+        response = supabase.table("anomalies").select("avatar_url").eq("id", anomaly_id).execute()
         if len(response.data) > 0:
             return response.data[0]["avatar_url"] is None
         return False
@@ -50,14 +79,14 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
                 # "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
-            response = supabase.table('anomalies').insert(data).execute()
+            response = supabase.table("anomalies").insert(data).execute()
             print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
         except Exception as e:
             print(f"Failed to insert anomaly {anomaly_id}: {e}")
     else:
         if check_anomaly_needs_avatar_update(supabase, anomaly_id):
             try:
-                response = supabase.table('anomalies').update({"avatar_url": avatar_url}).eq("id", anomaly_id).execute()
+                response = supabase.table("anomalies").update({"avatar_url": avatar_url}).eq("id", anomaly_id).execute()
                 print(f"Updated anomaly {anomaly_id} with new avatar_url.")
             except Exception as e:
                 print(f"Failed to update avatar_url for anomaly {anomaly_id}: {e}")
@@ -91,11 +120,37 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
                 insert_or_update_anomalies(supabase, anomaly_id, content, anomaly_set, avatar_url)
 
 def main():
-    supabase = init_supabase_client()
-    bucket_name = 'anomalies' # 'telescope/telescope-areWeAlone' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
-    local_directory = 'anomalies' # 'telescope/telescope-areWeAlone' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    # Register signal handler for graceful exit on Ctrl+C
+    signal.signal(signal.SIGINT, signal_handler)
     
-    upload_directory_to_supabase(supabase, bucket_name, local_directory)
+    print("=== Supabase Storage Upload Script ===")
+    print("Starting upload process...")
+    print()
+    
+    supabase = init_supabase_client()
+    bucket_name = "anomalies" # 'telescope/telescope-areWeAlone' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
+    local_directory = "anomalies" # 'telescope/telescope-areWeAlone' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    
+    # Check if bucket exists and is accessible
+    try:
+        buckets = supabase.storage.list_buckets()
+        bucket_names = [bucket.name for bucket in buckets]
+        if bucket_name not in bucket_names:
+            print(f"Warning: Bucket '{bucket_name}' not found. Available buckets: {bucket_names}")
+        else:
+            print(f"Found bucket '{bucket_name}'. Starting upload...")
+    except Exception as e:
+        print(f"Error checking buckets: {e}")
+    
+    try:
+        upload_directory_to_supabase(supabase, bucket_name, local_directory)
+        print("\nUpload completed successfully!")
+    except KeyboardInterrupt:
+        print('\n\nUpload interrupted by user. Exiting gracefully...')
+        sys.exit(0)
+    except Exception as e:
+        print(f"\nUpload failed with error: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

@@ -23,7 +23,7 @@ def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, 
 
 def check_anomaly_exists(supabase: Client, anomaly_id):
     try:
-        response = supabase.table('anomalies').select("*").eq("id", anomaly_id).execute()
+        response = supabase.table("anomalies").select("*").eq("id", anomaly_id).execute()
         return len(response.data) > 0
     except Exception as e:
         print(f"Error checking for anomaly {anomaly_id}: {e}")
@@ -38,8 +38,8 @@ def insert_into_anomalies(supabase: Client, anomaly_id, content, anomaly_set: st
                 "anomalytype": 'cloud', #"zoodexOthers",
                 "anomalySet": 'balloon-marsCloudShapes',# 'zoodex-nestQuestGo',
             }
-            response = supabase.table('anomalies').insert(data).execute()
-            print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
+            response = supabase.table("anomalies").insert(data).execute()
+            print(f"Inserted anomaly with id {anomaly_id} into "anomalies" table.")
         except Exception as e:
             print(f"Failed to insert anomaly {anomaly_id}: {e}")
     else:

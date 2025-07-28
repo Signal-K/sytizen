@@ -23,7 +23,7 @@ def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, 
 
 def check_anomaly_exists(supabase: Client, anomaly_id):
     try:
-        response = supabase.table('anomalies').select("*").eq("id", anomaly_id).execute()
+        response = supabase.table("anomalies").select("*").eq("id", anomaly_id).execute()
         return len(response.data) > 0
     except Exception as e:
         print(f"Error checking for anomaly {anomaly_id}: {e}")
@@ -31,7 +31,7 @@ def check_anomaly_exists(supabase: Client, anomaly_id):
 
 def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
     try:
-        response = supabase.table('anomalies').select("avatar_url").eq("id", anomaly_id).execute()
+        response = supabase.table("anomalies").select("avatar_url").eq("id", anomaly_id).execute()
         if len(response.data) > 0:
             return response.data[0]["avatar_url"] is None
         return False
@@ -50,14 +50,14 @@ def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_se
                 # "parentAnomaly": 50,
                 "avatar_url": avatar_url
             }
-            response = supabase.table('anomalies').insert(data).execute()
-            print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table.")
+            response = supabase.table("anomalies").insert(data).execute()
+            print(f"Inserted anomaly with id {anomaly_id} into "anomalies" table.")
         except Exception as e:
             print(f"Failed to insert anomaly {anomaly_id}: {e}")
     else:
         if check_anomaly_needs_avatar_update(supabase, anomaly_id):
             try:
-                response = supabase.table('anomalies').update({"avatar_url": avatar_url}).eq("id", anomaly_id).execute()
+                response = supabase.table("anomalies").update({"avatar_url": avatar_url}).eq("id", anomaly_id).execute()
                 print(f"Updated anomaly {anomaly_id} with new avatar_url.")
             except Exception as e:
                 print(f"Failed to update avatar_url for anomaly {anomaly_id}: {e}")

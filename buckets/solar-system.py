@@ -50,5 +50,5 @@ for anomaly in anomalies:
         "anomalySet": "solar-system",
         "configuration": configuration
     }
-    response = supabase.table('anomalies').insert(data).execute()
+    response = supabase.table("anomalies").insert(data).execute()
     print(f"Inserted {anomaly['content']}: {response.data}")

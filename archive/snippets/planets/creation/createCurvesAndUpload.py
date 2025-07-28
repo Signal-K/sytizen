@@ -34,7 +34,7 @@ for anomaly in anomalies_list.data:
     fig, ax = plt.subplots()
     lc.plot(ax=ax, color='blue', marker='.', lw=0)
     plt.savefig('base.png', format='png')
-    upload_to_supabase('base.png', 'anomalies', str(anomaly_id), 'base.png')
+    upload_to_supabase('base.png', "anomalies", str(anomaly_id), 'base.png')
     plt.show()
 
     # Bin the lightcurve data and save as 'binned.png'
@@ -43,7 +43,7 @@ for anomaly in anomalies_list.data:
     fig, ax = plt.subplots()
     lc_binned.plot(ax=ax, color='gold', lw=0, marker='.')
     plt.savefig('binned.png', format='png')
-    upload_to_supabase('binned.png', 'anomalies', str(anomaly_id), 'binned.png')
+    upload_to_supabase('binned.png', "anomalies", str(anomaly_id), 'binned.png')
     plt.show()
 
     # Fold the lightcurve and save as 'phased.png'
@@ -51,5 +51,5 @@ for anomaly in anomalies_list.data:
     fig, ax = plt.subplots(figsize=(8, 4))
     lc_phased.plot(ax=ax, linewidth=0, marker='o', color='pink', markersize=1, alpha=0.8)
     plt.savefig('phased.png', format='png')
-    upload_to_supabase('phased.png', 'anomalies', str(anomaly_id), 'phased.png')
+    upload_to_supabase('phased.png', "anomalies", str(anomaly_id), 'phased.png')
     plt.show()

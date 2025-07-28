@@ -45,7 +45,7 @@ def download_files_from_buckets(supabase: Client, bucket_names: list):
 
 def main():
     supabase = init_supabase_client()
-    bucket_names = ['anomalies', 'zoodex', 'media', 'avatars', 'clouds', 'telescope']
+    bucket_names = ["anomalies", 'zoodex', 'media', 'avatars', 'clouds', 'telescope']
     download_files_from_buckets(supabase, bucket_names)
 
 if __name__ == "__main__":

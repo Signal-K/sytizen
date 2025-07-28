@@ -143,7 +143,7 @@ def main(tic_ids):
         for filename in os.listdir(output_dir):
             file_path = os.path.join(output_dir, filename)
             if os.path.isfile(file_path):
-                upload_to_supabase(file_path, 'anomalies', anomaly_folder, filename)
+                upload_to_supabase(file_path, "anomalies", anomaly_folder, filename)
 
         print(f"Processed TIC ID {tic_id}, Anomaly ID: {anomaly_id}")
 

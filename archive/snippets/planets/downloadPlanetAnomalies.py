@@ -27,8 +27,8 @@ def download_images_from_supabase():
     offset = 0
     while True:
         try:
-            # List objects in the 'anomalies' bucket with pagination
-            files = supabase.storage.from_('anomalies').list('', {'limit': 1000, 'offset': offset})
+            # List objects in the "anomalies" bucket with pagination
+            files = supabase.storage.from_("anomalies").list('', {'limit': 1000, 'offset': offset})
             if not files:
                 logger.info("No more files to download.")
                 break

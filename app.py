@@ -66,7 +66,7 @@ def upload_directory():
 def get_anomalies():
     try:
         print("Attempting to fetch anomalies...")
-        response = supabase_client.from_('anomalies').select('*').execute()
+        response = supabase_client.from_("anomalies").select('*').execute()
         
         
         if response.data:
