@@ -12,7 +12,7 @@ def plot_sectors_with_temperature(star_id, bin_time_minutes=15, catalog_type="TI
     - star_id: The TIC or KIC ID for which to generate plots.
     - bin_time_minutes: Time interval for binning the light curves, in minutes.
     - catalog_type: Either "TIC" or "KIC" to specify the catalog.
-    """
+    """ 
     bin_time_days = bin_time_minutes / 24 / 60  # Convert minutes to days
 
     # Format the target name based on catalog type
