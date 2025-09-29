@@ -76,12 +76,12 @@ def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
 def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_set: str, avatar_url: str):
     if not check_anomaly_exists(supabase, anomaly_id):
         try:
+            # Insert a new anomaly for each folder inside telescope-diskDetective
             data = {
-                "id": anomaly_id, 
-                "content": content, 
-                "anomalytype": "planet", # "telescopeSignal", # "telescopeMinor", # "telescopeMinor", # "satellitePics", # "gaseousMapping", # "planet",
-                "anomalySet": "telescope-tess", # "telescope-awa", # 'active-asteroids', # "telescope-minorPlanet", # "satellite-planetFour", # "lidar-jovianVortexHunter", # "cloudspottingOnMars", # "telescope-tess", # anomaly_set,
-                # "parentAnomaly": 50,
+                "id": anomaly_id,
+                "content": content,
+                "anomalytype": "star-system",
+                "anomalySet": "diskDetective",  # Use the folder name as anomalySet
                 "avatar_url": avatar_url
             }
             response = supabase.table("anomalies").insert(data).execute()
@@ -110,7 +110,8 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
 
             anomaly_set = Path(root).name 
 
-            anomaly_id = Path(file_name).stem
+            # Use the folder name as anomaly_id instead of file name
+            anomaly_id = Path(root).name
             try:
                 anomaly_id = int(anomaly_id) 
                 content = anomaly_id 
@@ -133,8 +134,8 @@ def main():
     print()
     
     supabase = init_supabase_client()
-    bucket_name = "anomalies" # 'telescope/telescope-areWeAlone' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
-    local_directory = "anomalies" # 'telescope/telescope-areWeAlone' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    bucket_name = "telescope/telescope-diskDetective" # "anomalies" # 'telescope/telescope-areWeAlone' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
+    local_directory = "telescope/telescope-diskDetective" # "anomalies" # 'telescope/telescope-areWeAlone' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
     
     # Check if bucket exists and is accessible
     try:
