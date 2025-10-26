@@ -3,6 +3,7 @@ import sys
 import signal
 from supabase import create_client, Client
 from pathlib import Path
+from dotenv import load_dotenv
 
 def signal_handler(sig, frame):
     print('\n\nUpload interrupted by user. Exiting gracefully...')
@@ -10,21 +11,48 @@ def signal_handler(sig, frame):
 
 # Initialize Supabase client
 def init_supabase_client():
-
+    # Load environment variables from .env.local in the parent directory
+    env_path = os.path.join(os.path.dirname(__file__), '../../.env.local')
+    load_dotenv(env_path)
+    
+    url = os.getenv('NEXT_PUBLIC_SUPABASE_URL', 'http://127.0.0.1:54321')
+    service_role_key = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
+    anon_key = os.getenv('NEXT_PUBLIC_SUPABASE_ANON_KEY')
+    
+    print(f"Using Supabase URL: {url}")
+    
     # Try service role key first, fallback to anon key
     try:
-        return create_client(url, service_role_key)
-    except:
-        print("Warning: Using anonymous key - storage uploads may fail")
+        if service_role_key:
+            return create_client(url, service_role_key)
+        else:
+            print("Warning: No service role key found, using anonymous key")
+            return create_client(url, anon_key)
+    except Exception as e:
+        print(f"Warning: Failed to create client with service role key: {e}")
+        print("Trying with anonymous key...")
         return create_client(url, anon_key)
+
 def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, destination_path: str):
     with open(file_path, "rb") as file:
         try:
-            # Try uploading with upsert=True to handle existing files
+            # Determine content type based on file extension
+            file_ext = os.path.splitext(file_path)[1].lower()
+            content_type = "image/jpeg"  # Default for bumble images
+            if file_ext in ['.jpg', '.jpeg']:
+                content_type = "image/jpeg"
+            elif file_ext == '.png':
+                content_type = "image/png"
+            elif file_ext == '.gif':
+                content_type = "image/gif"
+            elif file_ext == '.webp':
+                content_type = "image/webp"
+            
+            # Try uploading with upsert=True and correct content type
             response = supabase.storage.from_(bucket_name).upload(
                 destination_path, 
                 file, 
-                file_options={"upsert": "true"}
+                file_options={"content-type": content_type, "upsert": "true"}
             )
             print(f"Uploaded {file_path} -> {destination_path}")
             return True
@@ -68,19 +96,19 @@ def check_anomaly_needs_avatar_update(supabase: Client, anomaly_id):
         print(f"Error checking avatar_url for anomaly {anomaly_id}: {e}")
         return False
 
-def insert_or_update_anomalies(supabase: Client, anomaly_id, content, anomaly_set: str, avatar_url: str):
+def insert_or_update_anomalies(supabase: Client, anomaly_id, content, avatar_url: str):
     if not check_anomaly_exists(supabase, anomaly_id):
         try:
-            # Insert a new anomaly for each file
+            # Insert a new anomaly for bumble
             data = {
                 "id": anomaly_id,
                 "content": content,
-                "anomalytype": "star-system",
-                "anomalySet": anomaly_set,  # Use the provided anomaly_set parameter
+                "anomalytype": "bumble",
+                "anomalySet": "bumble",
                 "avatar_url": avatar_url
             }
             response = supabase.table("anomalies").insert(data).execute()
-            print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table with anomalySet '{anomaly_set}'.")
+            print(f"Inserted anomaly with id {anomaly_id} into 'anomalies' table with anomalySet 'bumble'.")
         except Exception as e:
             print(f"Failed to insert anomaly {anomaly_id}: {e}")
     else:
@@ -103,37 +131,28 @@ def upload_directory_to_supabase(supabase: Client, bucket_name: str, local_direc
             relative_path = os.path.relpath(file_path, local_directory)
             destination_path = Path(relative_path).as_posix()
 
-            # Extract the anomaly_set from the bucket name (e.g., "telescope-superwasp-variable")
-            # This assumes bucket_name is like "telescope/telescope-superwasp-variable"
-            anomaly_set = bucket_name.split('/')[-1] if '/' in bucket_name else bucket_name
-
             # Use the filename (without extension) as anomaly_id
             file_name_without_ext = os.path.splitext(file_name)[0]
-            try:
-                anomaly_id = int(file_name_without_ext)
-                content = f"SuperWASP Variable Star Candidate {anomaly_id}"
-            except ValueError:
-                # If filename is not a number, use it as-is
-                anomaly_id = file_name_without_ext
-                content = f"SuperWASP Variable Star Candidate {file_name_without_ext}"
+            anomaly_id = file_name_without_ext
+            content = f"Bumble {file_name_without_ext}"
 
             # Upload file and if successful, insert or update the anomaly
             if upload_file_to_supabase(supabase, bucket_name, file_path, destination_path):
                 # Create the avatar_url with the relative path in the Supabase bucket
                 avatar_url = f"{bucket_name}/{destination_path}"
-                insert_or_update_anomalies(supabase, anomaly_id, content, anomaly_set, avatar_url)
+                insert_or_update_anomalies(supabase, anomaly_id, content, avatar_url)
 
 def main():
     # Register signal handler for graceful exit on Ctrl+C
     signal.signal(signal.SIGINT, signal_handler)
     
-    print("=== Supabase Storage Upload Script ===")
-    print("Starting upload process...")
+    print("=== Supabase Storage Upload Script - Bumble ===")
+    print("Starting upload process for bumble files...")
     print()
     
     supabase = init_supabase_client()
-    bucket_name = "telescope/telescope-superwasp-variable" # "anomalies" # 'telescope/telescope-areWeAlone' # 'telescope/automatons-ai4Mars' # "telescope/telescope-dailyMinorPlanet" # "telescope/satellite-planetFour" # "telescope/lidar-jovianVortexHunter" # "clouds" #telescope/telescope-dailyMinorPlanet"
-    local_directory = "telescope/telescope-superwasp-variable" # "anomalies" # 'telescope/telescope-areWeAlone' # "automatons/automatons-ai4Mars" # "telescope/telescope-dailyMinorPlanet" # "satellite/satellite-planetFour" # "satellite/lidar-jovianVortexHunters" # "clouds" #"telescope/telescope-dailyMinorPlanet" 
+    bucket_name = "bumble"
+    local_directory = "bumble"
     
     # Check if bucket exists and is accessible
     try:
