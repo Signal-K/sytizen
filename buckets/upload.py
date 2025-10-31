@@ -3,24 +3,30 @@ import sys
 import signal
 from supabase import create_client, Client
 from pathlib import Path
+from dotenv import load_dotenv
 
 def signal_handler(sig, frame):
     print('\n\nUpload interrupted by user. Exiting gracefully...')
     sys.exit(0)
 
+# Load environment variables
+load_dotenv()
+
 # Initialize Supabase client
 def init_supabase_client():
-    url = "https://hlufptwhzkpkkjztimzo.supabase.co" #'https://api.starsailors.space' # "http://127.0.0.1:54321"  
-    # You need a service role key for storage uploads, not the anon key
-    # Get this from your Supabase dashboard under Settings > API
-    service_role_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsdWZwdHdoemtwa2tqenRpbXpvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNjI5OTc1NSwiZXhwIjoyMDMxODc1NzU1fQ.JYo6Phyuc_a6TsctnvUUBvf8OVXQHDipiwI4l_5an3Q"
-    anon_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsdWZwdHdoemtwa2tqenRpbXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyOTk3NTUsImV4cCI6MjAzMTg3NTc1NX0.v_NDVWjIU_lJQSPbJ_Y6GkW3axrQWKXfXVsBEAbFv_I"
+    url = os.getenv("SUPABASE_CLOUD_URL", "http://127.0.0.1:54321")
+    service_role_key = os.getenv("SUPABASE_CLOUD_SERVICE_ROLE_KEY")
+    anon_key = os.getenv("SUPABASE_CLOUD_ANON_KEY")
     
     # Try service role key first, fallback to anon key
     try:
-        return create_client(url, service_role_key)
-    except:
-        print("Warning: Using anonymous key - storage uploads may fail")
+        if service_role_key:
+            return create_client(url, service_role_key)
+        else:
+            print("Warning: No service role key found, using anonymous key")
+            return create_client(url, anon_key)
+    except Exception as e:
+        print(f"Warning: Using anonymous key - storage uploads may fail: {e}")
         return create_client(url, anon_key)
 def upload_file_to_supabase(supabase: Client, bucket_name: str, file_path: str, destination_path: str):
     with open(file_path, "rb") as file:

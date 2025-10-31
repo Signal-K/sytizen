@@ -107,8 +107,8 @@ def insert_or_update_anomaly(supabase: Client, anomaly_data: dict, instance_name
             print(f"  [{instance_name}] Failed to update anomaly {anomaly_id}: {e}")
             return False
 
-def process_ngts_files(cloud_client: Client, local_client: Client, bucket_name: str, local_directory: str):
-    """Process and upload NGTS files to both Supabase instances"""
+def process_sunspot_files(cloud_client: Client, local_client: Client, bucket_name: str, local_directory: str):
+    """Process and upload sunspot files to both Supabase instances"""
     
     if not os.path.exists(local_directory):
         print(f"Error: Directory {local_directory} does not exist")
@@ -141,12 +141,12 @@ def process_ngts_files(cloud_client: Client, local_client: Client, bucket_name: 
             
             print(f"\nProcessing: {file_name} (ID: {anomaly_id})")
             
-            # Prepare anomaly data (structured like TESS planets)
+            # Prepare anomaly data (structured for sunspots)
             anomaly_data = {
                 "id": anomaly_id,
                 "content": str(anomaly_id),
                 "ticId": None,
-                "anomalytype": "planet",
+                "anomalytype": "telescopeOthers",
                 "type": None,
                 "radius": None,
                 "mass": None,
@@ -162,7 +162,7 @@ def process_ngts_files(cloud_client: Client, local_client: Client, bucket_name: 
                 "lightkurve": None,
                 "configuration": None,
                 "parentAnomaly": None,
-                "anomalySet": "telescope-ngts",  # NGTS identifier
+                "anomalySet": "sunspot",
                 "anomalyConfiguration": None
             }
             
@@ -201,7 +201,7 @@ def main():
     signal.signal(signal.SIGINT, signal_handler)
     
     print("="*60)
-    print("  NGTS Anomaly Upload Script")
+    print("  Sunspot Anomaly Upload Script")
     print("  Uploads to both LOCAL and CLOUD Supabase instances")
     print("="*60)
     print()
@@ -213,16 +213,14 @@ def main():
         print(f"Error: {e}")
         sys.exit(1)
     
-    # Configuration: allow CLI override or auto-detect known NGTS folders
-    # Priority: CLI arg > telescope/telescope-ngts > telescope/telescope-planetHunters-ngts
+    # Configuration: allow CLI override or auto-detect sunspots folder
     cli_dir = None
     if len(sys.argv) > 1:
         cli_dir = sys.argv[1]
 
     known_dirs = [
-        "telescope/telescope-ngts",
-        "telescope/telescope-planetHunters-ngts",
-        "telescope/telescope-planetHunters-ngts",  # alternate naming
+        "telescope/telescope-sunspots",
+        "citizen/buckets/telescope/telescope-sunspots",
     ]
 
     if cli_dir:
@@ -244,7 +242,8 @@ def main():
     print(f"\nConfiguration:")
     print(f"  Bucket: {bucket_name}")
     print(f"  Local Directory: {local_directory}")
-    print(f"  Anomaly Set: {bucket_name.split('/')[-1]}")
+    print(f"  Anomaly Set: sunspot")
+    print(f"  Anomaly Type: telescopeOthers")
     print()
     
     # Check if bucket exists
@@ -267,7 +266,7 @@ def main():
     print()
     
     try:
-        process_ngts_files(cloud_client, local_client, bucket_name, local_directory)
+        process_sunspot_files(cloud_client, local_client, bucket_name, local_directory)
         print("\n✓ Upload completed successfully!")
     except KeyboardInterrupt:
         print('\n\nUpload interrupted by user. Exiting gracefully...')

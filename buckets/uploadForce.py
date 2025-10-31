@@ -1,11 +1,15 @@
 import os
 from supabase import create_client, Client
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize Supabase client
 def init_supabase_client():
-    url = "http://127.0.0.1:54321"  
-    key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
+    url = os.getenv("SUPABASE_LOCAL_URL", "http://127.0.0.1:54321")
+    key = os.getenv("SUPABASE_LOCAL_ANON_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0")
     return create_client(url, key)
 
 # Function to upload a file to Supabase storage
